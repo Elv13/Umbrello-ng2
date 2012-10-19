@@ -1,0 +1,83 @@
+[Desktop Entry]
+Type=Service
+Name=UseCase Default Layout
+Name[ca]=Disposició per omissió de casos d'ús
+Name[da]=Standard layout for UseCase
+Name[de]=Standardlayout für Anwendungsfälle
+Name[es]=Diseño por omisión de casos de uso
+Name[et]=Kasutusklassi vaikepaigutus
+Name[fr]=Disposition par défaut des cas d'utilisation
+Name[hu]=Használati eset alapértelmezett elrendezés
+Name[it]=Disposizione predefinita per i casi d'uso
+Name[kk]=Әдеттті пайдалану ретімен орналасуы
+Name[nb]=Standardutforming for UseCase
+Name[nl]=Standaard indeling van gebruiksgeval
+Name[pl]=Domyślny układ UseCase
+Name[pt]=Disposição de Casos de Uso
+Name[pt_BR]=Leiaute padrão de casos de uso
+Name[sk]=Predvolené rozloženie Usecase
+Name[sr]=Подразумевани распоред за случај употребе
+Name[sr@ijekavian]=Подразумевани распоред за случај употребе
+Name[sr@ijekavianlatin]=Podrazumevani raspored za slučaj upotrebe
+Name[sr@latin]=Podrazumevani raspored za slučaj upotrebe
+Name[sv]=Standardlayout för användarfall
+Name[uk]=Типове компонування випадку використання
+Name[x-test]=xxUseCase Default Layoutxx
+Name[zh_CN]=用例默认布局
+Name[zh_TW]=UseCase 預設佈局
+Comment=Usecase Default Layout
+Comment[ca]=Disposició per omissió de casos d'ús
+Comment[da]=Standard layout for Usecase
+Comment[de]=Standardlayout für Anwendungsfälle
+Comment[es]=Diseño por omisión de casos de uso
+Comment[et]=Kasutusklassi vaikepaigutus
+Comment[fr]=Disposition par défaut des cas d'utilisation
+Comment[hu]=Használati eset alapértelmezett elrendezés
+Comment[it]=Disposizione predefinita per i casi d'uso
+Comment[kk]=Әдеттті пайдалану ретімен орналасуы
+Comment[nb]=Standardutforming for Usecase
+Comment[nl]=Standaard indeling van gebruiksgeval
+Comment[pl]=Domyślny układ UseCase
+Comment[pt]=Disposição Predefinida de Casos de Uso
+Comment[pt_BR]=Leiaute padrão de casos de uso
+Comment[sk]=Predvolené rozloženie Usecase
+Comment[sr]=Подразумевани распоред за случај употребе
+Comment[sr@ijekavian]=Подразумевани распоред за случај употребе
+Comment[sr@ijekavianlatin]=Podrazumevani raspored za slučaj upotrebe
+Comment[sr@latin]=Podrazumevani raspored za slučaj upotrebe
+Comment[sv]=Standardlayout för användarfall
+Comment[uk]=Типове компонування випадку використання
+Comment[x-test]=xxUsecase Default Layoutxx
+Comment[zh_CN]=用例默认布局
+Comment[zh_TW]=Usecase 預設佈局
+
+[X-UMBRELLO-Dot-Nodes]
+type::usecase shape=ellipse
+type::actor shape=circle
+type::note shape=box
+type::default=shape=box
+
+# for dot output
+[X-UMBRELLO-Dot-Edges]
+# for visual representation
+visual::type::anchor=arrowhead=none,style=dashed
+visual::type::aggregation=arrowtail=odiamond,dir=back
+visual::type::composition=arrowtail=diamond,dir=back
+visual::type::dependency=arrowtail=vee,style=dashed,dir=back
+visual::type::uniassociation=arrowtail=vee,dir=back
+visual::type::association=arrowhead=none
+visual::type::generalization=arrowtail=normal,dir=back
+visual::type::realisation=arrowtail=normal,dir=back
+visual::type::default=arrowhead=none
+# for position ranking
+ranking::type::association=weight=1.0
+ranking::type::uniassociation=weight=0.1
+ranking::type::default=constraint=false
+
+[X-UMBRELLO-Dot-Attributes]
+graph=splines=polyline,rankdir=RL,outputorder=nodesfirst,ranksep=1.5,nodesep=0.5
+node=
+edge=
+
+[X-UMBRELLO-Dot-Settings]
+origin=50,50

@@ -1,0 +1,100 @@
+[Desktop Entry]
+Type=Service
+Name=Export Layout
+Name[ca]=Exporta la disposició
+Name[da]=Eksportér layout
+Name[de]=Layout exportieren
+Name[es]=Exportar disposición
+Name[et]=Paigutuse eksport
+Name[fr]=Disposition de l'exportation
+Name[hu]=Exportálás elrendezés
+Name[it]=Disposizione di esportazione
+Name[kk]=Экпорттың орналасуы
+Name[lt]=Eksportuoti išdėstymą
+Name[nb]=Eksporter utforming
+Name[nl]=Indeling exporteren
+Name[pa]=ਲੇਆਉਟ ਐਕਸਪੋਰਟ
+Name[pl]=Eksportuj układ
+Name[pt]=Exportar a Disposição
+Name[pt_BR]=Exportar leiaute
+Name[sk]=Exportovať rozloženie
+Name[sr]=Извези распоред
+Name[sr@ijekavian]=Извези распоред
+Name[sr@ijekavianlatin]=Izvezi raspored
+Name[sr@latin]=Izvezi raspored
+Name[sv]=Exportera layout
+Name[tr]=Düzeni Dışarıya Aktar
+Name[uk]=Компонування експортованих даних
+Name[x-test]=xxExport Layoutxx
+Name[zh_CN]=导出布局
+Name[zh_TW]=匯出佈局
+Comment=Export Layout for Activity Diagrams
+Comment[ca]=Exporta la disposició dels diagrames d'activitat
+Comment[da]=Eksportér layout for aktivitetsdiagrammer
+Comment[de]=Layout für Aktivitätsdiagramme exportieren
+Comment[es]=Exportar disposición de diagramas de actividad
+Comment[et]=Tegevusskeemide paigutuse eksport
+Comment[fr]=Disposition de l'exportation pour les diagrammes d'activités
+Comment[hu]=Exportálás elrendezés a tevékenység diagramokhoz
+Comment[it]=Disposizione di esportazione per i diagrammi di attività
+Comment[kk]=Белсенділік диаграмма үшін экспорттың орналасуы
+Comment[lt]=Eksportuoti išdėstymą Veiklos diagramoms
+Comment[nb]=Eksporter utforming for aktivitetsdiagrammer
+Comment[nl]=Indeling voor activiteitsdiagrammen exporteren
+Comment[pl]=Eksportuj układ dla diagramów działań
+Comment[pt]=Exportar a Disposição dos Diagramas de Actividades
+Comment[pt_BR]=Exportar leiaute para diagramas de atividades
+Comment[sk]=Exportovať rozloženie pre diagramy aktivít
+Comment[sr]=Извези распоред за дијаграме активности
+Comment[sr@ijekavian]=Извези распоред за дијаграме активности
+Comment[sr@ijekavianlatin]=Izvezi raspored za dijagrame aktivnosti
+Comment[sr@latin]=Izvezi raspored za dijagrame aktivnosti
+Comment[sv]=Exportera layout av aktivitetsdiagram
+Comment[uk]=Компонування для експортування діаграм дій
+Comment[x-test]=xxExport Layout for Activity Diagramsxx
+Comment[zh_CN]=导出活动图布局
+Comment[zh_TW]=活動圖片的匯出佈局
+
+[X-UMBRELLO-Dot-Nodes]
+# FIXME: graphviz dot not have appropriate node shape yet
+type::accept=shape=trapezium
+type::branch=shape=diamond
+type::end=shape=doublecircle
+type::final=shape=circle,label="+"
+type::forkjoin=shape=box,style=filled,fillcolor=black,width="0.1",label=""
+type::initial=shape=circle
+type::invok=shape=box
+type::normal=shape=box,style=rounded
+# FIXME: add line below the text
+type::objectnode=shape=box
+type::param=shape=box
+type::pin=shape=box,width="0.1",height="0.1"
+type::region=shape=box,style="dashed,rounded"
+# FIXME: graphviz dot not have appropriate node shape yet
+type::send=shape=parallelogram
+# FIXME: graphviz dot not have appropriate node shape yet
+type::time=shape=box
+# all other
+type::default=shape=box
+
+[X-UMBRELLO-Dot-Edges]
+# for visual representation
+visual::type::anchor=arrowhead=none,style=dashed
+visual::type::exception=label="exception"
+visual::type::state=arrowhead=normal
+ranking::type::default=len=1.5
+# id handling
+id::type::default=swap
+
+[X-UMBRELLO-Dot-Attributes]
+graph=overlap=false
+node=
+edge=
+
+[X-UMBRELLO-Dot-Settings]
+origin=50,50
+generator=neato
+
+# see http://www.graphviz.org/pdf/dotguide.pdf
+# see http://www.graphviz.org/pdf/neatoguide.pdf
+# for dot/neato attribute details
