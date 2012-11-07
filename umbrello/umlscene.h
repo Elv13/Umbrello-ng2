@@ -67,7 +67,6 @@ typedef QLineF UMLSceneLine;
 typedef qreal UMLSceneValue;
 typedef QPolygonF UMLScenePolygon;
 // event types
-#define UMLSceneMouseEvent QGraphicsSceneMouseEvent
 typedef QGraphicsSceneHoverEvent UMLSceneHoverEvent;
 typedef QGraphicsSceneContextMenuEvent UMLSceneContextMenuEvent;
 typedef QGraphicsSceneDragDropEvent UMLSceneDragDropEvent;
@@ -76,10 +75,7 @@ typedef QGraphicsSceneDragDropEvent UMLSceneDragMoveEvent;
 
 typedef QGraphicsLineItem UMLSceneLineItem;
 typedef QGraphicsRectItem UMLSceneRectItem;
-//typedef QGraphicsSceneItem UMLSceneItem;
-typedef QGraphicsPolygonItem UMLScenePolygonItem;
 typedef QGraphicsEllipseItem UMLSceneEllipse;
-//typedef QGraphicsSceneItemList UMLSceneItemList;
 
 /**
  * UMLScene instances represent diagrams.
@@ -131,6 +127,8 @@ public:
 
     const QColor& gridDotColor() const;
     void setGridDotColor(const QColor& color);
+
+    void setSize(UMLSceneValue width, UMLSceneValue height);
 
     bool snapToGrid() const;
     void setSnapToGrid(bool bSnap);
@@ -185,7 +183,7 @@ public:
 
     void removeWidget(UMLWidget *o);
 
-    void setSelected(UMLWidget *w, UMLSceneMouseEvent *me);
+    void setSelected(UMLWidget *w, QGraphicsSceneMouseEvent *me);
     UMLWidgetList selectedWidgets() const;
     void clearSelected();
 
@@ -244,8 +242,8 @@ public:
 
     void updateDocumentation(bool clear);
 
-    void getDiagram(const UMLSceneRect &rect, QPixmap & diagram);
-    void getDiagram(const UMLSceneRect &area, QPainter & painter);
+    void getDiagram(QPixmap & diagram, const UMLSceneRect &rect);
+    void getDiagram(QPainter &painter, const UMLSceneRect &source, const UMLSceneRect &target = UMLSceneRect());
 
     void copyAsImage(QPixmap*& pix);
 
@@ -324,7 +322,7 @@ public:
 
     int generateCollaborationId();
 
-    void callBaseMouseMethod(UMLSceneMouseEvent *event);
+    void callBaseMouseMethod(QGraphicsSceneMouseEvent *event);
 
     bool isMouseMovingItems() const;
     void setIsMouseMovingItems(bool b);
@@ -364,10 +362,10 @@ protected:
     void dragMoveEvent(UMLSceneDragDropEvent* moveEvent);
     void dropEvent(UMLSceneDragDropEvent* dropEvent);
 
-    void mouseMoveEvent(UMLSceneMouseEvent* mouseEvent);
-    void mousePressEvent(UMLSceneMouseEvent* mouseEvent);
-    void mouseDoubleClickEvent(UMLSceneMouseEvent* mouseEvent);
-    void mouseReleaseEvent(UMLSceneMouseEvent* mouseEvent);
+    void mouseMoveEvent(QGraphicsSceneMouseEvent* mouseEvent);
+    void mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent);
+    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent* mouseEvent);
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent* mouseEvent);
     virtual void contextMenuEvent(UMLSceneContextMenuEvent* contextMenuEvent);
 
     /**

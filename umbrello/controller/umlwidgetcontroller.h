@@ -4,7 +4,7 @@
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
  *                                                                         *
- *   copyright (C) 2006-2009                                               *
+ *   copyright (C) 2006-2012                                               *
  *   Umbrello UML Modeller Authors <uml-devel@uml.sf.net>                  *
  ***************************************************************************/
 
@@ -16,7 +16,7 @@
 #include "umlscene.h"
 
 // qt includes
-#include <QtCore/QDateTime>
+#include <QDateTime>
 
 class QCursor;
 class QPointF;
@@ -70,10 +70,10 @@ public:
     UMLWidgetController(UMLWidget *widget);
     virtual ~UMLWidgetController();
 
-    virtual void mousePressEvent(UMLSceneMouseEvent *me);
-    virtual void mouseMoveEvent(UMLSceneMouseEvent* me);
-    virtual void mouseReleaseEvent(UMLSceneMouseEvent * me);
-    virtual void mouseDoubleClickEvent(UMLSceneMouseEvent *me);
+    virtual void mousePressEvent(QGraphicsSceneMouseEvent *me);
+    virtual void mouseMoveEvent(QGraphicsSceneMouseEvent* me);
+    virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent * me);
+    virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *me);
 
     virtual void widgetMoved();
 
@@ -92,28 +92,28 @@ public:
 
 protected:
 
-    virtual void saveWidgetValues(UMLSceneMouseEvent *me);
+    virtual void saveWidgetValues(QGraphicsSceneMouseEvent *me);
 
-    virtual bool isInResizeArea(UMLSceneMouseEvent *me);
+    virtual bool isInResizeArea(QGraphicsSceneMouseEvent *me);
 
     virtual QCursor getResizeCursor();
 
     virtual void constrainMovementForAllWidgets(qreal &diffX, qreal &diffY);
 
-    virtual void doMouseDoubleClick(UMLSceneMouseEvent *me);
+    virtual void doMouseDoubleClick(QGraphicsSceneMouseEvent *me);
 
     void resetSelection();
 
-    void selectSingle(UMLSceneMouseEvent *me);
-    void selectMultiple(UMLSceneMouseEvent *me);
+    void selectSingle(QGraphicsSceneMouseEvent *me);
+    void selectMultiple(QGraphicsSceneMouseEvent *me);
 
-    void deselect(UMLSceneMouseEvent *me);
+    void deselect(QGraphicsSceneMouseEvent *me);
 
     void setSelectionBounds();
 
     void updateSelectionBounds(qreal diffX, qreal diffY);
 
-    void resize(UMLSceneMouseEvent *me);
+    void resize(QGraphicsSceneMouseEvent *me);
 
     qreal getSmallestX(const UMLWidgetList &widgetList);
     qreal getSmallestY(const UMLWidgetList &widgetList);
@@ -121,10 +121,10 @@ protected:
     qreal getBiggestX(const UMLWidgetList &widgetList);
     qreal getBiggestY(const UMLWidgetList &widgetList);
 
-    QPointF getPosition(UMLSceneMouseEvent *me);
-    QPointF getPositionDifference(UMLSceneMouseEvent *me);
+    QPointF getPosition(QGraphicsSceneMouseEvent *me);
+    QPointF getPositionDifference(QGraphicsSceneMouseEvent *me);
 
-    void showPopupMenu(UMLSceneMouseEvent *me);
+    void showPopupMenu(QGraphicsSceneMouseEvent *me);
 
     bool wasSizeChanged();
     bool wasPositionChanged();
