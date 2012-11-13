@@ -43,6 +43,8 @@
 #include "settingsdlg.h"
 #include "classimport.h"
 #include "refactoringassistant.h"
+// docks
+#include "dock/powerdock.h"
 // clipboard
 #include "umlclipboard.h"
 #include "umldragdata.h"
@@ -825,6 +827,10 @@ void UMLApp::initView()
     m_pQUndoView->setCleanIcon(Icon_Utils::SmallIcon(Icon_Utils::it_UndoView));
     m_pQUndoView->setStack(m_pUndoStack);
     m_cmdHistoryDock->setWidget(m_pQUndoView);
+
+    //Create the PowerDock
+    m_powerDock = new PowerDock(this);
+    addDockWidget(Qt::BottomDockWidgetArea, m_powerDock);
 
     // create the property viewer
     //m_propertyDock = new QDockWidget(i18n("&Properties"), this);

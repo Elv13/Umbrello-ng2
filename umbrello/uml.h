@@ -343,6 +343,7 @@ private:
     QDockWidget* m_documentationDock;  ///< Contains the documentation DocWindow widget.
     QDockWidget* m_cmdHistoryDock;     ///< Contains the undo/redo viewer widget.
     QDockWidget* m_propertyDock;       ///< Contains the property browser widget.
+    QDockWidget* m_powerDock;          ///< Contains the keyboard friendly input widgets
 
     DocWindow*   m_docWindow;         ///< Documentation window.
     QUndoView*   m_pQUndoView;         ///< Undo / Redo Viewer
