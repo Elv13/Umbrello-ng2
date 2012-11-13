@@ -250,6 +250,12 @@ set(libdocks_SRCS
     dock/powerdock.cpp
 )
 
+kde4_add_ui_files(  libdocks_SRCS
+    dock/pagegroup/class.ui
+    dock/pagegroup/enum.ui
+    dock/pagegroup/package.ui
+)
+
 set(librefactoring_SRCS
     refactoring/refactoringassistant.cpp
 )

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>m_pClassTabGroup</class>
+ <widget class="QWidget" name="m_pClassTabGroup">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>730</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QTabWidget" name="m_pTabW">
+     <property name="currentIndex">
+      <number>5</number>
+     </property>
+     <widget class="QWidget" name="m_pGeneralTab">
+      <attribute name="title">
+       <string>General</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="m_pAttributesTab">
+      <attribute name="title">
+       <string>Attributes</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="m_pOperationsTab">
+      <attribute name="title">
+       <string>Operations</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="m_pTemplatesTab">
+      <attribute name="title">
+       <string>Templates</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="m_pAssociationsTab">
+      <attribute name="title">
+       <string>Associations</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="m_pDisplayTab">
+      <attribute name="title">
+       <string>Display</string>
+      </attribute>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
