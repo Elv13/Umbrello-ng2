@@ -1,42 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>m_pClassTabGroup</class>
- <widget class="QWidget" name="m_pClassTabGroup">
+ <class>PackageTabGroup</class>
+ <widget class="QWidget" name="m_pPackageTabGroup">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>730</width>
+    <width>400</width>
     <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Package</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QTabWidget" name="m_pTabW">
      <property name="currentIndex">
-      <number>5</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="m_pGeneralTab">
       <attribute name="title">
        <string>General</string>
       </attribute>
      </widget>
-     <widget class="QWidget" name="m_pAttributesTab">
+     <widget class="QWidget" name="m_pContentTab">
       <attribute name="title">
-       <string>Attributes</string>
-      </attribute>
-     </widget>
-     <widget class="QWidget" name="m_pOperationsTab">
-      <attribute name="title">
-       <string>Operations</string>
-      </attribute>
-     </widget>
-     <widget class="QWidget" name="m_pTemplatesTab">
-      <attribute name="title">
-       <string>Templates</string>
+       <string>Content</string>
       </attribute>
      </widget>
      <widget class="QWidget" name="m_pAssociationsTab">
@@ -48,11 +38,24 @@
       <attribute name="title">
        <string>Display</string>
       </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="PackageGeneral" name="widget" native="true"/>
+       </item>
+      </layout>
      </widget>
     </widget>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PackageGeneral</class>
+   <extends>QWidget</extends>
+   <header>dock/pages/controller/packagegeneral.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

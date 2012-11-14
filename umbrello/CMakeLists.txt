@@ -239,21 +239,24 @@ kde4_add_ui_files(  libdialogs_SRCS
 )
 
 set(libdocks_SRCS
-#     dock/assoctab.cpp
-#     dock/classgentab.cpp
-#     dock/classifierlisttab.cpp
-#     dock/classoptionstab.cpp
-#     dock/classpropdock.cpp
-#     dock/dockManager.cpp
     dock/pagegroup.cpp
     dock/pages.cpp
     dock/powerdock.cpp
+    dock/pagegroup/controller/classgroup.cpp
+    dock/pagegroup/controller/enumgroup.cpp
+    dock/pagegroup/controller/packagegroup.cpp
+    dock/pages/controller/packagegeneral.cpp
+    dock/pages/controller/enumgeneral.cpp
+    dock/pages/controller/classgeneral.cpp
 )
 
 kde4_add_ui_files(  libdocks_SRCS
-    dock/pagegroup/class.ui
-    dock/pagegroup/enum.ui
-    dock/pagegroup/package.ui
+    dock/pagegroup/view/class.ui
+    dock/pagegroup/view/enum.ui
+    dock/pagegroup/view/package.ui
+    dock/pages/view/classGeneral.ui
+    dock/pages/view/enumGeneral.ui
+    dock/pages/view/packageGeneral.ui
 )
 
 set(librefactoring_SRCS
