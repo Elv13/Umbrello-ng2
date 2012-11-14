@@ -11,13 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Package</string>
+   <string>PackageTabGroup</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QTabWidget" name="m_pTabW">
      <property name="currentIndex">
-      <number>3</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="m_pGeneralTab">
       <attribute name="title">
@@ -28,11 +28,21 @@
       <attribute name="title">
        <string>Content</string>
       </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="PackageContent" name="widget_2" native="true"/>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="m_pAssociationsTab">
       <attribute name="title">
        <string>Associations</string>
       </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="PackageAssoc" name="widget_3" native="true"/>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="m_pDisplayTab">
       <attribute name="title">
@@ -53,6 +63,18 @@
    <class>PackageGeneral</class>
    <extends>QWidget</extends>
    <header>dock/pages/controller/packagegeneral.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PackageContent</class>
+   <extends>QWidget</extends>
+   <header>dock/pages/controller/packagecontent.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PackageAssoc</class>
+   <extends>QWidget</extends>
+   <header>dock/pages/controller/packageassoc.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

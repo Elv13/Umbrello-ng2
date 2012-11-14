@@ -11,13 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Enum</string>
+   <string>EnumTabGroup</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QTabWidget" name="m_pTabW">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="m_pGeneralTab">
       <attribute name="title">
@@ -33,6 +33,11 @@
       <attribute name="title">
        <string>Literals</string>
       </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QWidget" name="widget_2" native="true"/>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="m_pDisplayTab">
       <attribute name="title">

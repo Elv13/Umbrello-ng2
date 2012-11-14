@@ -248,6 +248,14 @@ set(libdocks_SRCS
     dock/pages/controller/packagegeneral.cpp
     dock/pages/controller/enumgeneral.cpp
     dock/pages/controller/classgeneral.cpp
+    dock/pages/controller/classassoc.cpp
+    dock/pages/controller/classattributes.cpp
+    dock/pages/controller/classoperations.cpp
+    dock/pages/controller/classtemplates.cpp
+    dock/pages/controller/enumliterals.cpp
+    dock/pages/controller/packageassoc.cpp
+    dock/pages/controller/packagecontent.cpp
+
 )
 
 kde4_add_ui_files(  libdocks_SRCS
@@ -257,6 +265,7 @@ kde4_add_ui_files(  libdocks_SRCS
     dock/pages/view/classGeneral.ui
     dock/pages/view/enumGeneral.ui
     dock/pages/view/packageGeneral.ui
+    dock/pages/view/genericTable.ui
 )
 
 set(librefactoring_SRCS

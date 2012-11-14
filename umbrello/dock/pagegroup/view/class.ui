@@ -11,13 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Class</string>
+   <string>ClassTabGroup</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QTabWidget" name="m_pTabW">
      <property name="currentIndex">
-      <number>0</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="m_pGeneralTab">
       <attribute name="title">
@@ -33,21 +33,41 @@
       <attribute name="title">
        <string>Attributes</string>
       </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="ClassAttributes" name="widget_2" native="true"/>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="m_pOperationsTab">
       <attribute name="title">
        <string>Operations</string>
       </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="ClassOperations" name="widget_3" native="true"/>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="m_pTemplatesTab">
       <attribute name="title">
        <string>Templates</string>
       </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="ClassTemplates" name="widget_4" native="true"/>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="m_pAssociationsTab">
       <attribute name="title">
        <string>Associations</string>
       </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <widget class="ClassAssoc" name="widget_5" native="true"/>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="m_pDisplayTab">
       <attribute name="title">
@@ -63,6 +83,30 @@
    <class>ClassGeneral</class>
    <extends>QWidget</extends>
    <header>dock/pages/controller/classgeneral.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ClassAttributes</class>
+   <extends>QWidget</extends>
+   <header>dock/pages/controller/classattributes.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ClassOperations</class>
+   <extends>QWidget</extends>
+   <header>dock/pages/controller/classoperations.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ClassTemplates</class>
+   <extends>QWidget</extends>
+   <header>dock/pages/controller/classtemplates.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ClassAssoc</class>
+   <extends>QWidget</extends>
+   <header>dock/pages/controller/classassoc.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
