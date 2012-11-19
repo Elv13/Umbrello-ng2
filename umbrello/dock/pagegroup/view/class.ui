@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>ClassTabGroup</class>
- <widget class="QWidget" name="m_pClassTabGroup">
+ <widget class="QWidget" name="ClassTabGroup">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -17,7 +17,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="m_pTabW">
      <property name="currentIndex">
-      <number>4</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="m_pGeneralTab">
       <attribute name="title">
@@ -73,6 +73,11 @@
       <attribute name="title">
        <string>Display</string>
       </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <widget class="ClassDisplay" name="widget_6" native="true"/>
+       </item>
+      </layout>
      </widget>
     </widget>
    </item>
@@ -107,6 +112,12 @@
    <class>ClassAssoc</class>
    <extends>QWidget</extends>
    <header>dock/pages/controller/classassoc.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ClassDisplay</class>
+   <extends>QWidget</extends>
+   <header>dock/pages/controller/classdisplay.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

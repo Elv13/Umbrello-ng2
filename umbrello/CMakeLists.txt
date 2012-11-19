@@ -248,6 +248,7 @@ set(libdocks_SRCS
     dock/pages/controller/packagegeneral.cpp
     dock/pages/controller/enumgeneral.cpp
     dock/pages/controller/classgeneral.cpp
+    dock/pages/controller/classdisplay.cpp
     dock/pages/controller/classassoc.cpp
     dock/pages/controller/classattributes.cpp
     dock/pages/controller/classoperations.cpp
@@ -263,6 +264,7 @@ kde4_add_ui_files(  libdocks_SRCS
     dock/pagegroup/view/enum.ui
     dock/pagegroup/view/package.ui
     dock/pages/view/classGeneral.ui
+    dock/pages/view/classDisplay.ui
     dock/pages/view/enumGeneral.ui
     dock/pages/view/packageGeneral.ui
     dock/pages/view/genericTable.ui
