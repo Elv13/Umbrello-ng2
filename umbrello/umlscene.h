@@ -56,6 +56,7 @@ class UMLViewImageExporter;
 class UMLForeignKeyConstraint;
 class UMLEntity;
 class UMLView;
+class UMLWidget;
 
 
 /// uml related types - makes it easier to switch to QGraphicsScene types
@@ -417,6 +418,9 @@ private:
 
     bool isWidgetOrAssociation(const UMLScenePoint& atPos);
 
+private slots:
+    void slotItemDoubleClicked(UMLWidget * w);
+
 public slots:
     void slotToolBarChanged(int c);
     void slotObjectCreated(UMLObject * o);
@@ -449,6 +453,7 @@ signals:
     void sigShowGridToggled(bool);
     void sigAssociationRemoved(AssociationWidget*);
     void sigWidgetRemoved(UMLWidget*);
+    void sigItemDoubledClicked(UMLWidget*);
 };
 
 QDebug operator<<(QDebug dbg, UMLScene *item);

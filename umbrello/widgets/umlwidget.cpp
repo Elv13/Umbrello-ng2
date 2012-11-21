@@ -571,7 +571,7 @@ void UMLWidget::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 void UMLWidget::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton) {
-        showPropertiesDialog();
+        emit sigDoubleClicked(this);
         event->accept();
     }
 }

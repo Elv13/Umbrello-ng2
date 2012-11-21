@@ -529,6 +529,16 @@ void UMLScene::setCreateObject(bool bCreate)
 }
 
 /**
+ * Listen to UMLWidgets for double click event. Once the dock input system is merged
+ * or if it is already the case, this is required to know if the double click should
+ * trigger the propertiesDialog or focus the dock
+ */
+void UMLScene::slotItemDoubleClicked(UMLWidget * w)
+{
+    emit sigItemDoubledClicked(w);
+}
+
+/**
  * Changes the current tool to the selected tool.
  * The current tool is cleaned and the selected tool initialized.
  */
@@ -557,6 +567,7 @@ void UMLScene::slotObjectCreated(UMLObject* o)
     }
 
     UMLWidget* newWidget = Widget_Factory::createWidget(this, o);
+    connect(newWidget,SIGNAL(sigDoubleClicked(UMLWidget*)),this,SLOT(slotItemDoubleClicked(UMLWidget*)));
 
     if (!newWidget) {
         return;
@@ -3945,6 +3956,7 @@ UMLWidget* UMLScene::loadWidgetFromXMI(QDomElement& widgetElement)
     QString tag  = widgetElement.tagName();
     QString idstr  = widgetElement.attribute("xmi.id", "-1");
     UMLWidget* widget = Widget_Factory::makeWidgetFromXMI(tag, idstr, this);
+    connect(widget,SIGNAL(sigDoubleClicked(UMLWidget*)),this,SLOT(slotItemDoubleClicked(UMLWidget*)));
 
     if (widget == NULL)
         return NULL;

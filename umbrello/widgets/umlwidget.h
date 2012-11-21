@@ -216,6 +216,8 @@ private:
 
     // Disable copy constructor and operator=
     Q_DISABLE_COPY(UMLWidget);
+signals:
+    void sigDoubleClicked(UMLWidget*);
 };
 
 #endif
