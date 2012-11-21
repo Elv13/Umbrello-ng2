@@ -3,9 +3,9 @@
 
 #include "ui_enum.h"
 
-#include <QtGui/QWidget>
+#include "pagegroupbase.h"
 
-class EnumGroup : public QWidget
+class EnumGroup : public PageGroupBase
 {
    Q_OBJECT
    public:

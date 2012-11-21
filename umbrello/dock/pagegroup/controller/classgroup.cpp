@@ -1,6 +1,6 @@
 #include "classgroup.h"
 
-ClassGroup::ClassGroup(QWidget* parent) : QWidget(parent),ui(new Ui_ClassTabGroup())
+ClassGroup::ClassGroup(QWidget* parent) : PageGroupBase(parent),ui(new Ui_ClassTabGroup())
 {
     ui->setupUi(this);
 }

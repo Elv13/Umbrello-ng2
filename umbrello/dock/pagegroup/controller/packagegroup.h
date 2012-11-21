@@ -3,9 +3,9 @@
 
 #include "ui_package.h"
 
-#include <QtGui/QWidget>
+#include "pagegroupbase.h"
 
-class PackageGroup : public QWidget
+class PackageGroup : public PageGroupBase
 {
    Q_OBJECT
    public:

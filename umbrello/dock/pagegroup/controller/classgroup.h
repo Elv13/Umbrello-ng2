@@ -3,9 +3,9 @@
 
 #include "ui_class.h"
 
-#include <QtGui/QWidget>
+#include "pagegroupbase.h"
 
-class ClassGroup : public QWidget
+class ClassGroup : public PageGroupBase
 {
    Q_OBJECT
    public:

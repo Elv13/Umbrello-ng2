@@ -2495,12 +2495,21 @@ void UMLApp::slotCurrentItemChanged(UMLWidget* w)
 {
     if (m_powerDock && m_powerDock->isVisible()) {
         //Use the dock
-        m_powerDock->setStyleSheet("background-color:red");
+        m_powerDock->setCurrentWidget(w);
     }
     else {
         //Use the classic dialogs
         w->showPropertiesDialog();
     }
+}
+
+/**
+ * Set m_view to NULL if "object" is the current view
+ */
+void UMLApp::slotRemovecurrentView(QObject* object)
+{
+    if (object == m_view)
+        m_view = 0;
 }
 
 /**
@@ -2736,10 +2745,14 @@ QWidget* UMLApp::mainViewWidget()
  *
  * @param view   Pointer to the UMLView to push.
  */
+#include "unistd.h"
 void UMLApp::setCurrentView(UMLView* view)
 {
-//     if (m_view)
-//         disconnect(m_view->scene(),SIGNAL(sigItemDoubledClicked(UMLWidget*)),this,SLOT(slotCurrentItemChanged(UMLWidget*)));
+    if (m_view == view)
+        return;
+
+    if (m_view)
+        disconnect(m_view->scene(),SIGNAL(sigItemDoubledClicked(UMLWidget*)),this,SLOT(slotCurrentItemChanged(UMLWidget*)));
     m_view = view;
     if (view == NULL) {
         DEBUG(DBG_SRC) << "view is NULL";
@@ -2749,6 +2762,7 @@ void UMLApp::setCurrentView(UMLView* view)
 
     //Always handle event that update the main window in this class, not buried deep in the code
     connect(m_view->scene(),SIGNAL(sigItemDoubledClicked(UMLWidget*)),this,SLOT(slotCurrentItemChanged(UMLWidget*)));
+    connect(m_view,SIGNAL(destroyed(QObject*)),this,SLOT(slotRemovecurrentView(QObject*))); //TODO remove this once the races are fixed
 
     Settings::OptionState optionState = Settings::optionState();
     if (optionState.generalState.tabdiagrams) {
