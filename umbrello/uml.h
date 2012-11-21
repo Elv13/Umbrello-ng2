@@ -34,6 +34,7 @@ class RefactoringAssistant;
 class XhtmlGenerator;
 class StatusBarToolButton;
 class DiagramPrintPage;
+class UMLWidget;
 
 // KDE forward declarations
 class KActionMenu;
@@ -232,6 +233,7 @@ public slots:
     void slotCurrentViewToggleSnapToGrid();
     void slotCurrentViewToggleShowGrid();
     void slotCurrentViewExportImage();
+    void slotCurrentItemChanged(UMLWidget*);
     void slotAllViewsExportImage();
     void slotCurrentViewProperties();
     void slotClassWizard();

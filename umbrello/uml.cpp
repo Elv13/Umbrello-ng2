@@ -24,6 +24,7 @@
 #include "cmds.h"
 #include "umbrellosettings.h"
 #include "statusbartoolbutton.h"
+#include "umlwidget.h"
 // code generation
 #include "codegenerator.h"
 #include "codegenerationpolicy.h"
@@ -2488,6 +2489,21 @@ void UMLApp::slotCurrentViewChanged()
 }
 
 /**
+ * The current canvas/view current item chaned
+ */
+void UMLApp::slotCurrentItemChanged(UMLWidget* w)
+{
+    if (m_powerDock && m_powerDock->isVisible()) {
+        //Use the dock
+        m_powerDock->setStyleSheet("background-color:red");
+    }
+    else {
+        //Use the classic dialogs
+        w->showPropertiesDialog();
+    }
+}
+
+/**
  * The snap to grid value has been changed.
  */
 void UMLApp::slotSnapToGridToggled(bool gridOn)
@@ -2722,12 +2738,17 @@ QWidget* UMLApp::mainViewWidget()
  */
 void UMLApp::setCurrentView(UMLView* view)
 {
+//     if (m_view)
+//         disconnect(m_view->scene(),SIGNAL(sigItemDoubledClicked(UMLWidget*)),this,SLOT(slotCurrentItemChanged(UMLWidget*)));
     m_view = view;
     if (view == NULL) {
         DEBUG(DBG_SRC) << "view is NULL";
         docWindow()->newDocumentation();
         return;
     }
+
+    //Always handle event that update the main window in this class, not buried deep in the code
+    connect(m_view->scene(),SIGNAL(sigItemDoubledClicked(UMLWidget*)),this,SLOT(slotCurrentItemChanged(UMLWidget*)));
 
     Settings::OptionState optionState = Settings::optionState();
     if (optionState.generalState.tabdiagrams) {
