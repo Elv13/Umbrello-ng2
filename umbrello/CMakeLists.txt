@@ -257,7 +257,13 @@ set(libdocks_SRCS
     dock/pages/controller/enumliterals.cpp
     dock/pages/controller/packageassoc.cpp
     dock/pages/controller/packagecontent.cpp
-
+    dock/pages/model/classassociationsmodel.cpp
+    dock/pages/model/classattributesmodel.cpp
+    dock/pages/model/classoperationsmodel.cpp
+    dock/pages/model/classtemplatesmodel.cpp
+    dock/pages/model/enumliteralsmodel.cpp
+    dock/pages/model/packageassociationsmodel.cpp
+    dock/pages/model/packagecontentmodel.cpp
 )
 
 kde4_add_ui_files(  libdocks_SRCS
