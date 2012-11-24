@@ -2,7 +2,7 @@
 
 #include <QtGui/QWidget>
 
-EnumGeneral::EnumGeneral(QWidget* parent) : QWidget(parent),ui(new Ui_EnumGeneral())
+EnumGeneral::EnumGeneral(QWidget* parent) : PageBase(parent),ui(new Ui_EnumGeneral())
 {
     ui->setupUi(this);
 }
@@ -10,4 +10,9 @@ EnumGeneral::EnumGeneral(QWidget* parent) : QWidget(parent),ui(new Ui_EnumGenera
 EnumGeneral::~EnumGeneral()
 {
     delete ui;
+}
+
+void EnumGeneral::setCurrentObject(UMLObject* o)
+{
+    
 }

@@ -1,6 +1,8 @@
 #include "classassoc.h"
 
-ClassAssoc::ClassAssoc(QWidget* parent) : QWidget(parent),ui(new Ui_GenericTable())
+#include "dock/pages/model/classassociationsmodel.h"
+
+ClassAssoc::ClassAssoc(QWidget* parent) : PageBase(parent),ui(new Ui_GenericTable()),m_pModel(0)
 {
     ui->setupUi(this);
 }
@@ -8,4 +10,12 @@ ClassAssoc::ClassAssoc(QWidget* parent) : QWidget(parent),ui(new Ui_GenericTable
 ClassAssoc::~ClassAssoc()
 {
     delete ui;
+}
+
+void ClassAssoc::setCurrentObject(UMLObject* o)
+{
+    if (!m_pModel) {
+        m_pModel = new ClassAssociationsModel(this);
+    }
+    m_pModel->setCurrentObject(o);
 }

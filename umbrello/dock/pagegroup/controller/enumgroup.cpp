@@ -9,3 +9,8 @@ EnumGroup::~EnumGroup()
 {
     delete ui;
 }
+
+void EnumGroup::setCurrentObject(UMLObject* o)
+{
+    
+}

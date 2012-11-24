@@ -12,6 +12,8 @@ class EnumGroup : public PageGroupBase
        EnumGroup(QWidget* parent = NULL);
        virtual ~EnumGroup();
 
+       virtual void setCurrentObject(UMLObject* o);
+
     private:
         Ui_EnumTabGroup* ui;
 

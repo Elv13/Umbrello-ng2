@@ -1,6 +1,8 @@
 #include "packagecontent.h"
 
-PackageContent::PackageContent(QWidget* parent) : QWidget(parent),ui(new Ui_GenericTable())
+#include "dock/pages/model/packagecontentmodel.h"
+
+PackageContent::PackageContent(QWidget* parent) : PageBase(parent),ui(new Ui_GenericTable()),m_pModel(0)
 {
     ui->setupUi(this);
 }
@@ -8,4 +10,12 @@ PackageContent::PackageContent(QWidget* parent) : QWidget(parent),ui(new Ui_Gene
 PackageContent::~PackageContent()
 {
     delete ui;
+}
+
+void PackageContent::setCurrentObject(UMLObject* o)
+{
+    if (!m_pModel) {
+        m_pModel = new PackageContentModel(this);
+    }
+    m_pModel->setCurrentObject(o);
 }

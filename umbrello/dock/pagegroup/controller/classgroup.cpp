@@ -9,3 +9,8 @@ ClassGroup::~ClassGroup()
 {
     delete ui;
 }
+
+void ClassGroup::setCurrentObject(UMLObject* o)
+{
+    
+}

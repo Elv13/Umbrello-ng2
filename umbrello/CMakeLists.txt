@@ -246,6 +246,7 @@ set(libdocks_SRCS
     dock/pagegroup/controller/enumgroup.cpp
     dock/pagegroup/controller/packagegroup.cpp
     dock/pagegroup/controller/pagegroupbase.cpp
+    dock/pages/controller/pagebase.cpp
     dock/pages/controller/packagegeneral.cpp
     dock/pages/controller/enumgeneral.cpp
     dock/pages/controller/classgeneral.cpp

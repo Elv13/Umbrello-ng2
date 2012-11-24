@@ -12,6 +12,8 @@ class ClassGroup : public PageGroupBase
        ClassGroup(QWidget* parent = NULL);
        virtual ~ClassGroup();
 
+       virtual void setCurrentObject(UMLObject* o);
+
     private:
         Ui_ClassTabGroup* ui;
 

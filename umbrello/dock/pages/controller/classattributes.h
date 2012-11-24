@@ -3,17 +3,23 @@
 
 #include "ui_genericTable.h"
 
-#include <QtGui/QWidget>
+#include "pagebase.h"
+class QWidget;
+class ClassAttributesModel;
 
-class ClassAttributes : public QWidget
+class ClassAttributes : public PageBase
 {
    Q_OBJECT
    public:
        ClassAttributes(QWidget* parent = NULL);
        virtual ~ClassAttributes();
 
+       //Setters
+       virtual void setCurrentObject(UMLObject* o);
+
     private:
         Ui_GenericTable* ui;
+        ClassAttributesModel* m_pModel;
 
 };
 

@@ -2,7 +2,7 @@
 
 #include <QtGui/QWidget>
 
-PackageGeneral::PackageGeneral(QWidget* parent) : QWidget(parent),ui(new Ui_PackageGeneral())
+PackageGeneral::PackageGeneral(QWidget* parent) : PageBase(parent),ui(new Ui_PackageGeneral())
 {
     ui->setupUi(this);
 }
@@ -10,4 +10,9 @@ PackageGeneral::PackageGeneral(QWidget* parent) : QWidget(parent),ui(new Ui_Pack
 PackageGeneral::~PackageGeneral()
 {
     delete ui;
+}
+
+void PackageGeneral::setCurrentObject(UMLObject* o)
+{
+    
 }

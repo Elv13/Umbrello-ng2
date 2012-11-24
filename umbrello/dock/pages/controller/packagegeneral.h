@@ -3,14 +3,18 @@
 
 #include "ui_packageGeneral.h"
 
-#include <QtGui/QWidget>
+#include "pagebase.h"
+class QWidget;
 
-class PackageGeneral : public QWidget
+class PackageGeneral : public PageBase
 {
    Q_OBJECT
    public:
        PackageGeneral(QWidget* parent = NULL);
        virtual ~PackageGeneral();
+
+       //Setters
+       virtual void setCurrentObject(UMLObject* o);
 
     private:
         Ui_PackageGeneral* ui;

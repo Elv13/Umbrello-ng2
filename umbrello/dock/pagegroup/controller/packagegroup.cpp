@@ -9,3 +9,8 @@ PackageGroup::~PackageGroup()
 {
     delete ui;
 }
+
+void PackageGroup::setCurrentObject(UMLObject* o)
+{
+    
+}

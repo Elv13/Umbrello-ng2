@@ -12,6 +12,8 @@ class PackageGroup : public PageGroupBase
        PackageGroup(QWidget* parent = NULL);
        virtual ~PackageGroup();
 
+       virtual void setCurrentObject(UMLObject* o);
+
     private:
         Ui_PackageTabGroup* ui;
 

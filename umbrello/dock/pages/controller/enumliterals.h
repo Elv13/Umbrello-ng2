@@ -3,17 +3,23 @@
 
 #include "ui_genericTable.h"
 
-#include <QtGui/QWidget>
+#include "pagebase.h"
+class QWidget;
+class EnumLiteralsModel;
 
-class EnumLiterals : public QWidget
+class EnumLiterals : public PageBase
 {
    Q_OBJECT
    public:
        EnumLiterals(QWidget* parent = NULL);
        virtual ~EnumLiterals();
 
+       //Setters
+       virtual void setCurrentObject(UMLObject* o);
+
     private:
         Ui_GenericTable* ui;
+        EnumLiteralsModel* m_pModel;
 
 };
 

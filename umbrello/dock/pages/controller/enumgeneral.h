@@ -3,14 +3,18 @@
 
 #include "ui_enumGeneral.h"
 
-#include <QtGui/QWidget>
+#include "pagebase.h"
+class QWidget;
 
-class EnumGeneral : public QWidget
+class EnumGeneral : public PageBase
 {
    Q_OBJECT
    public:
        EnumGeneral(QWidget* parent = NULL);
        virtual ~EnumGeneral();
+
+       //Setters
+       virtual void setCurrentObject(UMLObject* o);
 
     private:
         Ui_EnumGeneral* ui;
