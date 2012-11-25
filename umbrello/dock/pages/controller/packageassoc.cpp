@@ -16,6 +16,7 @@ void PackageAssoc::setCurrentObject(UMLObject* o)
 {
     if (!m_pModel) {
         m_pModel = new PackageAssociationsModel(this);
+        ui->m_pTable->setModel(m_pModel);
     }
     m_pModel->setCurrentObject(o);
 }

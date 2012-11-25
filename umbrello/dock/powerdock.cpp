@@ -77,61 +77,62 @@ void PowerDock::setCurrentWidget(UMLWidget* w)
             }
             setWidget(m_hPages[PowerDock::Class]);
             m_pCurrentPageGroup = m_hPages[PowerDock::Class];
-            qDebug() << "IS CLASS";
             break;
         case UMLObject::ot_Association:
-            
+            m_pCurrentPageGroup =0;
             break;
         case UMLObject::ot_Attribute:
-            
+            m_pCurrentPageGroup =0;
             break;
         case UMLObject::ot_Operation:
-            
+            m_pCurrentPageGroup =0;
             break;
         case UMLObject::ot_EnumLiteral:
-            
+            m_pCurrentPageGroup =0;
             break;
         case UMLObject::ot_Template:
-            
+            m_pCurrentPageGroup =0;
             break;
         case UMLObject::ot_Component:
-            
+            m_pCurrentPageGroup =0;
             break;
         case UMLObject::ot_Artifact:
-            
+            m_pCurrentPageGroup =0;
             break;
         case UMLObject::ot_Node:
-            
+            m_pCurrentPageGroup =0;
             break;
         case UMLObject::ot_Stereotype:
-            
+            m_pCurrentPageGroup =0;
             break;
         case UMLObject::ot_Role:
-            
+            m_pCurrentPageGroup =0;
             break;
         case UMLObject::ot_Entity:
-            
+            m_pCurrentPageGroup =0;
             break;
         case UMLObject::ot_EntityAttribute:
-            
+            m_pCurrentPageGroup =0;
             break;
         case UMLObject::ot_Folder:
-            
+            m_pCurrentPageGroup =0;
             break;
         case UMLObject::ot_EntityConstraint:
-            
+            m_pCurrentPageGroup =0;
             break;
         case UMLObject::ot_UniqueConstraint:
-            
+            m_pCurrentPageGroup =0;
             break;
         case UMLObject::ot_ForeignKeyConstraint:
-            
+            m_pCurrentPageGroup =0;
             break;
         case UMLObject::ot_CheckConstraint:
-            
+            m_pCurrentPageGroup =0;
             break;
         case UMLObject::ot_Category:
-            
+            m_pCurrentPageGroup =0;
             break;
     }
+    if (m_pCurrentPageGroup)
+        m_pCurrentPageGroup->setCurrentObject(w->umlObject());
 }

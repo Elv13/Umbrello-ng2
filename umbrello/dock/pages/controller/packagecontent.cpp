@@ -16,6 +16,7 @@ void PackageContent::setCurrentObject(UMLObject* o)
 {
     if (!m_pModel) {
         m_pModel = new PackageContentModel(this);
+        ui->m_pTable->setModel(m_pModel);
     }
     m_pModel->setCurrentObject(o);
 }
