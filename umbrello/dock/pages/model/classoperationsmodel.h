@@ -15,16 +15,31 @@ class ClassOperationsModel : public QAbstractTableModel
        ClassOperationsModel(QObject* parent = NULL);
        virtual ~ClassOperationsModel();
 
-       int         columnCount(const QModelIndex& parent = QModelIndex() ) const;
-       QVariant    data(const QModelIndex& index, int role = Qt::DisplayRole ) const;
-       QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex() ) const;
-       QModelIndex parent(const QModelIndex& index ) const;
-       int         rowCount(const QModelIndex& parent = QModelIndex() ) const;
-       bool        setData(const QModelIndex& index, const QVariant& value, int role = Qt::EditRole );
+       virtual int         columnCount(const QModelIndex& parent = QModelIndex() ) const;
+       virtual QVariant    data(const QModelIndex& index, int role = Qt::DisplayRole ) const;
+       virtual QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex() ) const;
+       virtual QModelIndex parent(const QModelIndex& index ) const;
+       virtual int         rowCount(const QModelIndex& parent = QModelIndex() ) const;
+       virtual bool        setData(const QModelIndex& index, const QVariant& value, int role = Qt::EditRole );
+       virtual QVariant    headerData  (int section, Qt::Orientation orientation, int role = Qt::DisplayRole ) const;
 
        void setCurrentObject(UMLObject* o);
 
     private:
+
+        enum OperationsColumns {
+            Name=0,
+            Parameters,
+            Type,
+            Visibility,
+            Steotype,
+            Static,
+            Abstract,
+            Constant,
+            Documentation,
+            SourceCode,
+        };
+
         UMLClassifier* m_pData;
 
 };
