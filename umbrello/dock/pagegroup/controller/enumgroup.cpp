@@ -12,5 +12,6 @@ EnumGroup::~EnumGroup()
 
 void EnumGroup::setCurrentObject(UMLObject* o)
 {
-    
+//     ui->m_GeneralPage;
+    ui->m_pLiteralsPage;
 }

@@ -13,8 +13,8 @@ ClassAttributesModel::~ClassAttributesModel()
 }
 
 int ClassAttributesModel::columnCount(const QModelIndex& parent) const
-{return 0;
-    
+{
+    return 0;
 }
 
 QVariant ClassAttributesModel::data(const QModelIndex& index, int role) const

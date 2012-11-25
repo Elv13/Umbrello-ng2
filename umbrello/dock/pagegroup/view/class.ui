@@ -25,7 +25,7 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="ClassGeneral" name="widget" native="true"/>
+        <widget class="ClassGeneral" name="m_pGeneralPage" native="true"/>
        </item>
       </layout>
      </widget>
@@ -35,7 +35,7 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="ClassAttributes" name="widget_2" native="true"/>
+        <widget class="ClassAttributes" name="m_pAttributesPage" native="true"/>
        </item>
       </layout>
      </widget>
@@ -45,7 +45,7 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
-        <widget class="ClassOperations" name="widget_3" native="true"/>
+        <widget class="ClassOperations" name="m_pOperationsPage" native="true"/>
        </item>
       </layout>
      </widget>
@@ -55,7 +55,7 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <widget class="ClassTemplates" name="widget_4" native="true"/>
+        <widget class="ClassTemplates" name="m_pTemplatesPage" native="true"/>
        </item>
       </layout>
      </widget>
@@ -65,7 +65,7 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <item>
-        <widget class="ClassAssoc" name="widget_5" native="true"/>
+        <widget class="ClassAssoc" name="m_pAssociationsPage" native="true"/>
        </item>
       </layout>
      </widget>
@@ -75,7 +75,7 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_6">
        <item>
-        <widget class="ClassDisplay" name="widget_6" native="true"/>
+        <widget class="ClassDisplay" name="m_pDisplayPage" native="true"/>
        </item>
       </layout>
      </widget>

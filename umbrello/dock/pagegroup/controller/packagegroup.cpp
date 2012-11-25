@@ -12,5 +12,7 @@ PackageGroup::~PackageGroup()
 
 void PackageGroup::setCurrentObject(UMLObject* o)
 {
-    
+    ui->m_pAssociationsPage;
+    ui->m_pGeneralPage;
+    ui->m_pContentPage;
 }

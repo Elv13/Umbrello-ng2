@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>EnumTabGroup</class>
- <widget class="QWidget" name="m_pEnumTabGroup">
+ <widget class="QWidget" name="EnumTabGroup">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -17,7 +17,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="m_pTabW">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="m_pGeneralTab">
       <attribute name="title">
@@ -25,7 +25,7 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="EnumGeneral" name="widget" native="true"/>
+        <widget class="EnumGeneral" name="m_pGeneralPage" native="true"/>
        </item>
       </layout>
      </widget>
@@ -35,7 +35,7 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QWidget" name="widget_2" native="true"/>
+        <widget class="QWidget" name="m_pLiteralsPage" native="true"/>
        </item>
       </layout>
      </widget>
