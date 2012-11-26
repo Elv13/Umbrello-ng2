@@ -35,7 +35,7 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QWidget" name="m_pLiteralsPage" native="true"/>
+        <widget class="EnumLiterals" name="m_pLiteralsPage" native="true"/>
        </item>
       </layout>
      </widget>
@@ -53,6 +53,12 @@
    <class>EnumGeneral</class>
    <extends>QWidget</extends>
    <header>dock/pages/controller/enumgeneral.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>EnumLiterals</class>
+   <extends>QWidget</extends>
+   <header>dock/pages/controller/enumliterals.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

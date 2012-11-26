@@ -5,7 +5,7 @@
 
 #include <QtCore/QAbstractTableModel>
 
-class UMLClassifier;
+class UMLEnum;
 class UMLObject;
 
 class EnumLiteralsModel : public QAbstractTableModel
@@ -21,11 +21,16 @@ class EnumLiteralsModel : public QAbstractTableModel
        QModelIndex parent(const QModelIndex& index ) const;
        int         rowCount(const QModelIndex& parent = QModelIndex() ) const;
        bool        setData(const QModelIndex& index, const QVariant& value, int role = Qt::EditRole );
+       virtual QVariant    headerData  (int section, Qt::Orientation orientation, int role = Qt::DisplayRole ) const;
 
        void setCurrentObject(UMLObject* o);
 
     private:
-        UMLClassifier* m_pData;
+        enum EnumLiteralsColumns {
+            Name =0,
+            Value,
+        };
+        UMLEnum* m_pData;
 
 };
 

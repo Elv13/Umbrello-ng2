@@ -86,20 +86,20 @@ QVariant ClassAttributesModel::headerData(int section, Qt::Orientation orientati
         return QVariant();
     else if (role == Qt::DisplayRole) {
         switch (section) {
-            case 0:
-                return QVariant("Name");
-            case 1:
-                return QVariant("Type");
-            case 2:
-                return QVariant("Initial value");
-            case 3:
-                return QVariant("Visibility");
-            case 4:
-                return QVariant("Steotype Name");
-            case 5:
-                return QVariant("S");
-            case 6:
-                return QVariant("Doc");
+            case ClassAttributesModel::Name:
+                return QVariant( "Name"          );
+            case ClassAttributesModel::Type:
+                return QVariant( "Type"          );
+            case ClassAttributesModel::InitialValue:
+                return QVariant( "Initial value" );
+            case ClassAttributesModel::Visibility:
+                return QVariant( "Visibility"    );
+            case ClassAttributesModel::StereotypeName:
+                return QVariant( "Steotype Name" );
+            case ClassAttributesModel::Static:
+                return QVariant( "S"             );
+            case ClassAttributesModel::Documentation:
+                return QVariant( "Doc"           );
         }
     }
     return QVariant();

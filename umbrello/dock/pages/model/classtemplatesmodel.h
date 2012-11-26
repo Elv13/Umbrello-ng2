@@ -21,10 +21,16 @@ class ClassTemplatesModel : public QAbstractTableModel
        QModelIndex parent(const QModelIndex& index ) const;
        int         rowCount(const QModelIndex& parent = QModelIndex() ) const;
        bool        setData(const QModelIndex& index, const QVariant& value, int role = Qt::EditRole );
+       virtual QVariant    headerData  (int section, Qt::Orientation orientation, int role = Qt::DisplayRole ) const;
 
        void setCurrentObject(UMLObject* o);
 
     private:
+        enum TemplateColumns {
+            Name=0,
+            Type,
+            Stereotype,
+        };
         UMLClassifier* m_pData;
 
 };

@@ -5,7 +5,7 @@
 
 #include <QtCore/QAbstractTableModel>
 
-class UMLClassifier;
+class UMLPackage;
 class UMLObject;
 
 class PackageAssociationsModel : public QAbstractTableModel
@@ -21,11 +21,19 @@ class PackageAssociationsModel : public QAbstractTableModel
        QModelIndex parent(const QModelIndex& index ) const;
        int         rowCount(const QModelIndex& parent = QModelIndex() ) const;
        bool        setData(const QModelIndex& index, const QVariant& value, int role = Qt::EditRole );
+       virtual QVariant    headerData  (int section, Qt::Orientation orientation, int role = Qt::DisplayRole ) const;
 
        void setCurrentObject(UMLObject* o);
 
     private:
-        UMLClassifier* m_pData;
+        enum PackageAssociationsColumns {
+            Name =0,
+            Direction,
+            Buddy,
+            Type,
+            Doc
+        };
+        UMLPackage* m_pData;
 
 };
 
