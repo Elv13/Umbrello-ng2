@@ -278,6 +278,15 @@ kde4_add_ui_files(  libdocks_SRCS
     dock/pages/view/genericTable.ui
 )
 
+set(libprojectdock_SRCS
+    projectdock/projectdock.cpp
+    projectdock/projectdockmodel.cpp
+)
+
+kde4_add_ui_files(libprojectdock_SRCS
+    projectdock/view/projectdock.ui
+)
+
 set(librefactoring_SRCS
     refactoring/refactoringassistant.cpp
 )
@@ -510,6 +519,7 @@ set(umbrello_SRCS
     ${libdebug_SRCS}
     ${libdialogs_SRCS}
     ${libdocks_SRCS}
+    ${libprojectdock_SRCS}
     ${librefactoring_SRCS}
     ${libcodegenwizard_SRCS}
     ${libcodeimpwizard_SRCS}
