@@ -82,8 +82,8 @@ CodeImpSelectPage::~CodeImpSelectPage()
 void CodeImpSelectPage::setupLanguageBox()
 {
     int indexCounter = 0;
-    while (indexCounter < Uml::ProgrammingLanguage::Reserved) {
-        QString language = Uml::ProgrammingLanguage::toString(Uml::ProgrammingLanguage::Value(indexCounter));
+    while (indexCounter < SupportedLanguage::Reserved) {
+        QString language = SupportedLanguage::toString(SupportedLanguage::Value(indexCounter));
         ui_languageBox->insertItem(indexCounter, language);
         indexCounter++;
     }
@@ -423,6 +423,27 @@ void CodeImpSelectPage::updateSelectionCounter()
 {
     QList<QFileInfo> files = selectedFiles();
     ui_filesNumLabel->setText(QString::number(files.size()));
+}
+
+QString SupportedLanguage::toString(Value item)
+{
+    switch (item) {
+        case Ada:
+            return QString("Ada");
+        case Cpp:
+            return QString("C++");
+        case CSharp:
+            return QString("C#");
+        case IDL:
+            return QString("IDL");
+        case Java:
+            return QString("Java");
+        case Python:
+            return QString("Python");
+        default:
+            break;
+    }
+    return QString();
 }
 
 #include "codeimpselectpage.moc"

@@ -76,4 +76,23 @@ signals:
     void selectionChanged();
 };
 
+
+class SupportedLanguage
+{
+public:
+    enum Value {
+        Ada,
+        Cpp,
+        CSharp,
+        IDL,
+        Java,
+        Python,
+        Ruby,
+        Reserved
+    };
+    static QString toString(Value item);
+private:
+    Value m_value;
+};
+
 #endif
