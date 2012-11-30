@@ -80,13 +80,27 @@ void CodeGenStatusPage::populateStatusList()
     CodeGenerationWizard* wiz = (CodeGenerationWizard*)wizard();
     QListWidget* classListWidget = wiz->getSelectionListWidget();
 
-    ui_tableWidgetStatus->setRowCount(classListWidget->count());
+    int itemCount = 0;
+    // non-optimised dipshit and I dont care
     for (int index = 0; index < classListWidget->count(); ++index) {
         QListWidgetItem* item = classListWidget->item(index);
-        ui_tableWidgetStatus->setItem(index, 0, new QTableWidgetItem(item->text()));
-        ui_tableWidgetStatus->setItem(index, 1, new QTableWidgetItem(i18n("Not Yet Generated")));
-        LedStatus* led = new LedStatus(70, 70);
-        ui_tableWidgetStatus->setCellWidget(index, 2, led);
+        if (item->checkState() == Qt::Checked)
+        {
+            itemCount++;
+        }
+    }
+
+
+    ui_tableWidgetStatus->setRowCount(itemCount);
+    for (int index = 0; index < classListWidget->count(); ++index) {
+        QListWidgetItem* item = classListWidget->item(index);
+        if (item->checkState() == Qt::Checked)
+        {
+            ui_tableWidgetStatus->setItem(index, 0, new QTableWidgetItem(item->text()));
+            ui_tableWidgetStatus->setItem(index, 1, new QTableWidgetItem(i18n("Not Yet Generated")));
+            LedStatus* led = new LedStatus(70, 70);
+            ui_tableWidgetStatus->setCellWidget(index, 2, led);
+        }
     }
 
     if (classListWidget->count() > 0) {

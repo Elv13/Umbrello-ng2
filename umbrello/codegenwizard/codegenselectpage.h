@@ -16,6 +16,9 @@
 // app includes
 #include "ui_codegenselectpage.h"
 #include "umlclassifierlist.h"
+#include <kdebug.h>
+
+#define uDebug()   kDebug(8060)
 
 /**
  * @author Luis De la Parra

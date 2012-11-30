@@ -24,8 +24,10 @@
 #include "classifier.h"
 #include "entity.h"
 
+
+
 /**
- * Constructor. 
+ * Constructor.
  * @param parent   the parent (wizard) of this wizard page
  */
 CodeGenSelectPage::CodeGenSelectPage(QWidget *parent)
@@ -35,6 +37,8 @@ CodeGenSelectPage::CodeGenSelectPage(QWidget *parent)
     setSubTitle(i18n("Place all the classes you want to generate code\nfor in the right hand side list."));
 
     setupUi(this);
+
+    connect(ui_listAvailable, SIGNAL(itemChanged(QListWidgetItem *)), this, SLOT(selectClass()));
 }
 
 /**
@@ -87,11 +91,13 @@ void CodeGenSelectPage::setClassifierList(UMLClassifierList *classList)
  */
 bool CodeGenSelectPage::isComplete() const
 {
-    bool completed = false;
-    if (ui_listAvailable->count() > 0) {
-        completed = true;
+    for(int row = 0; row < ui_listAvailable->count(); row++)
+    {
+             QListWidgetItem *item = ui_listAvailable->item(row);
+             if (item->checkState() == Qt::Checked)
+                return true;
     }
-    return completed;
+    return false;
 }
 
 /**
@@ -109,6 +115,7 @@ QListWidget* CodeGenSelectPage::getSelectionListWidget()
  */
 void CodeGenSelectPage::selectClass()
 {
+
     emit completeChanged();
 }
 
