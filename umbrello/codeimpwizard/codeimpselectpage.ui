@@ -72,7 +72,7 @@
    <item>
     <layout class="QHBoxLayout" name="ui_fileExtLayout">
      <item>
-      <widget class="QLabel" name="ui_fileExtLabel">
+      <widget class="QCheckBox" name="checkBox">
        <property name="text">
         <string>List of file extensions</string>
        </property>
@@ -162,5 +162,22 @@
   <include location="local">knuminput.h</include>
  </includes>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>ui_fileExtLineEdit</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>134</x>
+     <y>81</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>242</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

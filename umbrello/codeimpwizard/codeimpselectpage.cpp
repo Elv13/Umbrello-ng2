@@ -89,6 +89,7 @@ void CodeImpSelectPage::setupLanguageBox()
     }
     Uml::ProgrammingLanguage pl = UMLApp::app()->activeLanguage();
     ui_languageBox->setCurrentIndex(pl);
+    ui_fileExtLineEdit->setVisible(false);
 }
 
 /**
@@ -102,7 +103,6 @@ void CodeImpSelectPage::setupTreeView()
     m_fileExtensions << "*.h" << "*.hpp" << "*.hh" << "*.hxx" << "*.H";  //:TODO set according to the current language!
     model->setNameFilters(m_fileExtensions);
 
-    ui_treeView->setSelectionMode(QAbstractItemView::MultiSelection);
     ui_treeView->setModel(model);
     ui_treeView->setIndentation(20);
     ui_treeView->setColumnWidth(0, 200);
@@ -316,7 +316,7 @@ void CodeImpSelectPage::changeLanguage()
         m_fileExtensions << "*.ads" << "*.adb" << "*.ada";
         break;
     case Uml::ProgrammingLanguage::Cpp:
-        m_fileExtensions << "*.h" << "*.hpp" << "*.hh" << "*.hxx" << "*.H";
+        m_fileExtensions << "*.h" << "*.hpp" << "*.hh" << "*.hxx" << "*.H" << "*.cpp" << "*.c";
         break;
     case Uml::ProgrammingLanguage::IDL:
         m_fileExtensions << "*.idl";

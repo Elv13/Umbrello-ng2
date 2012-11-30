@@ -32,9 +32,6 @@ public:
     bool isComplete() const;
     QListWidget* getSelectionListWidget();
 
-private:
-    static void moveSelectedItems(QListWidget* fromList, QListWidget* toList);
-
 protected slots:
     void selectClass();
     void deselectClass();

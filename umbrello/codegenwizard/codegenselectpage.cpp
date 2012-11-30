@@ -35,9 +35,6 @@ CodeGenSelectPage::CodeGenSelectPage(QWidget *parent)
     setSubTitle(i18n("Place all the classes you want to generate code\nfor in the right hand side list."));
 
     setupUi(this);
-
-    connect(ui_addButton, SIGNAL(clicked()), this, SLOT(selectClass()));
-    connect(ui_removeButton, SIGNAL(clicked()), this, SLOT(deselectClass()));
 }
 
 /**
@@ -78,18 +75,20 @@ void CodeGenSelectPage::setClassifierList(UMLClassifierList *classList)
     }
 
     foreach (UMLClassifier* c, cList) {
-        new QListWidgetItem(c->fullyQualifiedName(), ui_listSelected);
+        QListWidgetItem* i = new QListWidgetItem(c->fullyQualifiedName(), ui_listAvailable);
+        i->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
+        i->setCheckState(Qt::Unchecked);
     }
 }
 
 /**
  * Reimplemented QWizardPage method the enable / disable the next button.
- * @return   complete state 
+ * @return   complete state
  */
 bool CodeGenSelectPage::isComplete() const
 {
     bool completed = false;
-    if (ui_listSelected->count() > 0) {
+    if (ui_listAvailable->count() > 0) {
         completed = true;
     }
     return completed;
@@ -101,7 +100,7 @@ bool CodeGenSelectPage::isComplete() const
  */
 QListWidget* CodeGenSelectPage::getSelectionListWidget()
 {
-    return ui_listSelected;
+    return ui_listAvailable;
 }
 
 /**
@@ -110,7 +109,6 @@ QListWidget* CodeGenSelectPage::getSelectionListWidget()
  */
 void CodeGenSelectPage::selectClass()
 {
-    moveSelectedItems(ui_listAvailable, ui_listSelected);
     emit completeChanged();
 }
 
@@ -120,30 +118,7 @@ void CodeGenSelectPage::selectClass()
  */
 void CodeGenSelectPage::deselectClass()
 {
-    moveSelectedItems(ui_listSelected, ui_listAvailable);
     emit completeChanged();
-}
-
-/**
- * Moves the selected items from first list to second list.
- * The selected items are removed from the first list and added to the
- * second. An item is added to the second list only if it isn't already
- * there (no duplicated items are created).
- * @param fromList   the list widget of selected items
- * @param toList     the target list widget 
- */
-void CodeGenSelectPage::moveSelectedItems(QListWidget* fromList, QListWidget* toList)
-{
-    foreach (QListWidgetItem* item, fromList->selectedItems()) {
-        QString name = item->text();
-        QList<QListWidgetItem*> foundItems = toList->findItems(name, Qt::MatchExactly);
-        if (foundItems.isEmpty()) {
-            new QListWidgetItem(name, toList);
-        }
-        // Removed here because it can't (really, shouldn't) be removed while
-        // iterator is pointing to it
-        fromList->takeItem(fromList->row(item));
-    }
 }
 
 #include "codegenselectpage.moc"
