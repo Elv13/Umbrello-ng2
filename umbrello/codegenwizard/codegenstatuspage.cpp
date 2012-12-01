@@ -140,9 +140,15 @@ void CodeGenStatusPage::generateCode()
             UMLClassifier *concept =  doc->findUMLClassifier(item->text());
             cList.append(concept);
         }
+
+
         codeGenerator->writeCodeToFile(cList);
 
         m_generationDone = true;
+        CodeGenerationWizard* wiz = (CodeGenerationWizard*)wizard();
+        QList<QWizard::WizardButton> layout;
+        layout << QWizard::Stretch << QWizard::FinishButton;
+        wiz->setButtonLayout(layout);
         setFinalPage(true);
         emit completeChanged();
     }
