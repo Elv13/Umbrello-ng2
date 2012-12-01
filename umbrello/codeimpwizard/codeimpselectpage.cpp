@@ -59,10 +59,6 @@ CodeImpSelectPage::CodeImpSelectPage(QWidget *parent)
     setupFileExtEdit();
     connect(ui_fileExtLineEdit, SIGNAL(editingFinished()), this, SLOT(fileExtChanged()));
 
-    connect(ui_subdirCheckBox, SIGNAL(stateChanged(int)), this, SLOT(subdirStateChanged(int)));
-    connect(ui_selectAllButton, SIGNAL(clicked()), this, SLOT(selectAll()));
-    connect(ui_deselectAllButton, SIGNAL(clicked()), this, SLOT(deselectAll()));
-
     setupToolTips();
     // update file extensions
     changeLanguage();
@@ -133,9 +129,6 @@ void CodeImpSelectPage::setupFileExtEdit()
 void CodeImpSelectPage::setupToolTips()
 {
     ui_languageBox->setToolTip(i18n("Select the desired language to filter files."));
-    ui_subdirCheckBox->setToolTip(i18n("Select also all the files in the subdirectories."));
-    ui_selectAllButton->setToolTip(i18n("Select all the files below the current directory."));
-    ui_deselectAllButton->setToolTip(i18n("Clear all selections."));
     ui_fileExtLineEdit->setToolTip(i18n("Add file extensions like e.g. '*.h *.hpp'."));
 }
 
@@ -229,11 +222,13 @@ void CodeImpSelectPage::fileExtChanged()
  * @param index   the index of the item on which was clicked
  */
 void CodeImpSelectPage::treeClicked(const QModelIndex& index)
-{
+{    
     if (index.isValid()) {
         uDebug() << "item at row=" << index.row() << " / column=" << index.column();
         QFileSystemModel* indexModel = (QFileSystemModel*)index.model();
         QFileInfo fileInfo = indexModel->fileInfo(index);
+
+
         if (fileInfo.isDir()) {
             int rows = indexModel->rowCount(index);
             uDebug() << "item has directory and has children = " << rows;
@@ -241,8 +236,9 @@ void CodeImpSelectPage::treeClicked(const QModelIndex& index)
             for(int row = 0; row < rows; ++row) {
                 QModelIndex childIndex = indexModel->index(row, 0, index);
                 if (selectionModel->isSelected(index)) {
-                    // uDebug() << "select all children";
+                    uDebug() << "select all children";
                     QFileInfo childInfo = indexModel->fileInfo(childIndex);
+                    uDebug() << (childInfo.isDir() && ui_subdirCheckBox->isChecked());
                     if (childInfo.isDir() && ui_subdirCheckBox->isChecked()) {
                         treeClicked(childIndex);
                     }
@@ -256,7 +252,7 @@ void CodeImpSelectPage::treeClicked(const QModelIndex& index)
                     }
                 }
                 else {
-                    // uDebug() << "deselect all children";
+                    uDebug() << "deselect all children";
                     selectionModel->select(childIndex, QItemSelectionModel::Deselect);
                 }
             }
@@ -373,47 +369,6 @@ QList<QFileInfo> CodeImpSelectPage::selectedFiles()
         }
     }
     return fileList;
-}
-
-/**
- * Slot for clicked event on the button widget.
- * Select all items in the current selected directory.
- * If the checkbox 'ui_subdirCheckBox' is selected
- * also all the files in the subdirectories are selected.
- */
-void CodeImpSelectPage::selectAll()
-{
-    QModelIndex currIndex = ui_treeView->selectionModel()->currentIndex();
-    if (currIndex.isValid()) {
-        QFileSystemModel* model = (QFileSystemModel*)ui_treeView->model();
-        QFileInfo fileInfo = model->fileInfo(currIndex);
-        if (fileInfo.isDir()) {
-            QItemSelectionModel* selectionModel = ui_treeView->selectionModel();
-            Q_UNUSED(selectionModel);
-            //...
-            if (ui_subdirCheckBox->isChecked()) {
-                //...
-                ui_treeView->selectAll();
-                updateSelectionCounter();
-            }
-        }
-        else {
-            uWarning() << "No directory was selected!";
-        }
-    }
-    else {
-        uWarning() << "No directory was selected!";
-    }
-}
-
-/**
- * Slot for clicked event on the button widget.
- * Deselects all items in the entire tree.
- */
-void CodeImpSelectPage::deselectAll()
-{
-    ui_treeView->clearSelection();
-    updateSelectionCounter();
 }
 
 /**

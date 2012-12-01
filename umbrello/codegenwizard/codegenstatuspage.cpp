@@ -109,6 +109,11 @@ void CodeGenStatusPage::populateStatusList()
     else {
         ui_pushButtonGenerate->setEnabled(false);
     }
+
+    ui_tableWidgetStatus->horizontalHeader()->setResizeMode(0,QHeaderView::Stretch);
+    for (int i=1;i<ui_tableWidgetStatus->columnCount();i++) {
+        ui_tableWidgetStatus->horizontalHeader()->setResizeMode(i,QHeaderView::ResizeToContents);
+    }
 }
 
 /**

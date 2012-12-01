@@ -21,15 +21,6 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QWidget" name="ui_inputWidget" native="true">
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="spacing">
-       <number>20</number>
-      </property>
-     </layout>
-    </widget>
-   </item>
-   <item>
     <layout class="QHBoxLayout" name="ui_languageLayout">
      <item>
       <widget class="QLabel" name="ui_languageLabel">
@@ -63,7 +54,7 @@
      <item>
       <widget class="QCheckBox" name="ui_subdirCheckBox">
        <property name="text">
-        <string>Include Subdirectories.</string>
+        <string>Include subdirectories</string>
        </property>
       </widget>
      </item>
@@ -104,27 +95,17 @@
     </layout>
    </item>
    <item>
-    <widget class="QTreeView" name="ui_treeView"/>
+    <widget class="QTreeView" name="ui_treeView">
+     <property name="selectionMode">
+      <enum>QAbstractItemView::ContiguousSelection</enum>
+     </property>
+    </widget>
    </item>
    <item>
     <layout class="QHBoxLayout" name="ui_commandButtonLayout">
      <property name="spacing">
       <number>20</number>
      </property>
-     <item>
-      <widget class="QPushButton" name="ui_deselectAllButton">
-       <property name="text">
-        <string>Deselect all</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="ui_selectAllButton">
-       <property name="text">
-        <string>Select all</string>
-       </property>
-      </widget>
-     </item>
      <item>
       <layout class="QFormLayout" name="ui_labelLayout">
        <property name="formAlignment">

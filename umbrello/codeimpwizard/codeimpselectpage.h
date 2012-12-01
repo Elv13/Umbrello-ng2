@@ -65,8 +65,6 @@ private slots:
     void changeLanguage();
     void subdirStateChanged(int state);
     void fileExtChanged();
-    void selectAll();
-    void deselectAll();
     void updateSelectionCounter();
 
 signals:
