@@ -11,6 +11,7 @@ class QWidget;
 class PageGroupBase;
 class UMLDoc;
 class UMLObject;
+class UMLListView;
 
 class ProjectDock : public QDockWidget
 {
@@ -21,11 +22,15 @@ public:
     
     void setDocument(UMLDoc * doc);
     UMLDoc * document() const;
+    
+    //Setters
+    void setCompleteView(UMLListView* view);
 
 private:
     //Attributes
     Ui_ProjectDock* ui;
-    UMLDoc*          m_doc;
+    UMLDoc*         m_doc;
+    UMLListView*    m_pView;
 
 private slots:
     void slotDiagramCreated(Uml::IDType t);

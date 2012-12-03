@@ -802,14 +802,14 @@ void UMLApp::initView()
     setCentralWidget(widget);
 
     // create the tree viewer
-    m_listDock = new QDockWidget( i18n("&Tree View"), this );
-    m_listDock->setObjectName("TreeViewDock");
-    addDockWidget(Qt::LeftDockWidgetArea, m_listDock);
-    m_listView = new UMLListView(m_listDock);
+//     m_listDock = new QDockWidget( i18n("&Tree View"), this );
+//     m_listDock->setObjectName("TreeViewDock");
+//     addDockWidget(Qt::LeftDockWidgetArea, m_listDock);
+    m_listView = new UMLListView(this);
     //m_listView->setSorting(-1);
     m_listView->setDocument(m_doc);
     m_listView->init();
-    m_listDock->setWidget(m_listView);
+//     m_listDock->setWidget(m_listView);
 
     // create the documentation viewer
     m_documentationDock = new QDockWidget( i18n("Doc&umentation"), this );
@@ -842,6 +842,7 @@ void UMLApp::initView()
     //Create the project dock
     m_projectDock = new ProjectDock(this);
     m_projectDock->setDocument(m_doc);
+    m_projectDock->setCompleteView(m_listView);
     addDockWidget(Qt::RightDockWidgetArea, m_projectDock);
 
     tabifyDockWidget(m_documentationDock, m_cmdHistoryDock);

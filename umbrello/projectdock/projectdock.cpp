@@ -4,6 +4,7 @@
 #include "umldoc.h"
 #include <QtCore/QDebug>
 #include "diagramlistdelegate.h"
+#include "umllistview.h"
 
 ProjectDock::ProjectDock(QWidget* parent):QDockWidget(parent),ui(new Ui_ProjectDock())
 {
@@ -73,4 +74,15 @@ void ProjectDock::slotObjectCreated(UMLObject* o)
 void ProjectDock::slotObjectRemoved(UMLObject* o)
 {
     
+}
+
+void ProjectDock::setCompleteView(UMLListView* view)
+{
+    m_pView = view;
+    m_pView->setVisible(false);
+    ui->horizontalLayout->addWidget(view);
+    connect(ui->m_pComplete,SIGNAL(toggled(bool)),ui->m_pView,SLOT(setHidden(bool)));
+    connect(ui->m_pCurated,SIGNAL(toggled(bool)),ui->m_pView,SLOT(setVisible(bool)));
+    connect(ui->m_pComplete,SIGNAL(toggled(bool)),m_pView,SLOT(setVisible(bool)));
+    connect(ui->m_pCurated,SIGNAL(toggled(bool)),m_pView,SLOT(setHidden(bool)));
 }
