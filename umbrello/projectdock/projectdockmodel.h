@@ -18,7 +18,8 @@ public:
     bool        setData(const QModelIndex& index, const QVariant& value, int role = Qt::EditRole );
     virtual QVariant    headerData  (int section, Qt::Orientation orientation, int role = Qt::DisplayRole ) const;
 
-private:
+private slots:
+    void slotDiagramListChanged();
 };
 
 #endif

@@ -19,6 +19,7 @@
 #include "umlobject.h"
 #include "umlobjectlist.h"
 #include "umlwidgetlist.h"
+#include "umlscenemodel.h"
 
 // Qt includes
 #include <QGraphicsScene>
@@ -99,18 +100,6 @@ public:
     UMLFolder* folder() const;
     void setFolder(UMLFolder *folder);
 
-    QString documentation() const;
-    void setDocumentation(const QString &doc);
-
-    QString name() const;
-    void setName(const QString &name);
-
-    Uml::DiagramType type() const;
-    void setType(Uml::DiagramType type);
-
-    Uml::IDType ID() const;
-    void setID(Uml::IDType id);
-
     UMLScenePoint pos() const;
     void setPos(const UMLScenePoint &pos);
 
@@ -156,17 +145,6 @@ public:
     bool showOpSig() const;
     void setShowOpSig(bool bShowOpSig);
 
-    const Settings::OptionState& optionState() const;
-    void setOptionState(const Settings::OptionState& options);
-
-    AssociationWidgetList& associationList();
-    UMLWidgetList& widgetList();
-    MessageWidgetList& messageList();
-    UMLObjectList umlObjects();
-
-    bool isOpen() const;
-    void setIsOpen(bool isOpen);
-
     // End of accessors and methods that only deal with loaded/saved data
     ////////////////////////////////////////////////////////////////////////
 
@@ -202,8 +180,6 @@ public:
     void deleteSelection();
 
     void selectAll();
-
-    Uml::IDType localID();
 
     bool widgetOnDiagram(Uml::IDType id);
 
@@ -290,10 +266,8 @@ public:
     // Load/Save interface:
 
     virtual void saveToXMI(QDomDocument & qDoc, QDomElement & qElement);
-    virtual bool loadFromXMI(QDomElement & qElement);
 
     bool loadUISDiagram(QDomElement & qElement);
-    UMLWidget* loadWidgetFromXMI(QDomElement& widgetElement);
 
     void addObject(UMLObject *object);
 
@@ -327,34 +301,14 @@ public:
 
     bool isMouseMovingItems() const;
     void setIsMouseMovingItems(bool b);
+    
+    UMLSceneModel* m_model;//TODO remove
 
 protected:
-    // Methods and members related to loading/saving
-
-    bool loadWidgetsFromXMI(QDomElement & qElement);
-    bool loadMessagesFromXMI(QDomElement & qElement);
-    bool loadAssociationsFromXMI(QDomElement & qElement);
     bool loadUisDiagramPresentation(QDomElement & qElement);
-
-    /**
-     * Contains the unique ID to allocate to a widget that needs an
-     * ID for the view.  @ref ObjectWidget is an example of this.
-     */
-    Uml::IDType m_nLocalID;
-
-    Uml::IDType m_nID;                ///< The ID of the view. Allocated by @ref UMLDoc.
-    Uml::DiagramType m_Type;          ///< The type of diagram to represent.
-    QString m_Name;                   ///< The name of the diagram.
-    QString m_Documentation;          ///< The documentation of the diagram.
-    Settings::OptionState m_Options;  ///< Options used by view.
-
-    MessageWidgetList m_MessageList;  ///< All the message widgets on the diagram.
-    UMLWidgetList m_WidgetList;       ///< All the UMLWidgets on the diagram.
-    AssociationWidgetList m_AssociationList;  ///< All the AssociationWidgets on the diagram.
 
     bool m_bUseSnapToGrid;  ///< Flag to use snap to grid. The default is off.
     bool m_bUseSnapComponentSizeToGrid;  ///< Flag to use snap to grid for component size. The default is off.
-    bool m_isOpen;  ///< Flag is set to true when diagram is open, i.e. shown to the user.
 
     // End of methods and members related to loading/saving
     ////////////////////////////////////////////////////////////////////////
@@ -405,7 +359,6 @@ private:
     bool m_isActivated;             ///< True if the view was activated after the serialization(load).
     bool m_bPopupShowing;           ///< Status of a popupmenu on view. True - a popup is on view.
     UMLScenePoint m_PastePoint;     ///< The offset at which to paste the clipboard.
-    UMLDoc* m_doc;                  ///< Pointer to the UMLDoc.
     UMLViewImageExporter* m_pImageExporter;  ///< Used to export the view.
     LayoutGrid*  m_layoutGrid;      ///< layout grid in the background
 
@@ -420,6 +373,9 @@ private:
 
 private slots:
     void slotItemDoubleClicked(UMLWidget * w);
+    void slotNewWidget(UMLWidget* w);
+    void slotNewMessage(UMLWidget* w);
+    void slotNewAssociation(AssociationWidget* w);
 
 public slots:
     void slotToolBarChanged(int c);

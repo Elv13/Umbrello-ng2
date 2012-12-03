@@ -20,6 +20,7 @@
 #include "object_factory.h"
 #include "model_utils.h"
 #include "umlscene.h"
+#include "umlscenemodel.h"
 
 // kde includes
 #include <klocale.h>
@@ -152,7 +153,7 @@ void UMLFolder::activateViews()
 UMLView *UMLFolder::findView(Uml::IDType id)
 {
     foreach (UMLView* v, m_diagrams ) {
-        if (v->umlScene()->ID() == id) {
+        if (v->umlScene()->m_model->ID() == id) {
             return v;
         }
     }
@@ -181,7 +182,7 @@ UMLView *UMLFolder::findView(Uml::IDType id)
 UMLView *UMLFolder::findView(Uml::DiagramType type, const QString &name, bool searchAllScopes)
 {
     foreach (UMLView* v, m_diagrams) {
-        if (v->umlScene()->type() == type && v->umlScene()->name() == name) {
+        if (v->umlScene()->m_model->type() == type && v->umlScene()->name() == name) {
             return v;
         }
     }
@@ -209,7 +210,7 @@ void UMLFolder::setViewOptions(const Settings::OptionState& optionState)
 {
     // for each view update settings
     foreach (UMLView* v, m_diagrams ) {
-        v->umlScene()->setOptionState(optionState);
+        v->umlScene()->m_model->setOptionState(optionState);
     }
 }
 
@@ -378,8 +379,8 @@ bool UMLFolder::loadDiagramsFromXMI(QDomNode& diagrams)
             continue;
         }
         UMLView * pView = new UMLView(this);
-        pView->umlScene()->setOptionState(optionState);
-        if (pView->umlScene()->loadFromXMI(diagram)) {
+        pView->umlScene()->m_model->setOptionState(optionState);
+        if (pView->umlScene()->m_model->loadFromXMI(diagram)) {
             pView->hide();
             umldoc->addView(pView);
         } else {

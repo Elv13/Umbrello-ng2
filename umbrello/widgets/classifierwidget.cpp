@@ -26,6 +26,7 @@
 #include "uml.h"
 #include "umldoc.h"
 #include "umlscene.h"
+#include "umlscenemodel.h"
 #include "umlview.h"
 #include "widget_utils.h"
 
@@ -308,7 +309,7 @@ void ClassifierWidget::changeToClass()
     bool showStereotype = false;
 
     if (umlScene()) {
-        const Settings::OptionState& ops = umlScene()->optionState();
+        const Settings::OptionState& ops = umlScene()->m_model->optionState();
         showAtts = ops.classState.showAtts;
         showStereotype = ops.classState.showStereoType;
     }

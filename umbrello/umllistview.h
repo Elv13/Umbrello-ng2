@@ -11,6 +11,7 @@
 #ifndef UMLLISTVIEW_H
 #define UMLLISTVIEW_H
 
+#include "umllistmodel.h"
 #include "basictypes.h"
 #include "umllistviewitem.h"
 #include "umllistviewitemlist.h"
@@ -84,10 +85,6 @@ public:
 
     void addNewItem(UMLListViewItem * parent, UMLListViewItem::ListViewType type);
 
-    UMLListViewItem * findUMLObject(const UMLObject *p) const;
-    UMLListViewItem * findView(UMLView *v);
-    UMLListViewItem * findItem(Uml::IDType id);
-
     UMLListViewItem *rootView(UMLListViewItem::ListViewType type);
 
     void changeIconOf(UMLObject *o, Icon_Utils::IconType to);
@@ -109,25 +106,22 @@ public:
     void setStartedCopy(bool startedCopy);
     bool startedCopy() const;
 
-    UMLListViewItem * moveObject(Uml::IDType srcId, UMLListViewItem::ListViewType srcType,
-                                 UMLListViewItem *newParent);
-
     bool itemRenamed(UMLListViewItem* item, int col);
 
     void closeDatatypesFolder();
 
-    UMLListViewItem *theRootView() { return m_rv; }
-    UMLListViewItem *theLogicalView() { return m_lv[Uml::ModelType::Logical]; }
-    UMLListViewItem *theUseCaseView() { return m_lv[Uml::ModelType::UseCase]; }
-    UMLListViewItem *theComponentView() { return m_lv[Uml::ModelType::Component]; }
-    UMLListViewItem *theDeploymentView() { return m_lv[Uml::ModelType::Deployment]; }
-    UMLListViewItem *theDatatypeFolder() { return m_datatypeFolder; }
+    UMLListViewItem *theRootView() { return m_model->m_rv; }
+    UMLListViewItem *theLogicalView() { return m_model->m_lv[Uml::ModelType::Logical]; }
+    UMLListViewItem *theUseCaseView() { return m_model->m_lv[Uml::ModelType::UseCase]; }
+    UMLListViewItem *theComponentView() { return m_model->m_lv[Uml::ModelType::Component]; }
+    UMLListViewItem *theDeploymentView() { return m_model->m_lv[Uml::ModelType::Deployment]; }
+    UMLListViewItem *theDatatypeFolder() { return m_model->m_datatypeFolder; }
 
     UMLListViewItem::ListViewType rootViewType(UMLListViewItem *item);
 
     void saveToXMI(QDomDocument & qDoc, QDomElement & qElement);
-    bool loadFromXMI(QDomElement & element);
-    bool loadChildrenFromXMI(UMLListViewItem * parent, QDomElement & element);
+//     bool loadFromXMI(QDomElement & element);
+//     bool loadChildrenFromXMI(UMLListViewItem * parent, QDomElement & element);
 
     friend QDebug operator<<(QDebug out, const UMLListView& view);
 
@@ -148,17 +142,12 @@ protected:
     void dragMoveEvent(QDragMoveEvent* event);
     void dropEvent(QDropEvent* event);
 
-    UMLListViewItem * findUMLObjectInFolder(UMLListViewItem *folder, UMLObject *obj);
-
     static bool isExpandable(UMLListViewItem::ListViewType lvt);
 
     void deleteChildrenOf(UMLListViewItem *parent);
 
     bool deleteItem(UMLListViewItem *temp);
 
-    void childObjectAdded(UMLClassifierListItem* child, UMLClassifier* parent);
-
-    void addAtContainer(UMLListViewItem *item, UMLListViewItem *parent);
 
 public slots:
     void slotDiagramCreated(Uml::IDType id);
@@ -166,13 +155,6 @@ public slots:
     void slotDiagramRemoved(Uml::IDType id);
     void slotObjectCreated(UMLObject* object);
     void slotObjectRemoved(UMLObject* object);
-
-    void connectNewObjectsSlots(UMLObject* object);
-
-    void childObjectAdded(UMLClassifierListItem* obj);
-    void childObjectRemoved(UMLClassifierListItem* obj);
-
-    void slotObjectChanged();
 
     void popupMenuSel(QAction* action);
 
@@ -190,22 +172,17 @@ protected slots:
     void slotCollapsed(QTreeWidgetItem* item);
 
 private:
-    UMLListViewItem* recursiveSearchForView(UMLListViewItem* folder,
-                                            UMLListViewItem::ListViewType type, Uml::IDType id);
 
     void setBackgroundColor(const QColor & color);
 
-    UMLListViewItem* m_rv;         ///< root view (home)
-    UMLListViewItem* m_lv[Uml::ModelType::N_MODELTYPES];  ///< predefined list view roots
-    UMLListViewItem* m_datatypeFolder;
     ListPopupMenu*   m_menu;
-    UMLDoc*          m_doc;
     bool             m_bStartedCut;
     bool             m_bStartedCopy;
-    bool m_bCreatingChildObject;  ///< when creating an attribute or an operation to stop it adding a second listViewItem
     bool m_bRenameInProgress;
     QPoint m_dragStartPosition;
     UMLListViewItem* m_editItem;
+public: //TODO change this
+    UMLListModel*    m_model;
 };
 
 #endif

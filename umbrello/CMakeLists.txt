@@ -281,6 +281,7 @@ kde4_add_ui_files(  libdocks_SRCS
 set(libprojectdock_SRCS
     projectdock/projectdock.cpp
     projectdock/projectdockmodel.cpp
+    projectdock/diagramlistdelegate.cpp
 )
 
 kde4_add_ui_files(libprojectdock_SRCS
@@ -495,12 +496,14 @@ set(libumbrello_SRCS
     umldoc.cpp
     umlentityattributelist.cpp
     umlentityconstraintlist.cpp
+    umllistmodel.cpp
     umllistview.cpp
     umllistviewitem.cpp
     umlobject.cpp
     umlobjectlist.cpp
     umlrole.cpp
     umlscene.cpp
+    umlscenemodel.cpp
     umlview.cpp
     umlviewimageexporter.cpp
     umlviewimageexporterall.cpp

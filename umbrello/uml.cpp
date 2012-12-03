@@ -46,6 +46,7 @@
 #include "refactoringassistant.h"
 // docks
 #include "dock/powerdock.h"
+#include "projectdock/projectdock.h"
 // clipboard
 #include "umlclipboard.h"
 #include "umldragdata.h"
@@ -837,6 +838,11 @@ void UMLApp::initView()
     //m_propertyDock = new QDockWidget(i18n("&Properties"), this);
     //m_propertyDock->setObjectName("PropertyDock");
     //addDockWidget(Qt::LeftDockWidgetArea, m_propertyDock);  //:TODO:
+
+    //Create the project dock
+    m_projectDock = new ProjectDock(this);
+    m_projectDock->setDocument(m_doc);
+    addDockWidget(Qt::RightDockWidgetArea, m_projectDock);
 
     tabifyDockWidget(m_documentationDock, m_cmdHistoryDock);
     //tabifyDockWidget(m_cmdHistoryDock, m_propertyDock);  //:TODO:
@@ -1829,7 +1835,7 @@ void UMLApp::slotApplyPrefs()
                     UMLScene *scene = view->umlScene();
                     m_viewStack->removeWidget(view);
                     int tabIndex = m_tabWidget->addTab(view, scene->name());
-                    m_tabWidget->setTabIcon(tabIndex, Icon_Utils::iconSet(scene->type()));
+                    m_tabWidget->setTabIcon(tabIndex, Icon_Utils::iconSet(scene->m_model->type()));
                     m_tabWidget->setTabToolTip(tabIndex, scene->name());
                 }
                 m_layout->addWidget(m_tabWidget);
@@ -2554,7 +2560,7 @@ void UMLApp::slotDeleteSelectedWidget()
  */
 void UMLApp::slotDeleteDiagram()
 {
-    m_doc->removeDiagram( currentView()->umlScene()->ID() );
+    m_doc->removeDiagram( currentView()->umlScene()->m_model->ID() );
 }
 
 /**
@@ -2569,7 +2575,7 @@ void UMLApp::slotCloseDiagram(QWidget* tab)
             setCurrentView(view);
         }
         m_tabWidget->removeTab(m_tabWidget->indexOf(view));
-        view->umlScene()->setIsOpen(false);
+        view->umlScene()->m_model->setIsOpen(false);
     }
 }
 
@@ -2767,9 +2773,9 @@ void UMLApp::setCurrentView(UMLView* view)
     Settings::OptionState optionState = Settings::optionState();
     if (optionState.generalState.tabdiagrams) {
         int tabIndex = m_tabWidget->indexOf(view);
-        if ((tabIndex < 0) && (view->umlScene()->isOpen())) {
+        if ((tabIndex < 0) && (view->umlScene()->m_model->isOpen())) {
             tabIndex = m_tabWidget->addTab(view, view->umlScene()->name());
-            m_tabWidget->setTabIcon(tabIndex, Icon_Utils::iconSet(view->umlScene()->type()));
+            m_tabWidget->setTabIcon(tabIndex, Icon_Utils::iconSet(view->umlScene()->m_model->type()));
             m_tabWidget->setTabToolTip(tabIndex, view->umlScene()->name());
         }
         m_tabWidget->setCurrentIndex(tabIndex);
@@ -2783,7 +2789,7 @@ void UMLApp::setCurrentView(UMLView* view)
     }
     qApp->processEvents();
     slotStatusMsg(view->umlScene()->name());
-    UMLListViewItem* lvitem = m_listView->findView(view);
+    UMLListViewItem* lvitem = m_listView->m_model->findView(view);
     if (lvitem) {
         m_listView->setCurrentItem(lvitem);
     }
@@ -2827,7 +2833,7 @@ void UMLApp::slotTabChanged(QWidget* tab)
 {
     UMLView* view = ( UMLView* )tab;
     if (view) {
-        m_doc->changeCurrentView( view->umlScene()->ID() );
+        m_doc->changeCurrentView( view->umlScene()->m_model->ID() );
     }
 }
 

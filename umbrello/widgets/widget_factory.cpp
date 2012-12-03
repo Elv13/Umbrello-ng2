@@ -56,6 +56,7 @@
 #include "pinwidget.h"
 #include "categorywidget.h"
 #include "umlscene.h"
+#include "umlscenemodel.h"
 
 namespace Widget_Factory {
 
@@ -66,13 +67,13 @@ UMLWidget *createWidget(UMLScene *scene, UMLObject *o)
 {
     UMLScenePoint pos = scene->pos();
     qreal y = pos.y();
-    Uml::DiagramType diagramType = scene->type();
+    Uml::DiagramType diagramType = scene->m_model->type();
     UMLObject::ObjectType type = o->baseType();
     UMLWidget *newWidget = NULL;
     switch (type) {
     case UMLObject::ot_Actor:
         if (diagramType == Uml::DiagramType::Sequence) {
-            ObjectWidget *ow = new ObjectWidget(o, scene->localID());
+            ObjectWidget *ow = new ObjectWidget(o, scene->m_model->localID());
             ow->setDrawAsActor(true);
             y = ow->topMargin();
             newWidget = ow;
@@ -108,7 +109,7 @@ UMLWidget *createWidget(UMLScene *scene, UMLObject *o)
         break;
     case UMLObject::ot_Interface:
         if (diagramType == Uml::DiagramType::Sequence || diagramType == Uml::DiagramType::Collaboration) {
-            ObjectWidget *ow = new ObjectWidget(o, scene->localID());
+            ObjectWidget *ow = new ObjectWidget(o, scene->m_model->localID());
             if (diagramType == Uml::DiagramType::Sequence) {
                 y = ow->topMargin();
             }
@@ -131,7 +132,7 @@ UMLWidget *createWidget(UMLScene *scene, UMLObject *o)
                 cw->setVisualProperty(ClassifierWidget::DrawAsCircle, true);
             newWidget = cw;
         } else {
-            ObjectWidget *ow = new ObjectWidget(o, scene->localID() );
+            ObjectWidget *ow = new ObjectWidget(o, scene->m_model->localID() );
             if (diagramType == Uml::DiagramType::Sequence) {
                 y = ow->topMargin();
             }
@@ -186,7 +187,7 @@ bool validateObjType(UMLObject::ObjectType expected, UMLObject* &o, Uml::IDType 
  * Create a UMLWidget according to the given XMI tag.
  */
 UMLWidget* makeWidgetFromXMI(const QString& tag,
-                             const QString& idStr, UMLScene *scene)
+                             const QString& idStr/*, UMLScene *scene*/)
 {
     UMLWidget *widget = 0;
 
@@ -279,7 +280,7 @@ UMLWidget* makeWidgetFromXMI(const QString& tag,
 
     if (widget) {
         uDebug() << "Added tag=" << tag << " / idStr=" << idStr;
-        scene->addItem(widget);
+        //scene->addItem(widget);
     }
     return widget;
 }

@@ -318,7 +318,7 @@ UMLObject * UMLListViewItem::umlObject() const
 bool UMLListViewItem::isOwnParent(Uml::IDType listViewItemID)
 {
     UMLListView* listView = static_cast<UMLListView*>(treeWidget());
-    QTreeWidgetItem *lvi = static_cast<QTreeWidgetItem*>(listView->findItem(listViewItemID));
+    QTreeWidgetItem *lvi = static_cast<QTreeWidgetItem*>(listView->m_model->findItem(listViewItemID));
     if (lvi == 0) {
         uError() << "ListView->findItem(" << ID2STR(listViewItemID) << ") returns NULL";
         return true;
@@ -684,15 +684,15 @@ void UMLListViewItem::okRename(int col)
             cancelRenameWithMsg();
             return;
         }
-        UMLView *anotherView = doc->findView(view->umlScene()->type(), newText);
-        if (anotherView && anotherView->umlScene()->ID() == ID()) {
+        UMLView *anotherView = doc->findView(view->umlScene()->m_model->type(), newText);
+        if (anotherView && anotherView->umlScene()->m_model->ID() == ID()) {
             anotherView = 0;
         }
         if (anotherView) {
             cancelRenameWithMsg();
             return;
         }
-        view->umlScene()->setName(newText);
+        view->umlScene()->m_model->setName(newText);
         setText(newText);
         doc->signalDiagramRenamed(view);
         break;

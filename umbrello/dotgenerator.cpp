@@ -19,6 +19,7 @@
 #include "statewidget.h"
 #include "debug_utils.h"
 #include "umlwidget.h"
+#include "umlscenemodel.h"
 
 // kde includes
 #include <KConfigGroup>
@@ -184,7 +185,7 @@ void DotGenerator::setUseFullNodeLabels(bool state)
  */
 bool DotGenerator::availableConfigFiles(UMLScene *scene, QHash<QString,QString> &configFiles)
 {
-    QString diagramType = scene->type().toString().toLower();
+    QString diagramType = scene->m_model->type().toString().toLower();
     KStandardDirs dirs;
 
     QStringList fileNames = dirs.findAllResources("data", QString("umbrello/layouts/%1*.desktop").arg(diagramType));
@@ -296,14 +297,14 @@ bool DotGenerator::createDotFile(UMLScene *scene, const QString &fileName, const
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
         return false;
 
-    QString diagramType = scene->type().toString().toLower();
+    QString diagramType = scene->m_model->type().toString().toLower();
     if (!readConfigFile(diagramType, variant))
         return false;
 
     QString data;
     QTextStream out(&data);
 
-    foreach(UMLWidget *widget, scene->widgetList()) {
+    foreach(UMLWidget *widget, scene->m_model->widgetList()) {
         QStringList params;
 
         if (m_nodeParameters.contains("all"))
@@ -363,7 +364,7 @@ bool DotGenerator::createDotFile(UMLScene *scene, const QString &fileName, const
                 << " [" << params.join(",") << "];\n";
     }
 
-    foreach(AssociationWidget *assoc, scene->associationList()) {
+    foreach(AssociationWidget *assoc, scene->m_model->associationList()) {
         QString type = assoc->associationType().toString().toLower();
         QString key = "type::" + type;
         bool swapId = false;

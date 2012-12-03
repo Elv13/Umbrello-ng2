@@ -26,6 +26,7 @@
 #include "package.h"
 #include "folder.h"
 #include "import_utils.h"
+#include "umlscenemodel.h"
 
 // kde includes
 #include <klocale.h>
@@ -306,7 +307,7 @@ ClassGenPage::ClassGenPage(UMLDoc* d, QWidget* parent, ObjectWidget* o)
     m_pDrawActorCB->setChecked(m_pWidget->drawAsActor());
     m_pNameLayout->addWidget(m_pDrawActorCB, 2, 0);
 
-    if (view->umlScene()->type() == Uml::DiagramType::Collaboration) {
+    if (view->umlScene()->m_model->type() == Uml::DiagramType::Collaboration) {
         m_pMultiCB = new QCheckBox(i18n("Multiple instance"), this);
         m_pMultiCB->setChecked(m_pWidget->multipleInstance());
         m_pNameLayout->addWidget(m_pMultiCB, 2,1);

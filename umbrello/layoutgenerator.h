@@ -16,6 +16,7 @@
 #include "floatingtextwidget.h"
 #include "optionstate.h"
 #include "umlwidget.h"
+#include "umlscenemodel.h"
 
 // app includes
 #include <KConfigGroup>
@@ -225,7 +226,7 @@ public:
      */
     bool apply(UMLScene *scene)
     {
-        foreach(AssociationWidget *assoc, scene->associationList()) {
+        foreach(AssociationWidget *assoc, scene->m_model->associationList()) {
             AssociationLine *path = assoc->associationLine();
             QString type = assoc->associationType().toString().toLower();
             QString key = "type::" + type;
@@ -273,7 +274,7 @@ public:
             */
         }
 
-        foreach(UMLWidget *widget, scene->widgetList()) {
+        foreach(UMLWidget *widget, scene->m_model->widgetList()) {
             QString id = ID2STR(widget->id());
             if (!m_nodes.contains(id))
                 continue;
@@ -283,7 +284,7 @@ public:
 //:TODO:            widget->adjustAssociations(widget->x(), widget->y());    // adjust assoc lines
         }
 
-        foreach(AssociationWidget *assoc, scene->associationList()) {
+        foreach(AssociationWidget *assoc, scene->m_model->associationList()) {
             assoc->resetTextPositions();
 //:TODO:            assoc->calculateEndingPoints();
             if (assoc->associationLine())
@@ -302,7 +303,7 @@ public:
      */
     static bool availableConfigFiles(UMLScene *scene, QHash<QString,QString> &configFiles)
     {
-        QString diagramType = scene->type().toString().toLower();
+        QString diagramType = scene->m_model->type().toString().toLower();
         KStandardDirs dirs;
 
         QStringList fileNames = dirs.findAllResources("data", QString("umbrello/layouts/%1*.desktop").arg(diagramType));

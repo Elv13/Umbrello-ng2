@@ -28,6 +28,7 @@
 #include "operation.h"
 #include "umldoc.h"
 #include "umlscene.h"
+#include "umlscenemodel.h"
 #include "umlview.h"
 #include "umlwidget.h"
 #include "widget_utils.h"
@@ -1099,7 +1100,7 @@ bool AssociationWidget::activate()
             Uml::Visibility vis = visibility((Uml::Role_Type)r);
             robj.roleWidget->setPreText(vis.toString(true));
 
-            if (umlScene()->type() == Uml::DiagramType::Collaboration) {
+            if (umlScene()->m_model->type() == Uml::DiagramType::Collaboration) {
                 robj.roleWidget->setUMLObject(robj.umlWidget->umlObject());
             }
             robj.roleWidget->activate();
@@ -1656,13 +1657,13 @@ void AssociationWidget::updateNameWidgetRole()
     Uml::TextRole textRole = Uml::TextRole::Name;
     UMLScene *scene = umlScene();
     if (scene) {
-        if (scene->type() == Uml::DiagramType::Collaboration) {
+        if (scene->m_model->type() == Uml::DiagramType::Collaboration) {
             if (isSelf()) {
                 textRole = Uml::TextRole::Coll_Message;
             } else {
                 textRole = Uml::TextRole::Coll_Message;
             }
-        } else if (scene->type() == Uml::DiagramType::Sequence) {
+        } else if (scene->m_model->type() == Uml::DiagramType::Sequence) {
             if (isSelf()) {
                 textRole = Uml::TextRole::Seq_Message_Self;
             } else {
@@ -2045,8 +2046,8 @@ bool AssociationWidget::loadFromXMI(QDomElement& qElement)
 {
     UMLScene *scene = umlScene();
     if (scene) {
-        const UMLWidgetList& widgetList = scene->widgetList();
-        const MessageWidgetList& messageList = scene->messageList();
+        const UMLWidgetList& widgetList = scene->m_model->widgetList();
+        const MessageWidgetList& messageList = scene->m_model->messageList();
         return loadFromXMI(qElement, widgetList, &messageList);
     }
     else {

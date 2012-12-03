@@ -109,7 +109,7 @@ void DocWindow::showDocumentation( UMLScene * scene, bool overwrite )
         return;
     }
     m_pUMLScene = scene;
-    m_docTE->setText( m_pUMLScene->documentation() );
+    m_docTE->setText( m_pUMLScene->m_model->documentation() );
     m_modified = false;
 }
 
@@ -180,7 +180,7 @@ void DocWindow::updateDocumentation( bool clear, bool startup )
         if( m_pUMLObject ) {
             m_pUMLObject->setDoc( m_docTE->toPlainText() );
         } else if( m_pUMLScene ) {
-            m_pUMLScene->setDocumentation( m_docTE->toPlainText() );
+            m_pUMLScene->m_model->setDocumentation( m_docTE->toPlainText() );
         } else if ( m_pUMLWidget ) {
             m_pUMLWidget->setDocumentation( m_docTE->toPlainText() );
         } else if ( m_pAssocWidget ) {
