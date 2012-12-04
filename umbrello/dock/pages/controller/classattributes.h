@@ -20,6 +20,9 @@ class ClassAttributes : public PageBase
     private:
         Ui_GenericTable* ui;
         ClassAttributesModel* m_pModel;
+        
+    private slots:
+        void rowsInserted();
 
 };
 

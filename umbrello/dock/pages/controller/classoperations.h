@@ -21,6 +21,9 @@ class ClassOperations : public PageBase
         Ui_GenericTable* ui;
         ClassOperationsModel* m_pModel;
 
+    private slots:
+        void rowsInserted();
+
 };
 
 #endif

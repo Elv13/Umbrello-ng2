@@ -25,7 +25,7 @@ QVariant ClassOperationsModel::privData(const QModelIndex& index) const
             return QVariant(m_pData->getOpList()[index.row()]->name());
             break;
         case ClassOperationsModel::Parameters:
-            return QVariant("TODO");
+            return QVariant();
             break;
         case ClassOperationsModel::Type:
             return QVariant(m_pData->getOpList()[index.row()]->getTypeName());
@@ -49,7 +49,7 @@ QVariant ClassOperationsModel::privData(const QModelIndex& index) const
             return QVariant(m_pData->getOpList()[index.row()]->doc());
             break;
         case ClassOperationsModel::SourceCode:
-            return QVariant("TODO");
+            return QVariant();
             break;
     }
     return QVariant();
@@ -141,6 +141,7 @@ bool ClassOperationsModel::setData(const QModelIndex& index, const QVariant& val
     switch (index.column()) {
         case ClassOperationsModel::Name:
             m_pData->getOpList()[index.row()]->setName(value.toString());
+            emit dataChanged(index,index);
             return true;
             break;
         case ClassOperationsModel::Parameters:
@@ -149,27 +150,34 @@ bool ClassOperationsModel::setData(const QModelIndex& index, const QVariant& val
             break;
         case ClassOperationsModel::Type:
             m_pData->getOpList()[index.row()]->setTypeName(value.toString());
+            emit dataChanged(index,index);
             return true;
             break;
         case ClassOperationsModel::Visibility:
             m_pData->getOpList()[index.row()]->setVisibility((Uml::Visibility::Value)value.toInt());
+            emit dataChanged(index,index);
             return true;
             break;
         case ClassOperationsModel::Steotype:
             m_pData->getOpList()[index.row()]->setStereotype(value.toString());
+            emit dataChanged(index,index);
             return true;
             break;
         case ClassOperationsModel::Static:
             m_pData->getOpList()[index.row()]->setStatic((value==Qt::Checked));
+            emit dataChanged(index,index);
             break;
         case ClassOperationsModel::Abstract:
             m_pData->getOpList()[index.row()]->setAbstract((value==Qt::Checked));
+            emit dataChanged(index,index);
             break;
         case ClassOperationsModel::Constant:
             m_pData->getOpList()[index.row()]->setConst((value==Qt::Checked));
+            emit dataChanged(index,index);
             break;
         case ClassOperationsModel::Documentation:
             m_pData->getOpList()[index.row()]->setDoc(value.toString());
+            emit dataChanged(index,index);
             return true;
             break;
         case ClassOperationsModel::SourceCode:

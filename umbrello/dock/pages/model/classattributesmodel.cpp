@@ -114,30 +114,37 @@ bool ClassAttributesModel::setData(const QModelIndex& index, const QVariant& val
     switch (index.column()) {
         case ClassAttributesModel::Name:
             m_pData->getAttributeList()[index.row()]->setName(value.toString());
+            emit dataChanged(index,index);
             return true;
             break;
         case ClassAttributesModel::Type:
             m_pData->getAttributeList()[index.row()]->setTypeName(value.toString());
+            emit dataChanged(index,index);
             return true;
             break;
         case ClassAttributesModel::InitialValue:
             m_pData->getAttributeList()[index.row()]->setInitialValue(value.toString());
+            emit dataChanged(index,index);
             return true;
             break;
         case ClassAttributesModel::Visibility:
             m_pData->getAttributeList()[index.row()]->setVisibility((Uml::Visibility::Value)value.toInt());
+            emit dataChanged(index,index);
             return true;
             break;
         case ClassAttributesModel::StereotypeName:
             m_pData->getAttributeList()[index.row()]->setStereotype(value.toString());
+            emit dataChanged(index,index);
             return true;
             break;
         case ClassAttributesModel::Static:
             m_pData->getAttributeList()[index.row()]->setStatic(value == Qt::Checked);
+            emit dataChanged(index,index);
             return true;
             break;
         case ClassAttributesModel::Documentation:
             m_pData->getAttributeList()[index.row()]->setDoc(value.toString());
+            emit dataChanged(index,index);
             return true;
             break;
     }

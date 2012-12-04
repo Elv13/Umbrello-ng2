@@ -258,6 +258,14 @@ set(libdocks_SRCS
     dock/pages/controller/enumliterals.cpp
     dock/pages/controller/packageassoc.cpp
     dock/pages/controller/packagecontent.cpp
+    dock/pages/controller/delegateWidgets/delegatewidgetbase.cpp
+    dock/pages/controller/delegateWidgets/tintedbuttonbase.cpp
+    dock/pages/controller/delegateWidgets/docbutton.cpp
+    dock/pages/controller/delegateWidgets/sourcebutton.cpp
+    dock/pages/controller/delegateWidgets/visibilityselector.cpp
+    dock/pages/controller/delegateWidgets/typeselector.cpp
+    dock/pages/controller/delegateWidgets/rowwidgetpopupbase.cpp
+    dock/pages/controller/delegateWidgets/paramwidget.cpp
     dock/pages/model/classassociationsmodel.cpp
     dock/pages/model/classattributesmodel.cpp
     dock/pages/model/classoperationsmodel.cpp

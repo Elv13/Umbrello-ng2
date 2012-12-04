@@ -2,6 +2,10 @@
 
 #include "dock/pages/model/classattributesmodel.h"
 #include <QtCore/QDebug>
+#include <QtGui/QPushButton>
+#include "delegateWidgets/docbutton.h"
+#include "delegateWidgets/visibilityselector.h"
+#include "delegateWidgets/typeselector.h"
 
 ClassAttributes::ClassAttributes(QWidget* parent) : PageBase(parent),ui(new Ui_GenericTable()),m_pModel(0)
 {
@@ -22,6 +26,28 @@ void ClassAttributes::setCurrentObject(UMLObject* o)
         for (int i=1;i<m_pModel->columnCount();i++) {
             ui->m_pTable->horizontalHeader()->setResizeMode(i,QHeaderView::ResizeToContents);
         }
+        connect(m_pModel,SIGNAL(layoutChanged()),this,SLOT(rowsInserted()));
     }
     m_pModel->setCurrentObject(o);
+}
+
+/**
+ * Add indexWidgets if they don't already exist
+ */
+void ClassAttributes::rowsInserted ()
+{
+    for (int i=0;i<m_pModel->rowCount();i++) {
+        QModelIndex index = m_pModel->index(i,ClassAttributesModel::Documentation);
+        if (!ui->m_pTable->indexWidget(index)) {
+            ui->m_pTable->setIndexWidget(index,new DocButton(index,ui->m_pTable));
+        }
+        index = m_pModel->index(i,ClassAttributesModel::Visibility);
+        if (!ui->m_pTable->indexWidget(index)) {
+            ui->m_pTable->setIndexWidget(index,new VisibilitySelector(index,ui->m_pTable));
+        }
+        index = m_pModel->index(i,ClassAttributesModel::Type);
+        if (!ui->m_pTable->indexWidget(index)) {
+            ui->m_pTable->setIndexWidget(index,new TypeSelector(index,ui->m_pTable));
+        }
+    }
 }

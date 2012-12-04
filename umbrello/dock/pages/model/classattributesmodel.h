@@ -12,6 +12,15 @@ class ClassAttributesModel : public QAbstractTableModel
 {
    Q_OBJECT
    public:
+        enum AttributesColumn {
+            Name =0,
+            Type,
+            InitialValue,
+            Visibility,
+            StereotypeName,
+            Static,
+            Documentation,
+        };
         ClassAttributesModel(QObject* parent = NULL);
         virtual ~ClassAttributesModel();
 
@@ -28,15 +37,6 @@ class ClassAttributesModel : public QAbstractTableModel
 
     private:
         QVariant privData(const QModelIndex& index) const;
-        enum AttributesColumn {
-            Name =0,
-            Type,
-            InitialValue,
-            Visibility,
-            StereotypeName,
-            Static,
-            Documentation,
-        };
         UMLClassifier* m_pData;
 
 };

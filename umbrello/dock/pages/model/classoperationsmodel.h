@@ -12,6 +12,18 @@ class ClassOperationsModel : public QAbstractTableModel
 {
    Q_OBJECT
    public:
+        enum OperationsColumns {
+            Name=0,
+            Parameters,
+            Type,
+            Visibility,
+            Steotype,
+            Static,
+            Abstract,
+            Constant,
+            Documentation,
+            SourceCode,
+        };
        ClassOperationsModel(QObject* parent = NULL);
        virtual ~ClassOperationsModel();
 
@@ -29,18 +41,6 @@ class ClassOperationsModel : public QAbstractTableModel
     private:
         QVariant privData(const QModelIndex& index) const;
 
-        enum OperationsColumns {
-            Name=0,
-            Parameters,
-            Type,
-            Visibility,
-            Steotype,
-            Static,
-            Abstract,
-            Constant,
-            Documentation,
-            SourceCode,
-        };
 
         UMLClassifier* m_pData;
 
