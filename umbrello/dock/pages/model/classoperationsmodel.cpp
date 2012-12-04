@@ -18,46 +18,107 @@ int ClassOperationsModel::columnCount(const QModelIndex& parent) const
     return 10;
 }
 
+QVariant ClassOperationsModel::privData(const QModelIndex& index) const
+{
+    switch (index.column()) {
+        case ClassOperationsModel::Name:
+            return QVariant(m_pData->getOpList()[index.row()]->name());
+            break;
+        case ClassOperationsModel::Parameters:
+            return QVariant("TODO");
+            break;
+        case ClassOperationsModel::Type:
+            return QVariant(m_pData->getOpList()[index.row()]->getTypeName());
+            break;
+        case ClassOperationsModel::Visibility:
+            return QVariant(m_pData->getOpList()[index.row()]->visibility());
+            break;
+        case ClassOperationsModel::Steotype:
+            return QVariant(m_pData->getOpList()[index.row()]->stereotype());
+            break;
+        case ClassOperationsModel::Static:
+            return QVariant();
+            break;
+        case ClassOperationsModel::Abstract:
+            return QVariant();
+            break;
+        case ClassOperationsModel::Constant:
+            return QVariant();
+            break;
+        case ClassOperationsModel::Documentation:
+            return QVariant(m_pData->getOpList()[index.row()]->doc());
+            break;
+        case ClassOperationsModel::SourceCode:
+            return QVariant("TODO");
+            break;
+    }
+    return QVariant();
+}
+
 QVariant ClassOperationsModel::data(const QModelIndex& index, int role) const
 {
     switch (role) {
         case Qt::DisplayRole:
+            return privData(index);
+            break;
+        case Qt::EditRole:
+            return privData(index);
+            break;
+        case Qt::CheckStateRole:
             switch (index.column()) {
-                case ClassOperationsModel::Name:
-                    QVariant(m_pData->getOpList()[index.row()]->name());
-                    break;
-                case ClassOperationsModel::Parameters:
-                    QVariant("TODO");
-                    break;
-                case ClassOperationsModel::Type:
-                    QVariant(m_pData->getOpList()[index.row()]->getTypeName());
-                    break;
-                case ClassOperationsModel::Visibility:
-                    QVariant(m_pData->getOpList()[index.row()]->visibility());
-                    break;
-                case ClassOperationsModel::Steotype:
-                    return QVariant(m_pData->getOpList()[index.row()]->stereotype());
-                    break;
                 case ClassOperationsModel::Static:
-                    return QVariant(m_pData->getOpList()[index.row()]->isStatic());
+                    return QVariant(m_pData->getOpList()[index.row()]->isStatic()?Qt::Checked:Qt::Unchecked);
                     break;
                 case ClassOperationsModel::Abstract:
-                    return QVariant(m_pData->getOpList()[index.row()]->isAbstract());
+                    return QVariant(m_pData->getOpList()[index.row()]->isAbstract()?Qt::Checked:Qt::Unchecked);
                     break;
                 case ClassOperationsModel::Constant:
-                    return QVariant(m_pData->getOpList()[index.row()]->getConst());
+                    return QVariant(m_pData->getOpList()[index.row()]->getConst()?Qt::Checked:Qt::Unchecked);
                     break;
-                case ClassOperationsModel::Documentation:
-                    return QVariant(m_pData->getOpList()[index.row()]->doc());
-                    break;
-                case ClassOperationsModel::SourceCode:
-                    QVariant("TODO");
-                    break;
+                default:
+                    return QVariant();
             }
-            break;
     }
 
     return QVariant();
+}
+
+Qt::ItemFlags ClassOperationsModel::flags(const QModelIndex& index) const {
+//    if (index.column() == 0)
+//       return QAbstractItemModel::flags(index) | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+    switch (index.column()) {
+        case ClassOperationsModel::Name:
+            return Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+            break;
+        case ClassOperationsModel::Parameters:
+            return Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+            break;
+        case ClassOperationsModel::Type:
+            return Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+            break;
+        case ClassOperationsModel::Visibility:
+            return Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+            break;
+        case ClassOperationsModel::Steotype:
+            return Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+            break;
+        case ClassOperationsModel::Static:
+            return Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsUserCheckable;
+            break;
+        case ClassOperationsModel::Abstract:
+            return Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsUserCheckable;
+            break;
+        case ClassOperationsModel::Constant:
+            return Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsUserCheckable;
+            break;
+        case ClassOperationsModel::Documentation:
+            return Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+            break;
+        case ClassOperationsModel::SourceCode:
+            return Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+            break;
+    }
+   return QAbstractItemModel::flags(index);
 }
 
 QModelIndex ClassOperationsModel::index(int row, int column, const QModelIndex& parent) const
@@ -77,6 +138,45 @@ int ClassOperationsModel::rowCount(const QModelIndex& parent) const
 
 bool ClassOperationsModel::setData(const QModelIndex& index, const QVariant& value, int role)
 {
+    switch (index.column()) {
+        case ClassOperationsModel::Name:
+            m_pData->getOpList()[index.row()]->setName(value.toString());
+            return true;
+            break;
+        case ClassOperationsModel::Parameters:
+//             return QVariant("TODO");
+            return false;
+            break;
+        case ClassOperationsModel::Type:
+            m_pData->getOpList()[index.row()]->setTypeName(value.toString());
+            return true;
+            break;
+        case ClassOperationsModel::Visibility:
+            m_pData->getOpList()[index.row()]->setVisibility((Uml::Visibility::Value)value.toInt());
+            return true;
+            break;
+        case ClassOperationsModel::Steotype:
+            m_pData->getOpList()[index.row()]->setStereotype(value.toString());
+            return true;
+            break;
+        case ClassOperationsModel::Static:
+            m_pData->getOpList()[index.row()]->setStatic((value==Qt::Checked));
+            break;
+        case ClassOperationsModel::Abstract:
+            m_pData->getOpList()[index.row()]->setAbstract((value==Qt::Checked));
+            break;
+        case ClassOperationsModel::Constant:
+            m_pData->getOpList()[index.row()]->setConst((value==Qt::Checked));
+            break;
+        case ClassOperationsModel::Documentation:
+            m_pData->getOpList()[index.row()]->setDoc(value.toString());
+            return true;
+            break;
+        case ClassOperationsModel::SourceCode:
+//             return QVariant("TODO");
+            return false;
+            break;
+    }
     return 0;
 }
 

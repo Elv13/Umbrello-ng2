@@ -39,6 +39,12 @@ QVariant ClassTemplatesModel::data(const QModelIndex& index, int role) const
     return QVariant();
 }
 
+Qt::ItemFlags ClassTemplatesModel::flags(const QModelIndex& index) const {
+   if (index.column() == 0)
+      return QAbstractItemModel::flags(index) | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+   return QAbstractItemModel::flags(index);
+}
+
 QModelIndex ClassTemplatesModel::index(int row, int column, const QModelIndex& parent) const
 {
     return createIndex(row,column);

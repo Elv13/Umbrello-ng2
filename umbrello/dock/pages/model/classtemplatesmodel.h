@@ -22,6 +22,7 @@ class ClassTemplatesModel : public QAbstractTableModel
        int         rowCount(const QModelIndex& parent = QModelIndex() ) const;
        bool        setData(const QModelIndex& index, const QVariant& value, int role = Qt::EditRole );
        virtual QVariant    headerData  (int section, Qt::Orientation orientation, int role = Qt::DisplayRole ) const;
+       virtual Qt::ItemFlags flags(const QModelIndex& index) const;
 
        void setCurrentObject(UMLObject* o);
 

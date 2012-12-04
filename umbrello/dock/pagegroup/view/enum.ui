@@ -14,6 +14,9 @@
    <string>EnumTabGroup</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="margin">
+    <number>0</number>
+   </property>
    <item row="0" column="0">
     <widget class="QTabWidget" name="m_pTabW">
      <property name="currentIndex">
@@ -24,6 +27,9 @@
        <string>General</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="margin">
+        <number>0</number>
+       </property>
        <item>
         <widget class="EnumGeneral" name="m_pGeneralPage" native="true"/>
        </item>
@@ -34,6 +40,9 @@
        <string>Literals</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="margin">
+        <number>0</number>
+       </property>
        <item>
         <widget class="EnumLiterals" name="m_pLiteralsPage" native="true"/>
        </item>

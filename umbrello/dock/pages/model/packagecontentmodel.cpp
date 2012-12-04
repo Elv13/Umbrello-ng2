@@ -31,6 +31,12 @@ QVariant PackageContentModel::data(const QModelIndex& index, int role) const
     return QVariant();
 }
 
+Qt::ItemFlags PackageContentModel::flags(const QModelIndex& index) const {
+   if (index.column() == 0)
+      return QAbstractItemModel::flags(index) | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+   return QAbstractItemModel::flags(index);
+}
+
 QModelIndex PackageContentModel::index(int row, int column, const QModelIndex& parent) const
 {
     return createIndex(row,column);

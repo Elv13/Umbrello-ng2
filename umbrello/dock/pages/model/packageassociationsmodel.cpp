@@ -44,6 +44,12 @@ QVariant PackageAssociationsModel::data(const QModelIndex& index, int role) cons
     return QVariant();
 }
 
+Qt::ItemFlags PackageAssociationsModel::flags(const QModelIndex& index) const {
+   if (index.column() == 0)
+      return QAbstractItemModel::flags(index) | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+   return QAbstractItemModel::flags(index);
+}
+
 QModelIndex PackageAssociationsModel::index(int row, int column, const QModelIndex& parent) const
 {
     return createIndex(row,column);

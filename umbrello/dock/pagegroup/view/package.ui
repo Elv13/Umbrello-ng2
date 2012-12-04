@@ -14,6 +14,9 @@
    <string>PackageTabGroup</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="margin">
+    <number>0</number>
+   </property>
    <item row="0" column="0">
     <widget class="QTabWidget" name="m_pTabW">
      <property name="currentIndex">
@@ -29,6 +32,9 @@
        <string>Content</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="margin">
+        <number>0</number>
+       </property>
        <item>
         <widget class="PackageContent" name="m_pContentPage" native="true"/>
        </item>
@@ -39,6 +45,9 @@
        <string>Associations</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="margin">
+        <number>0</number>
+       </property>
        <item>
         <widget class="PackageAssoc" name="m_pAssociationsPage" native="true"/>
        </item>
@@ -49,6 +58,9 @@
        <string>Display</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="margin">
+        <number>0</number>
+       </property>
        <item>
         <widget class="PackageGeneral" name="m_pGeneralPage" native="true"/>
        </item>
