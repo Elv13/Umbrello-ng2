@@ -36,7 +36,7 @@ void ClassOperations::setCurrentObject(UMLObject* o)
  */
 void ClassOperations::rowsInserted ()
 {
-    for (int i=0;i<m_pModel->rowCount();i++) {
+    for (int i=0;i<m_pModel->rowCount()-1;i++) {
         QModelIndex index = m_pModel->index(i,ClassOperationsModel::Documentation);
         if (!ui->m_pTable->indexWidget(index)) {
             ui->m_pTable->setIndexWidget(index,new DocButton(index,ui->m_pTable));

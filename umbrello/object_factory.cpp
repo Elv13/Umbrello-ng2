@@ -177,7 +177,6 @@ UMLObject* createUMLObject(UMLObject::ObjectType type, const QString &n,
     }
     if (!n.isEmpty() || UMLApp::app()->isPowerDockVisible()) {
         UMLObject *o = doc->findUMLObject(n, type, parentPkg);
-        qDebug() << "\n\n\nICI\n\n\n";
         if (o) {
             if (!solicitNewName)
                 return o;
@@ -191,7 +190,6 @@ UMLObject* createUMLObject(UMLObject::ObjectType type, const QString &n,
                 UMLApp::app()->powerDock()->setCurrentObject(o);
                 UMLApp::app()->powerDock()->focusName();
             }
-            qDebug() << "\n\n\nICI2\n\n\n";
             return o;
         }
     }

@@ -20,6 +20,8 @@ int ClassOperationsModel::columnCount(const QModelIndex& parent) const
 
 QVariant ClassOperationsModel::privData(const QModelIndex& index) const
 {
+    if (index.row() == rowCount() -1)
+        return QVariant();
     switch (index.column()) {
         case ClassOperationsModel::Name:
             return QVariant(m_pData->getOpList()[index.row()]->name());
@@ -65,6 +67,8 @@ QVariant ClassOperationsModel::data(const QModelIndex& index, int role) const
             return privData(index);
             break;
         case Qt::CheckStateRole:
+            if (index.row() == rowCount() -1)
+                return QVariant();
             switch (index.column()) {
                 case ClassOperationsModel::Static:
                     return QVariant(m_pData->getOpList()[index.row()]->isStatic()?Qt::Checked:Qt::Unchecked);
@@ -133,11 +137,26 @@ QModelIndex ClassOperationsModel::parent(const QModelIndex& index ) const
 
 int ClassOperationsModel::rowCount(const QModelIndex& parent) const
 {
-    return (m_pData)?(m_pData->getOpList().size()):0;
+    return ((m_pData)?(m_pData->getOpList().size()):0)+1;
 }
 
 bool ClassOperationsModel::setData(const QModelIndex& index, const QVariant& value, int role)
 {
+    //Create new row
+    if (index.row() == rowCount() -1) {
+        UMLOperation* op = new UMLOperation(m_pData);
+        if (index.column() == ClassOperationsModel::Name) {
+            op->setName(value.toString());
+        }
+        else {
+            op->setName("New attribute");
+        }
+
+        //If it fail, exit before segfault, the user will have to choose a name that doesn't already exist
+        if (!m_pData->addOperation(op))
+            return false;
+        emit layoutChanged();
+    }
     switch (index.column()) {
         case ClassOperationsModel::Name:
             m_pData->getOpList()[index.row()]->setName(value.toString());

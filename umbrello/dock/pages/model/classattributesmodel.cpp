@@ -20,6 +20,9 @@ int ClassAttributesModel::columnCount(const QModelIndex& parent) const
 
 QVariant ClassAttributesModel::privData(const QModelIndex& index) const
 {
+    if (index.row() == rowCount() -1)
+        return QVariant();
+
     switch (index.column()) {
         case ClassAttributesModel::Name:
             return QVariant(m_pData->getAttributeList()[index.row()]->name());
@@ -56,6 +59,8 @@ QVariant ClassAttributesModel::data(const QModelIndex& index, int role) const
             return privData(index);
             break;
         case Qt::CheckStateRole:
+            if (index.row() == rowCount() -1)
+                return QVariant();
             switch (index.column()) {
                 case ClassAttributesModel::Static:
                     return QVariant(m_pData->getAttributeList()[index.row()]->isStatic()?Qt::Checked:Qt::Unchecked);
@@ -106,11 +111,27 @@ QModelIndex ClassAttributesModel::parent(const QModelIndex& index ) const
 
 int ClassAttributesModel::rowCount(const QModelIndex& parent) const
 {
-    return (m_pData)?(m_pData->getAttributeList().size()):0;
+    return ((m_pData)?(m_pData->getAttributeList().size()):0)+1;
 }
 
 bool ClassAttributesModel::setData(const QModelIndex& index, const QVariant& value, int role)
 {
+    //Create new row
+    if (index.row() == rowCount() -1) {
+        UMLAttribute* attr = new UMLAttribute(m_pData);
+        if (index.column() == ClassAttributesModel::Name) {
+            attr->setName(value.toString());
+        }
+        else {
+            attr->setName("New attribute");
+        }
+
+        //If it fail, exit before segfault, the user will have to choose a name that doesn't already exist
+        if (!m_pData->addAttribute(attr))
+            return false;
+        emit layoutChanged();
+    }
+
     switch (index.column()) {
         case ClassAttributesModel::Name:
             m_pData->getAttributeList()[index.row()]->setName(value.toString());
