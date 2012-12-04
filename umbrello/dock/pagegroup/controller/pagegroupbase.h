@@ -17,6 +17,8 @@ class PageGroupBase : public QWidget
        //Setters
        virtual void setCurrentObject(UMLObject* o) = 0;
 
+       virtual void focusName() = 0;
+
 };
 
 #endif

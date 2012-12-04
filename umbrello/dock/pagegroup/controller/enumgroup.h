@@ -14,6 +14,8 @@ class EnumGroup : public PageGroupBase
 
        virtual void setCurrentObject(UMLObject* o);
 
+       virtual void focusName();
+
     private:
         Ui_EnumTabGroup* ui;
 

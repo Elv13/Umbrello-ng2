@@ -39,6 +39,7 @@
 #include "model_utils.h"
 #include "uniqueid.h"
 #include "cmds.h"
+#include "dock/powerdock.h"
 
 // kde includes
 #include <klocale.h>
@@ -174,13 +175,23 @@ UMLObject* createUMLObject(UMLObject::ObjectType type, const QString &n,
             parentPkg = doc->rootFolder(mt);
         }
     }
-    if (!n.isEmpty()) {
+    if (!n.isEmpty() || UMLApp::app()->isPowerDockVisible()) {
         UMLObject *o = doc->findUMLObject(n, type, parentPkg);
+        qDebug() << "\n\n\nICI\n\n\n";
         if (o) {
             if (!solicitNewName)
                 return o;
         } else {
-            o = createNewUMLObject(type, n, parentPkg);
+            QString name = n;
+            if (n.isEmpty()) {
+                name = "23457"; //TODO ELV this is cheap
+            }
+            o = createNewUMLObject(type, name, parentPkg);
+            if (UMLApp::app()->isPowerDockVisible()) {
+                UMLApp::app()->powerDock()->setCurrentObject(o);
+                UMLApp::app()->powerDock()->focusName();
+            }
+            qDebug() << "\n\n\nICI2\n\n\n";
             return o;
         }
     }

@@ -164,6 +164,9 @@ public:
 
     KConfig* config();
 
+    bool isPowerDockVisible();
+    PowerDock* powerDock();
+
 protected:
     virtual void keyPressEvent(QKeyEvent* e);
     virtual void keyReleaseEvent(QKeyEvent* e);

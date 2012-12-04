@@ -33,10 +33,15 @@ void PowerDock::addPageGroup(PageGroup* group)
 
 void PowerDock::setCurrentWidget(UMLWidget* w)
 {
-    if (m_pUmlWidget == w) return;
-    m_pUmlWidget = w;
-    setWindowTitle(m_pUmlWidget->name());
-    switch (w->umlObject()->baseType()) {
+    setCurrentObject(w->umlObject());
+}
+
+void PowerDock::setCurrentObject(UMLObject* w)
+{
+    if (m_pUmlObject == w) return;
+    m_pUmlObject = w;
+    setWindowTitle(m_pUmlObject->name());
+    switch (w->baseType()) {
         case UMLObject::ot_UMLObject:
             
             break;
@@ -134,5 +139,12 @@ void PowerDock::setCurrentWidget(UMLWidget* w)
             break;
     }
     if (m_pCurrentPageGroup)
-        m_pCurrentPageGroup->setCurrentObject(w->umlObject());
+        m_pCurrentPageGroup->setCurrentObject(w);
+}
+
+void PowerDock::focusName()
+{
+    if (m_pCurrentPageGroup) {
+        m_pCurrentPageGroup->focusName();
+    }
 }

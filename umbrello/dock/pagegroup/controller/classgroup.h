@@ -14,6 +14,8 @@ class ClassGroup : public PageGroupBase
 
        virtual void setCurrentObject(UMLObject* o);
 
+       virtual void focusName();
+
     private:
         Ui_ClassTabGroup* ui;
 

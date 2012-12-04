@@ -20,3 +20,10 @@ void ClassGroup::setCurrentObject(UMLObject* o)
     ui->m_pAssociationsPage->setCurrentObject(o);
 //     ui->m_pDisplayPage->setCurrentObject(0);
 }
+
+void ClassGroup::focusName()
+{
+    ui->m_pTabW->setCurrentIndex(0);
+    ui->m_pGeneralPage->ui->m_pClassNameLE->setFocus(Qt::OtherFocusReason);
+    ui->m_pGeneralPage->ui->m_pClassNameLE->selectAll();
+}

@@ -5,6 +5,7 @@
 
 #include "pagebase.h"
 class QWidget;
+class DocTextEditor;
 
 class PackageGeneral : public PageBase
 {
@@ -16,8 +17,9 @@ class PackageGeneral : public PageBase
        //Setters
        virtual void setCurrentObject(UMLObject* o);
 
-    private:
         Ui_PackageGeneral* ui;
+    private:
+        DocTextEditor* m_pDoc;
 
 };
 

@@ -5,6 +5,7 @@
 
 #include "pagebase.h"
 class QWidget;
+class DocTextEditor;
 
 class EnumGeneral : public PageBase
 {
@@ -16,8 +17,9 @@ class EnumGeneral : public PageBase
        //Setters
        virtual void setCurrentObject(UMLObject* o);
 
-    private:
         Ui_EnumGeneral* ui;
+    private:
+        DocTextEditor* m_pDoc;
 
 };
 

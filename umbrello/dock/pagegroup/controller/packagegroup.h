@@ -14,6 +14,8 @@ class PackageGroup : public PageGroupBase
 
        virtual void setCurrentObject(UMLObject* o);
 
+       virtual void focusName();
+
     private:
         Ui_PackageTabGroup* ui;
 

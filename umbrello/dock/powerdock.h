@@ -8,6 +8,7 @@ class PageGroup;
 class QWidget;
 class UMLWidget;
 class PageGroupBase;
+class UMLObject;
 
 class PowerDock : public QDockWidget
 {
@@ -21,6 +22,10 @@ public:
 
     //Setter
     void setCurrentWidget(UMLWidget* w);
+    void setCurrentObject(UMLObject* w);
+
+    //Mutator
+    void focusName();
 
 private:
     //Enum
@@ -30,7 +35,8 @@ private:
         Package,
     };
     //Attributes
-    UMLWidget* m_pUmlWidget;
+//     UMLWidget* m_pUmlWidget;
+    UMLObject* m_pUmlObject;
     QHash<PageGroupType,PageGroupBase*> m_hPages;
     PageGroupBase* m_pCurrentPageGroup;
 };

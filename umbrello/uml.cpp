@@ -3061,4 +3061,23 @@ KConfig* UMLApp::config()
     return m_config.data();
 }
 
+
+/**
+ * Is the bottom powerdock visible.
+ * This is used to select between popup and dock based input methods
+ */
+bool UMLApp::isPowerDockVisible()
+{
+    return m_powerDock->isVisible();
+}
+
+/**
+ * Return the powerdock
+ * @note Exposing this directly can eventaully feel too dirty, but for now, it can not be avoided
+ */
+PowerDock* UMLApp::powerDock()
+{
+    return m_powerDock;
+}
+
 //#include "uml.moc"
