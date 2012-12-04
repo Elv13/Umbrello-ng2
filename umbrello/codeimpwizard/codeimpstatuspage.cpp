@@ -54,6 +54,7 @@ CodeImpStatusPage::CodeImpStatusPage(QWidget *parent)
 
     setupUi(this);
 
+
     ui_tableWidgetStatus->setColumnCount(3);
     ui_tableWidgetStatus->setColumnWidth(0, 200);
     ui_tableWidgetStatus->setColumnWidth(1, 200);

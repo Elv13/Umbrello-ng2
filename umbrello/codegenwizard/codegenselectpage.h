@@ -13,6 +13,9 @@
 // app includes
 #include "ui_codegenselectpage.h"
 #include "umlclassifierlist.h"
+#include <kdebug.h>
+
+#define uDebug()   kDebug(8060)
 
 // qt includes
 #include <QWizardPage>
@@ -31,9 +34,6 @@ public:
     void setClassifierList(UMLClassifierList *classList);
     bool isComplete() const;
     QListWidget* getSelectionListWidget();
-
-private:
-    static void moveSelectedItems(QListWidget* fromList, QListWidget* toList);
 
 protected slots:
     void selectClass();

@@ -65,8 +65,6 @@ private slots:
     void changeLanguage();
     void subdirStateChanged(int state);
     void fileExtChanged();
-    void selectAll();
-    void deselectAll();
     void updateSelectionCounter();
 
 signals:
@@ -74,6 +72,25 @@ signals:
     void languageChanged();
     void syncCodeDocumentsToParent();
     void selectionChanged();
+};
+
+
+class SupportedLanguage
+{
+public:
+    enum Value {
+        Ada,
+        Cpp,
+        CSharp,
+        IDL,
+        Java,
+        Python,
+        Ruby,
+        Reserved
+    };
+    static QString toString(Value item);
+private:
+    Value m_value;
 };
 
 #endif

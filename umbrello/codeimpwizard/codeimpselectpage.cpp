@@ -59,10 +59,6 @@ CodeImpSelectPage::CodeImpSelectPage(QWidget *parent)
     setupFileExtEdit();
     connect(ui_fileExtLineEdit, SIGNAL(editingFinished()), this, SLOT(fileExtChanged()));
 
-    connect(ui_subdirCheckBox, SIGNAL(stateChanged(int)), this, SLOT(subdirStateChanged(int)));
-    connect(ui_selectAllButton, SIGNAL(clicked()), this, SLOT(selectAll()));
-    connect(ui_deselectAllButton, SIGNAL(clicked()), this, SLOT(deselectAll()));
-
     setupToolTips();
     // update file extensions
     changeLanguage();
@@ -82,13 +78,14 @@ CodeImpSelectPage::~CodeImpSelectPage()
 void CodeImpSelectPage::setupLanguageBox()
 {
     int indexCounter = 0;
-    while (indexCounter < Uml::ProgrammingLanguage::Reserved) {
-        QString language = Uml::ProgrammingLanguage::toString(Uml::ProgrammingLanguage::Value(indexCounter));
+    while (indexCounter < SupportedLanguage::Reserved) {
+        QString language = SupportedLanguage::toString(SupportedLanguage::Value(indexCounter));
         ui_languageBox->insertItem(indexCounter, language);
         indexCounter++;
     }
     Uml::ProgrammingLanguage pl = UMLApp::app()->activeLanguage();
     ui_languageBox->setCurrentIndex(pl);
+    ui_fileExtLineEdit->setVisible(false);
 }
 
 /**
@@ -102,7 +99,6 @@ void CodeImpSelectPage::setupTreeView()
     m_fileExtensions << "*.h" << "*.hpp" << "*.hh" << "*.hxx" << "*.H";  //:TODO set according to the current language!
     model->setNameFilters(m_fileExtensions);
 
-    ui_treeView->setSelectionMode(QAbstractItemView::MultiSelection);
     ui_treeView->setModel(model);
     ui_treeView->setIndentation(20);
     ui_treeView->setColumnWidth(0, 200);
@@ -133,9 +129,6 @@ void CodeImpSelectPage::setupFileExtEdit()
 void CodeImpSelectPage::setupToolTips()
 {
     ui_languageBox->setToolTip(i18n("Select the desired language to filter files."));
-    ui_subdirCheckBox->setToolTip(i18n("Select also all the files in the subdirectories."));
-    ui_selectAllButton->setToolTip(i18n("Select all the files below the current directory."));
-    ui_deselectAllButton->setToolTip(i18n("Clear all selections."));
     ui_fileExtLineEdit->setToolTip(i18n("Add file extensions like e.g. '*.h *.hpp'."));
 }
 
@@ -229,11 +222,13 @@ void CodeImpSelectPage::fileExtChanged()
  * @param index   the index of the item on which was clicked
  */
 void CodeImpSelectPage::treeClicked(const QModelIndex& index)
-{
+{    
     if (index.isValid()) {
         uDebug() << "item at row=" << index.row() << " / column=" << index.column();
         QFileSystemModel* indexModel = (QFileSystemModel*)index.model();
         QFileInfo fileInfo = indexModel->fileInfo(index);
+
+
         if (fileInfo.isDir()) {
             int rows = indexModel->rowCount(index);
             uDebug() << "item has directory and has children = " << rows;
@@ -241,8 +236,9 @@ void CodeImpSelectPage::treeClicked(const QModelIndex& index)
             for(int row = 0; row < rows; ++row) {
                 QModelIndex childIndex = indexModel->index(row, 0, index);
                 if (selectionModel->isSelected(index)) {
-                    // uDebug() << "select all children";
+                    uDebug() << "select all children";
                     QFileInfo childInfo = indexModel->fileInfo(childIndex);
+                    uDebug() << (childInfo.isDir() && ui_subdirCheckBox->isChecked());
                     if (childInfo.isDir() && ui_subdirCheckBox->isChecked()) {
                         treeClicked(childIndex);
                     }
@@ -256,7 +252,7 @@ void CodeImpSelectPage::treeClicked(const QModelIndex& index)
                     }
                 }
                 else {
-                    // uDebug() << "deselect all children";
+                    uDebug() << "deselect all children";
                     selectionModel->select(childIndex, QItemSelectionModel::Deselect);
                 }
             }
@@ -316,7 +312,7 @@ void CodeImpSelectPage::changeLanguage()
         m_fileExtensions << "*.ads" << "*.adb" << "*.ada";
         break;
     case Uml::ProgrammingLanguage::Cpp:
-        m_fileExtensions << "*.h" << "*.hpp" << "*.hh" << "*.hxx" << "*.H";
+        m_fileExtensions << "*.h" << "*.hpp" << "*.hh" << "*.hxx" << "*.H" << "*.cpp" << "*.c";
         break;
     case Uml::ProgrammingLanguage::IDL:
         m_fileExtensions << "*.idl";
@@ -376,53 +372,33 @@ QList<QFileInfo> CodeImpSelectPage::selectedFiles()
 }
 
 /**
- * Slot for clicked event on the button widget.
- * Select all items in the current selected directory.
- * If the checkbox 'ui_subdirCheckBox' is selected
- * also all the files in the subdirectories are selected.
- */
-void CodeImpSelectPage::selectAll()
-{
-    QModelIndex currIndex = ui_treeView->selectionModel()->currentIndex();
-    if (currIndex.isValid()) {
-        QFileSystemModel* model = (QFileSystemModel*)ui_treeView->model();
-        QFileInfo fileInfo = model->fileInfo(currIndex);
-        if (fileInfo.isDir()) {
-            QItemSelectionModel* selectionModel = ui_treeView->selectionModel();
-            Q_UNUSED(selectionModel);
-            //...
-            if (ui_subdirCheckBox->isChecked()) {
-                //...
-                ui_treeView->selectAll();
-                updateSelectionCounter();
-            }
-        }
-        else {
-            uWarning() << "No directory was selected!";
-        }
-    }
-    else {
-        uWarning() << "No directory was selected!";
-    }
-}
-
-/**
- * Slot for clicked event on the button widget.
- * Deselects all items in the entire tree.
- */
-void CodeImpSelectPage::deselectAll()
-{
-    ui_treeView->clearSelection();
-    updateSelectionCounter();
-}
-
-/**
  * Utility method for setting the selection counter.
  */
 void CodeImpSelectPage::updateSelectionCounter()
 {
     QList<QFileInfo> files = selectedFiles();
     ui_filesNumLabel->setText(QString::number(files.size()));
+}
+
+QString SupportedLanguage::toString(Value item)
+{
+    switch (item) {
+        case Ada:
+            return QString("Ada");
+        case Cpp:
+            return QString("C++");
+        case CSharp:
+            return QString("C#");
+        case IDL:
+            return QString("IDL");
+        case Java:
+            return QString("Java");
+        case Python:
+            return QString("Python");
+        default:
+            break;
+    }
+    return QString();
 }
 
 #include "codeimpselectpage.moc"
