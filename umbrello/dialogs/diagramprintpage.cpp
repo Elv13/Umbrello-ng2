@@ -18,6 +18,7 @@
 #include "uml.h"
 #include "umldoc.h"
 #include "umlscene.h"
+#include "umlscenemodel.h"
 #include "umlviewlist.h"
 
 // kde includes
@@ -84,7 +85,7 @@ DiagramPrintPage::DiagramPrintPage(QWidget * parent, UMLDoc * doc)
     m_pSelectLW->addItem(UMLApp::app()->currentView()->umlScene()->name());
     m_pSelectLW->setCurrentRow(0);
     m_nIdList.clear();
-    m_nIdList.append(UMLApp::app()->currentView()->umlScene()->ID());
+    m_nIdList.append(UMLApp::app()->currentView()->umlScene()->m_model->ID());
 
     m_ViewType = Uml::DiagramType(Uml::DiagramType::Class);
     connect(m_pAllRB, SIGNAL(clicked()), this, SLOT(slotClicked()));
@@ -135,7 +136,7 @@ QString DiagramPrintPage::printUmlDiagram(int sel)
         if (isSelected(i)) {
             if (count == sel) {
                 UMLView *view = (UMLView *)m_doc->findView(m_nIdList[i]);
-                QString sID = QString("%1").arg(ID2STR(view->umlScene()->ID()));
+                QString sID = QString("%1").arg(ID2STR(view->umlScene()->m_model->ID()));
                 return sID;
             }
             count++;
@@ -198,7 +199,7 @@ void DiagramPrintPage::slotClicked()
         m_pSelectLW->clear();
         m_pSelectLW->addItem(currentScene->name());
         m_pSelectLW->setCurrentRow(0);
-        m_nIdList.append(currentScene->ID());
+        m_nIdList.append(currentScene->m_model->ID());
     }
 
     if (m_pAllRB->isChecked()) {
@@ -207,7 +208,7 @@ void DiagramPrintPage::slotClicked()
         m_pSelectLW->clear();
         foreach ( UMLView * view , list ) {
             m_pSelectLW->addItem(view->umlScene()->name());
-            m_nIdList.append(view->umlScene()->ID());
+            m_nIdList.append(view->umlScene()->m_model->ID());
         }
         m_pSelectLW->selectAll();
     }
@@ -218,7 +219,7 @@ void DiagramPrintPage::slotClicked()
         m_pSelectLW->clear();
         foreach ( UMLView * view , list) {
             m_pSelectLW->addItem(view->umlScene()->name());
-            m_nIdList.append(view->umlScene()->ID());
+            m_nIdList.append(view->umlScene()->m_model->ID());
         }
     }
 
@@ -227,9 +228,9 @@ void DiagramPrintPage::slotClicked()
         m_pSelectLW->setEnabled(true);
         m_pSelectLW->clear();
         foreach ( UMLView * view , list) {
-            if(view->umlScene()->type() == m_ViewType) {
+            if(view->umlScene()->m_model->type() == m_ViewType) {
                 m_pSelectLW->addItem(view->umlScene()->name());
-                m_nIdList.append(view->umlScene()->ID());
+                m_nIdList.append(view->umlScene()->m_model->ID());
             }
         }
         m_pSelectLW->selectAll();
@@ -253,9 +254,9 @@ void DiagramPrintPage::slotActivated(int index)
 
     m_nIdList.clear();
     foreach (UMLView * view , list) {
-        if (view->umlScene()->type() == m_ViewType) {
+        if (view->umlScene()->m_model->type() == m_ViewType) {
             m_pSelectLW->addItem(view->umlScene()->name());
-            m_nIdList.append(view->umlScene()->ID());
+            m_nIdList.append(view->umlScene()->m_model->ID());
         }
     }
     m_pSelectLW->selectAll();

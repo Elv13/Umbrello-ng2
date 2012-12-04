@@ -385,7 +385,7 @@ ListPopupMenu::ListPopupMenu(QWidget * parent, WidgetBase * object,
             //Used for sequence diagram and collaboration diagram widgets
             insertSubMenuColor(object);
             if (object->umlScene() &&
-                object->umlScene()->type() == Uml::DiagramType::Sequence) {
+                object->umlScene()->m_model->type() == Uml::DiagramType::Sequence) {
                 addSeparator();
                 MenuType tabUp = mt_Up;
                 insert(mt_Up, Icon_Utils::SmallIcon(Icon_Utils::it_Arrow_Up), i18n("Move Up"));

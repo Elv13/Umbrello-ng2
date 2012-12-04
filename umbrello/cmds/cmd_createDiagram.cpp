@@ -13,6 +13,7 @@
 #include "model_utils.h"
 #include "umldoc.h"
 #include "umlscene.h"
+#include "umlscenemodel.h"
 #include "umlview.h"
 
 #include <klocale.h>
@@ -45,7 +46,7 @@ namespace Uml
     void CmdCreateDiagram::undo()
     {
         if (m_pUMLView) {
-            m_pUMLDoc->removeDiagram(m_pUMLView->umlScene()->ID());
+            m_pUMLDoc->removeDiagram(m_pUMLView->umlScene()->m_model->ID());
         }
     }
 

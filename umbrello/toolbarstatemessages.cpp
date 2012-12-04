@@ -303,7 +303,7 @@ void ToolBarStateMessages::cleanMessage()
 
 void ToolBarStateMessages::setupMessageWidget(MessageWidget *message)
 {
-    m_pUMLScene->messageList().append(message);
+    m_pUMLScene->m_model->messageList().append(message);
     m_pUMLScene->addItem(message);
     message->activate();
 
@@ -312,7 +312,7 @@ void ToolBarStateMessages::setupMessageWidget(MessageWidget *message)
     //Shouldn't it cancel also the whole creation?
     ft->showOperationDialog();
     message->setTextPosition();
-    m_pUMLScene->widgetList().append(ft);
+    m_pUMLScene->m_model->widgetList().append(ft);
 
     UMLApp::app()->document()->setModified();
 }

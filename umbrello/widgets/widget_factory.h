@@ -27,7 +27,7 @@ namespace Widget_Factory {
     UMLWidget *createWidget(UMLScene *scene, UMLObject *docObj);
 
     UMLWidget* makeWidgetFromXMI(const QString& tag,
-                                 const QString& idStr, UMLScene *scene);
+                                 const QString& idStr/*, UMLScene *scene*/);
 
 }   // end namespace Widget_Factory
 

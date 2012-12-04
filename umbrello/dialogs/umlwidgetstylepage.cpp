@@ -14,6 +14,7 @@
 #include "optionstate.h"
 #include "uml.h"
 #include "umlscene.h"
+#include "umlscenemodel.h"
 #include "umlview.h"
 #include "widgetbase.h"
 
@@ -256,7 +257,7 @@ void UMLWidgetStylePage::updateUMLWidget()
         m_options->uiState.backgroundColor = m_BackgroundColorB->color();
         m_options->uiState.gridDotColor = m_GridDotColorB->color();
         m_options->uiState.lineWidth = m_lineWidthB->value();
-        UMLApp::app()->currentView()->umlScene()->setOptionState(*m_options);
+        UMLApp::app()->currentView()->umlScene()->m_model->setOptionState(*m_options);
     }
 
     if (!m_pUMLWidget) {  // when we are on the diagram

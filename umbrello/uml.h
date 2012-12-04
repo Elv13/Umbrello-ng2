@@ -36,6 +36,7 @@ class StatusBarToolButton;
 class DiagramPrintPage;
 class UMLWidget;
 class PowerDock;
+class ProjectDock;
 
 // KDE forward declarations
 class KActionMenu;
@@ -347,11 +348,12 @@ private:
     UMLListView* m_listView;  ///< Listview shows the current open file.
 
     QDockWidget* m_mainDock;           ///< The widget which shows the diagrams.
-    QDockWidget* m_listDock;           ///< Contains the UMLListView tree view.
+//     QDockWidget* m_listDock;           ///< Contains the UMLListView tree view.
     QDockWidget* m_documentationDock;  ///< Contains the documentation DocWindow widget.
     QDockWidget* m_cmdHistoryDock;     ///< Contains the undo/redo viewer widget.
     QDockWidget* m_propertyDock;       ///< Contains the property browser widget.
     PowerDock  * m_powerDock;          ///< Contains the keyboard friendly input widgets
+    ProjectDock* m_projectDock;        ///< Contains the curated project objects
 
     DocWindow*   m_docWindow;         ///< Documentation window.
     QUndoView*   m_pQUndoView;         ///< Undo / Redo Viewer

@@ -27,6 +27,7 @@
 #include "associationwidget.h"
 #include "object_factory.h"
 #include "model_utils.h"
+#include "umlscenemodel.h"
 
 // qt includes
 #include <QDomDocument>
@@ -436,7 +437,7 @@ bool UMLDragData::decodeClip2(const QMimeData* mimeData, UMLObjectList& objects,
         }
         UMLFolder *f = static_cast<UMLFolder*>(po);
         UMLView* view = new UMLView(f);
-        view->umlScene()->loadFromXMI(diagramElement);
+        view->umlScene()->m_model->loadFromXMI(diagramElement);
         diagrams.append(view);
         diagramNode = diagramNode.nextSibling();
         diagramElement = diagramNode.toElement();
@@ -676,7 +677,7 @@ bool UMLDragData::decodeClip4(const QMimeData* mimeData, UMLObjectList& objects,
     UMLScene *scene = view->umlScene();
     while ( !widgetElement.isNull() ) {
 
-        UMLWidget* widget = scene->loadWidgetFromXMI(widgetElement);
+        UMLWidget* widget = scene->m_model->loadWidgetFromXMI(widgetElement);
         if (widget)
             widgets.append(widget);
 

@@ -22,6 +22,7 @@
 #include "uml.h"
 #include "umldoc.h"
 #include "umlobject.h"
+#include "umlscenemodel.h"
 #include "umlscene.h"
 #include "umlview.h"
 #include "umlwidget.h"
@@ -295,7 +296,7 @@ bool ToolBarStateAssociation::addAssociationInViewAndDoc(AssociationWidget* asso
         UMLAssociation *umla = assoc->association();
         if (umla) {
             // association with model representation in UMLDoc
-            Uml::ModelType m = Model_Utils::convert_DT_MT(m_pUMLScene->type());
+            Uml::ModelType m = Model_Utils::convert_DT_MT(m_pUMLScene->m_model->type());
             UMLDoc *umldoc = UMLApp::app()->document();
             umla->setUMLPackage(umldoc->rootFolder(m));
             umldoc->addAssociation(umla);

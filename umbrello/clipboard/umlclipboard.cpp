@@ -107,9 +107,9 @@ QMimeData* UMLClipboard::copy(bool fromView/*=false*/)
             //For each selected view select all the Actors, USe Cases and Concepts
             //widgets in the ListView
             foreach (UMLView* view, m_ViewList ) {
-                UMLObjectList objects = view->umlScene()->umlObjects();
+                UMLObjectList objects = view->umlScene()->m_model->umlObjects();
                 foreach (UMLObject* o, objects ) {
-                    UMLListViewItem *item = listView->findUMLObject(o);
+                    UMLListViewItem *item = listView->m_model->findUMLObject(o);
                     if (item) {
                         listView->setCurrentItem(item);
                     }
@@ -139,7 +139,7 @@ QMimeData* UMLClipboard::copy(bool fromView/*=false*/)
         if (png) {
             UMLView *view = UMLApp::app()->currentView();
             data = new UMLDragData(m_ObjectList, m_WidgetList,
-                                   m_AssociationList, *png, view->umlScene()->type());
+                                   m_AssociationList, *png, view->umlScene()->m_model->type());
         } else {
             return 0;
         }
@@ -355,7 +355,7 @@ bool UMLClipboard::pasteChildren(UMLListViewItem *parent, IDChangeLog *chgLog)
         UMLListViewItem *childItem = static_cast<UMLListViewItem*>(parent->child(i));
         Uml::IDType oldID = childItem->ID();
         Uml::IDType newID = chgLog->findNewID(oldID);
-        UMLListViewItem *shouldNotExist = listView->findItem(newID);
+        UMLListViewItem *shouldNotExist = listView->m_model->findItem(newID);
         if (shouldNotExist) {
             uError() << "new list view item " << ID2STR(newID)
                 << " already exists (internal error)";
@@ -537,7 +537,7 @@ bool UMLClipboard::pasteClip4(const QMimeData* data)
     }
 
     UMLScene *currentScene = UMLApp::app()->currentView()->umlScene();
-    if( diagramType != currentScene->type() ) {
+    if( diagramType != currentScene->m_model->type() ) {
         if( !checkPasteWidgets(widgets) ) {
             while ( !assocs.isEmpty() ) {
                 delete assocs.takeFirst();
@@ -575,8 +575,8 @@ bool UMLClipboard::pasteClip4(const QMimeData* data)
             delete widget;
             objectAlreadyExists = true;
         } else {
-            if (currentScene->type() == Uml::DiagramType::Activity ||
-                currentScene->type() == Uml::DiagramType::State) {
+            if (currentScene->m_model->type() == Uml::DiagramType::Activity ||
+                currentScene->m_model->type() == Uml::DiagramType::State) {
                 widget->setID(doc->assignNewID(widget->id()));
             }
             if (! currentScene->addWidget(widget, true)) {

@@ -18,6 +18,7 @@
 #include "uml.h"
 #include "umldoc.h"
 #include "umlscene.h"
+#include "umlscenemodel.h"
 #include "umlview.h"
 #include "umlwidgetstylepage.h"
 
@@ -44,7 +45,7 @@ UMLViewDialog::UMLViewDialog(QWidget * pParent, UMLScene * pScene)
     setFaceType( KPageDialog::List );
     showButtonSeparator( true );
     m_pScene = pScene;
-    m_options = m_pScene->optionState();
+    m_options = m_pScene->m_model->optionState();
     setupPages();
     connect(this,SIGNAL(okClicked()),this,SLOT(slotOk()));
     connect(this,SIGNAL(applyClicked()),this,SLOT(slotApply()));
@@ -106,7 +107,7 @@ void UMLViewDialog::setupDiagramPropertiesPage()
     m_diagramProperties->ui_gridSpaceX->setValue( m_pScene->snapX());
     m_diagramProperties->ui_gridSpaceY->setValue( m_pScene->snapY());
     m_diagramProperties->ui_lineWidth->setValue( m_pScene->lineWidth());
-    m_diagramProperties->ui_documentation->setText(m_pScene->documentation());
+    m_diagramProperties->ui_documentation->setText(m_pScene->m_model->documentation());
 }
 
 /**
@@ -114,7 +115,7 @@ void UMLViewDialog::setupDiagramPropertiesPage()
  */
 void UMLViewDialog::setupClassPage()
 {
-    if ( m_pScene->type() != Uml::DiagramType::Class ) {
+    if ( m_pScene->m_model->type() != Uml::DiagramType::Class ) {
         return;
     }
     QFrame * newPage = new QFrame();
@@ -156,7 +157,7 @@ void UMLViewDialog::setupFontPage()
     addPage(m_pageFontItem);
 
     m_pChooser = new KFontChooser( (QWidget*)page, KFontChooser::NoDisplayFlags, QStringList(), 0);
-    m_pChooser->setFont( m_pScene->optionState().uiState.font );
+    m_pChooser->setFont( m_pScene->m_model->optionState().uiState.font );
 }
 
 /**
@@ -168,7 +169,7 @@ void UMLViewDialog::applyPage(KPageWidgetItem *item)
     {
         checkName();
 //:TODO:        m_pScene->setZoom( m_diagramProperties->ui_zoom->value() );
-        m_pScene->setDocumentation( m_diagramProperties->ui_documentation->toPlainText() );
+        m_pScene->m_model->setDocumentation( m_diagramProperties->ui_documentation->toPlainText() );
         m_pScene->setSnapSpacing( m_diagramProperties->ui_gridSpaceX->value(),
                                   m_diagramProperties->ui_gridSpaceY->value() );
         m_pScene->setLineWidth( m_diagramProperties->ui_lineWidth->value() );
@@ -197,7 +198,7 @@ void UMLViewDialog::applyPage(KPageWidgetItem *item)
     }
     else if ( item == m_pageDisplayItem )
     {
-        if ( m_pScene->type() != Uml::DiagramType::Class ) {
+        if ( m_pScene->m_model->type() != Uml::DiagramType::Class ) {
             return;
         }
         m_pOptionsPage->apply();
@@ -208,7 +209,7 @@ void UMLViewDialog::applyPage(KPageWidgetItem *item)
         //       sig = m_pTempWidget->getShowAttSigs();
         //       showSig = !( sig == Uml::st_NoSig || sig == Uml::st_NoSigNoVis );
         //       options.classState.showAttSig = showSig;
-        m_pScene->setOptionState( m_options );
+        m_pScene->m_model->setOptionState( m_options );
     }
 }
 
@@ -227,7 +228,7 @@ void UMLViewDialog::checkName()
 
     if (newName != m_pScene->name()) {
         UMLDoc* doc = UMLApp::app()->document();
-        UMLView* view = doc->findView(m_pScene->type(), newName);
+        UMLView* view = doc->findView(m_pScene->m_model->type(), newName);
         if (view) {
             KMessageBox::sorry(this, i18n("The name you have entered is not unique."),
                                i18n("Name Not Unique"), 0);
@@ -235,7 +236,7 @@ void UMLViewDialog::checkName()
         }
         else {
             // uDebug() << "Cannot find view with name " << newName;
-            m_pScene->setName( newName );
+            m_pScene->m_model->setName( newName );
             doc->signalDiagramRenamed(m_pScene->activeView());
         }
     }

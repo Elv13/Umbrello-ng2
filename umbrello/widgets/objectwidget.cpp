@@ -24,6 +24,7 @@
 #include "umldoc.h"
 #include "umlobject.h"
 #include "umlscene.h"
+#include "umlscenemodel.h"
 #include "umlview.h"
 
 // kde includes
@@ -96,7 +97,7 @@ Uml::IDType ObjectWidget::localID() const
 void ObjectWidget::setMultipleInstance(bool multiple)
 {
     // make sure only calling this in relation to an object on a collab. diagram
-    if (umlScene() && umlScene()->type() != Uml::DiagramType::Collaboration) {
+    if (umlScene() && umlScene()->m_model->type() != Uml::DiagramType::Collaboration) {
         return;
     }
     m_multipleInstance = multiple;
@@ -536,7 +537,7 @@ QVariant ObjectWidget::itemChange(GraphicsItemChange change, const QVariant& val
     UMLScene *uScene = umlScene();
 
     if (change == ItemPositionChange) {
-        if (uScene && uScene->type() == Uml::DiagramType::Sequence && uScene->isMouseMovingItems()) {
+        if (uScene && uScene->m_model->type() == Uml::DiagramType::Sequence && uScene->isMouseMovingItems()) {
             QPointF newPoint = value.toPointF();
             newPoint.setY(y()); // set old y, so no vertical movement
             return newPoint;
@@ -550,7 +551,7 @@ QVariant ObjectWidget::itemChange(GraphicsItemChange change, const QVariant& val
     else if (change == ItemSceneHasChanged) {
         // Create/delete Sequential line based on the type of diagram.
         if (uScene) {
-            if (uScene->type() == Uml::DiagramType::Sequence) {
+            if (uScene->m_model->type() == Uml::DiagramType::Sequence) {
                 if (!m_sequentialLine) {
                     m_sequentialLine = new SeqLineWidget(this);
                     m_sequentialLine->setLength(255);

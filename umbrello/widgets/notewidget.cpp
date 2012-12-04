@@ -21,6 +21,7 @@
 #include "uml.h"
 #include "umldoc.h"
 #include "umlscene.h"
+#include "umlscenemodel.h"
 #include "umlview.h"
 #include "widget_utils.h"
 
@@ -106,7 +107,7 @@ void NoteWidget::setDiagramLink(Uml::IDType sceneID)
         return;
     }
 
-    QString linkText("Diagram: " + view->umlScene()->name());
+    QString linkText("Diagram: " + view->umlScene()->m_model->name());
     m_diagramLink = sceneID;
 }
 

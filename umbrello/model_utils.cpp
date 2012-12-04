@@ -327,7 +327,7 @@ void treeViewAddViews(const UMLViewList& viewList)
 {
     UMLListView* tree = UMLApp::app()->listView();
     foreach (UMLView* v,  viewList) {
-        if (tree->findItem(v->umlScene()->ID()) != NULL) {
+        if (tree->m_model->findItem(v->umlScene()->m_model->ID()) != NULL) {
             continue;
         }
         tree->createDiagramItem(v);
@@ -352,7 +352,7 @@ void treeViewChangeIcon(UMLObject* object, Icon_Utils::IconType to)
 void treeViewSetCurrentItem(UMLObject* object)
 {
     UMLListView* tree = UMLApp::app()->listView();
-    UMLListViewItem* item = tree->findUMLObject(object);
+    UMLListViewItem* item = tree->m_model->findUMLObject(object);
     tree->setCurrentItem(item);
 }
 
@@ -364,8 +364,8 @@ void treeViewSetCurrentItem(UMLObject* object)
 void treeViewMoveObjectTo(UMLObject* container, UMLObject* object)
 {
     UMLListView *listView = UMLApp::app()->listView();
-    UMLListViewItem *newParent = listView->findUMLObject(container);
-    listView->moveObject(object->id(),
+    UMLListViewItem *newParent = listView->m_model->findUMLObject(container);
+    listView->m_model->moveObject(object->id(),
                    Model_Utils::convert_OT_LVT(object),
                    newParent);
 }
@@ -410,7 +410,7 @@ UMLPackage* treeViewGetPackageFromCurrent()
 QString treeViewBuildDiagramName(Uml::IDType id)
 {
     UMLListView *listView = UMLApp::app()->listView();
-    UMLListViewItem* listViewItem = listView->findItem(id);
+    UMLListViewItem* listViewItem = listView->m_model->findItem(id);
 
     if (listViewItem) {
         // skip the name of the first item because it's the View
