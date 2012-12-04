@@ -87,6 +87,7 @@
      <property name="title">
       <string>Documentation</string>
      </property>
+     <layout class="QVBoxLayout" name="verticalLayout"/>
     </widget>
    </item>
   </layout>

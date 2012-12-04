@@ -5,6 +5,7 @@
 
 #include "pagebase.h"
 class QWidget;
+class DocTextEditor;
 
 class EnumGeneral : public PageBase
 {
@@ -18,6 +19,7 @@ class EnumGeneral : public PageBase
 
     private:
         Ui_EnumGeneral* ui;
+        DocTextEditor* m_pDoc;
 
 };
 

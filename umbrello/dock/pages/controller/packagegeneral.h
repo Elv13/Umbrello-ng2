@@ -5,6 +5,7 @@
 
 #include "pagebase.h"
 class QWidget;
+class DocTextEditor;
 
 class PackageGeneral : public PageBase
 {
@@ -18,6 +19,7 @@ class PackageGeneral : public PageBase
 
     private:
         Ui_PackageGeneral* ui;
+        DocTextEditor* m_pDoc;
 
 };
 
