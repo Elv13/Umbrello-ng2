@@ -16,6 +16,9 @@ class EnumGroup : public PageGroupBase
 
        virtual void focusName();
 
+       //Getter
+       virtual PageBase* currentPage();
+
     private:
         Ui_EnumTabGroup* ui;
 

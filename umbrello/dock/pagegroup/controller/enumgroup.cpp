@@ -22,3 +22,8 @@ void EnumGroup::focusName()
     ui->m_pGeneralPage->ui->m_pClassNameLE->setFocus(Qt::OtherFocusReason);
     ui->m_pGeneralPage->ui->m_pClassNameLE->selectAll();
 }
+
+PageBase* EnumGroup::currentPage()
+{
+    return dynamic_cast<PageBase*>(ui->m_pTabW->widget(ui->m_pTabW->currentIndex()));
+}

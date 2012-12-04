@@ -16,6 +16,9 @@ class PackageGroup : public PageGroupBase
 
        virtual void focusName();
 
+       //Getter
+       virtual PageBase* currentPage();
+
     private:
         Ui_PackageTabGroup* ui;
 

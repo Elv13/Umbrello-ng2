@@ -292,6 +292,12 @@ void UMLApp::initActions()
     genAll->setText(i18n("&Generate All Code"));
     connect(genAll, SIGNAL(triggered(bool)), this, SLOT(slotGenerateAllCode()));
 
+    //For powerDock only
+    KAction* addRowAction = actionCollection()->addAction("add_row");
+    addRowAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Space));
+    addRowAction->setText(i18n("&Add row"));
+    connect(addRowAction, SIGNAL(triggered(bool)), this, SLOT(slotAddRow()));
+
     setProgLangAction(Uml::ProgrammingLanguage::ActionScript, "ActionScript",    "setLang_actionscript");
     setProgLangAction(Uml::ProgrammingLanguage::Ada,          "Ada",             "setLang_ada");
     setProgLangAction(Uml::ProgrammingLanguage::Cpp,          "C++",             "setLang_cpp");
@@ -2167,6 +2173,16 @@ void UMLApp::slotGenerateAllCode()
 {
     if (m_codegen) {
         m_codegen->writeCodeToFile();
+    }
+}
+
+/**
+ * Add new row to the dock if it is visible
+ */
+void UMLApp::slotAddRow()
+{
+    if (m_powerDock->isVisible()) {
+        m_powerDock->addRow();
     }
 }
 

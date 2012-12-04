@@ -148,3 +148,11 @@ void PowerDock::focusName()
         m_pCurrentPageGroup->focusName();
     }
 }
+
+
+void PowerDock::addRow()
+{
+    if (m_pCurrentPageGroup && m_pCurrentPageGroup->currentPage()) {
+        m_pCurrentPageGroup->currentPage()->addRow();
+    }
+}

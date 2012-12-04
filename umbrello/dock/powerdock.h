@@ -26,6 +26,7 @@ public:
 
     //Mutator
     void focusName();
+    void addRow();
 
 private:
     //Enum

@@ -51,3 +51,10 @@ void ClassAttributes::rowsInserted ()
         }
     }
 }
+
+void ClassAttributes::addRow()
+{
+//     ui->m_pTable->selectRow(m_pModel->rowCount()-1);
+    ui->m_pTable->setFocus(Qt::OtherFocusReason);
+    ui->m_pTable->selectionModel()->setCurrentIndex(m_pModel->index(m_pModel->rowCount()-1,0),QItemSelectionModel::Select|QItemSelectionModel::Current);
+}

@@ -27,3 +27,12 @@ void ClassGroup::focusName()
     ui->m_pGeneralPage->ui->m_pClassNameLE->setFocus(Qt::OtherFocusReason);
     ui->m_pGeneralPage->ui->m_pClassNameLE->selectAll();
 }
+
+PageBase* ClassGroup::currentPage()
+{
+    if (ui->m_pTabW->currentIndex() ==1)
+        return ui->m_pAttributesPage;
+    else if (ui->m_pTabW->currentIndex() ==2)
+        return ui->m_pAttributesPage;
+    return 0;
+}

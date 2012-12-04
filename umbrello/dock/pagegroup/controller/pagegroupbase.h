@@ -6,6 +6,7 @@
 #include <QtGui/QWidget>
 
 class UMLObject;
+class PageBase;
 
 class PageGroupBase : public QWidget
 {
@@ -18,6 +19,9 @@ class PageGroupBase : public QWidget
        virtual void setCurrentObject(UMLObject* o) = 0;
 
        virtual void focusName() = 0;
+
+       //Getter
+       virtual PageBase* currentPage() =0;
 
 };
 

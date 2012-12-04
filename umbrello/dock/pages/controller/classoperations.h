@@ -17,6 +17,9 @@ class ClassOperations : public PageBase
        //Setters
        virtual void setCurrentObject(UMLObject* o);
 
+       //Mutator
+       virtual void addRow();
+
     private:
         Ui_GenericTable* ui;
         ClassOperationsModel* m_pModel;

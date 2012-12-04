@@ -251,6 +251,7 @@ public slots:
     void slotDeleteDiagram();
     void slotCloseDiagram(QWidget* tab);
     void slotGenerateAllCode();
+    void slotAddRow();
 
     void slotSetZoom(QAction* action);
     void slotZoomSliderMoved(int value);

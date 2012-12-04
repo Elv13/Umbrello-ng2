@@ -15,6 +15,9 @@ class PageBase : public QWidget
 
        //Settings
        virtual void setCurrentObject(UMLObject* o) =0;
+       
+       //Mutator
+       virtual void addRow(){};
 };
 
 #endif

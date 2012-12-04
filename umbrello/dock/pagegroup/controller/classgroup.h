@@ -16,6 +16,9 @@ class ClassGroup : public PageGroupBase
 
        virtual void focusName();
 
+       //Getter
+       virtual PageBase* currentPage();
+
     private:
         Ui_ClassTabGroup* ui;
 

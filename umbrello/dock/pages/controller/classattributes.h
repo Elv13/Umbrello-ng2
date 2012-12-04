@@ -17,6 +17,9 @@ class ClassAttributes : public PageBase
        //Setters
        virtual void setCurrentObject(UMLObject* o);
 
+       //Mutator
+       virtual void addRow();
+
     private:
         Ui_GenericTable* ui;
         ClassAttributesModel* m_pModel;
