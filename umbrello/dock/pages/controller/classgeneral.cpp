@@ -2,10 +2,16 @@
 
 #include <QtGui/QWidget>
 #include "umlobject.h"
+#include <KTextEditor/Document>
+#include <KTextEditor/View>
+#include "texteditor/controller/doctexteditor.h"
 
 ClassGeneral::ClassGeneral(QWidget* parent) : PageBase(parent),ui(new Ui_ClassGeneral()),m_object(0)
 {
     ui->setupUi(this);
+    
+    m_pDoc = new DocTextEditor(this);
+    ui->verticalLayout->addWidget(m_pDoc->widget());
     connect(ui->m_pClassNameLE,SIGNAL(textChanged(QString)),this,SLOT(slotNameChanged(QString)));
     connect(ui->m_pPackageLE,SIGNAL(textChanged(QString)),this,SLOT(slotPackageChanged(QString)));
 //     connect(ui->,SIGNAL(),,SLOT());
@@ -26,6 +32,7 @@ void ClassGeneral::setCurrentObject(UMLObject* o)
 //     ui->m_pVisibilityCBB->setValue(o->visibility());
     ui->m_pStereotypeCBB->lineEdit()->setText(o->stereotype());
     ui->m_pAbstractCK->setChecked(o->isAbstract());
+    m_pDoc->doc()->setText(o->doc());
 }
 
 void ClassGeneral::slotNameChanged(QString name)

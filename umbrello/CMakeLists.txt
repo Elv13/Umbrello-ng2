@@ -1,5 +1,6 @@
 add_subdirectory( pics )
 add_subdirectory( headings )
+add_subdirectory( doclanguage/xml )
 
 add_definitions(-DQT3_SUPPORT_WARNINGS)
 
@@ -296,6 +297,23 @@ kde4_add_ui_files(libprojectdock_SRCS
     projectdock/view/projectdock.ui
 )
 
+set (libdoclanguage_SRCS
+    doclanguage/argtype.cpp
+    doclanguage/docarg.cpp
+    doclanguage/doctagbloc.cpp
+    doclanguage/dynamicdoclang.cpp
+    doclanguage/doctextbloc.cpp
+    doclanguage/doctextblocbase.cpp
+    doclanguage/commentbloc.cpp
+)
+
+set (libtexteditor_SRCS
+    texteditor/controller/doctexteditor.cpp
+    texteditor/controller/texteditorbase.cpp
+    texteditor/controller/codetexteditor.cpp
+    texteditor/model/doccompletionmodel.cpp
+)
+
 set(librefactoring_SRCS
     refactoring/refactoringassistant.cpp
 )
@@ -531,6 +549,8 @@ set(umbrello_SRCS
     ${libdialogs_SRCS}
     ${libdocks_SRCS}
     ${libprojectdock_SRCS}
+    ${libdoclanguage_SRCS}
+    ${libtexteditor_SRCS}
     ${librefactoring_SRCS}
     ${libcodegenwizard_SRCS}
     ${libcodeimpwizard_SRCS}
@@ -547,7 +567,7 @@ set(umbrello_SRCS
 
 kde4_add_app_icon(umbrello_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/global/hi*-app-umbrello.png")
 kde4_add_executable(umbrello-soc ${umbrello_SRCS})
-target_link_libraries(umbrello-soc  ${KDE4_KFILE_LIBS} ${KDE4_KDE3SUPPORT_LIBS} ${LIBXML2_LIBRARIES} ${LIBXSLT_LIBRARIES} ${LIBUUID} )
+target_link_libraries(umbrello-soc  ${KDE4_KFILE_LIBS} ${KDE4_KDE3SUPPORT_LIBS} ${LIBXML2_LIBRARIES} ${LIBXSLT_LIBRARIES} ${LIBUUID} ${KDE4_KTEXTEDITOR_LIBS})
 install(TARGETS umbrello-soc ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### install files #############

@@ -1,0 +1,4923 @@
+<!--
+  Doxygen language definition based on official Doxygen website.
+  Author: Emmanuel Lepage Vallee <elv1313@gmail.com>
+ -->
+<xml>
+  <language name="Doxygen" version="1.7.4" >
+    <argtype>
+      <type name="qwertyuiop">
+        regex
+      </type>
+      <type name="dfcjhfrt">
+        regex
+      </type>
+      <type name="asdfghjkl">
+        regex
+      </type>
+      <type name="zxcvbnm">
+        regex
+      </type>
+      <type name="poiuytrewq">
+        regex
+      </type>
+      <type name="lkjhgfdsa">
+        regex
+      </type>
+      <type name="mnbvcxz">
+        regex
+      </type>
+      <type name="qgdbxgdjevt">
+        regex
+      </type>
+      <type name="ynnumjfe">
+        regex
+      </type>
+      <type name="fghghjkrds">
+        regex
+      </type>
+      <type name="iusdfdsfg">
+        regex
+      </type>
+    </argtype>
+    <prefixes>
+      <prefix name="@" />
+      <prefix name="/" />
+    </prefixes>
+    <blocks>
+      <bloc language="C++"  open="/**" close="*/" />
+      <bloc language="C++"  open="///" close="\n" />
+      <bloc language="Java" open="/**" close="*/" />
+      <!--TODO-->
+    </blocks>
+  </language>
+  <tags>
+    <tag id='a'>
+	<name>
+	  a
+	</name>
+	<args>
+            <arg type="dfcjhfrt">
+                &lt;word&gt;br
+            </arg>
+	</args>
+	<short>
+	  Displays the argument &lt;word&gt; in italics.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Displays the argument &lt;word&gt; in italics. Use this command to emphasize words. Use this command to refer to member arguments in the running text.
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>
+	      <div class="fragment">
+		<pre class="fragment">
+		    ... the \a x and \a y coordinates are used to ...
+		</pre>
+	      </div>
+	      This will result in the following text:
+	      <br />
+	      <br />
+	      ... the
+	      <em>
+		x
+	      </em>
+	      and
+	      <em>
+		ysfs
+	      </em>
+	      coordinates are used to ...</dd>
+	  </dl>
+	  <p>
+	      Equivalent to<a class="el" href="commands.html#cmda">\e</a>and<a class="el" href="commands.html#cmdem">\em</a>. To emphasize multiple words use &lt;em&gt;multiple words&lt;/em&gt;.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='addindex'>
+	<name>
+	  addindex
+	</name>
+	<args>
+            <arg type="asdfghjkl">
+                (text)
+            </arg>
+	</args>
+	<short>
+	  This command adds (text) to the
+	  <img class="formulaInl" alt="$\mbox{\LaTeX}$" src="form_0.png"/>
+	  index.
+	</short>
+	<description><![CDATA[
+	  This command adds (text) to the
+	  <img class="formulaInl" alt="$\mbox{\LaTeX}$" src="form_0.png"/>
+	  index.
+	]]></description>
+    </tag>
+    <tag id='addtogroup'>
+	<name>
+	  addtogroup
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+            <arg type="zxcvbnm">
+                [(title)]
+            </arg>
+	</args>
+	<short>
+	  Defines a group just like \defgroup
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Defines a group just like<a class="el" href="commands.html#cmddefgroup">\defgroup</a>, but in contrast to that command using the same &lt;name&gt; more than once will not result in a warning, but rather one group with a merged documentation and the first title found in any of the commands.
+	  </p>
+	  <p>
+	      The title is optional, so this command can also be used to add a number of entities to an existing group using @{ and @} like this:
+	  </p>
+	  <div class="fragment">
+	      <pre class="fragment">
+		/*! \addtogroup mygrp
+    *  Additional documentation for group `mygrp'
+    *  @{
+    */
+
+    /*!
+    *  A function
+    */
+    void func1()
+    {
+    }
+
+    /*! Another function */
+    void func2()
+    {
+    }
+
+    /*! @} */
+	      </pre>
+	  </div>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>page<a class="el" href="grouping.html">Grouping</a>, sections<a class="el" href="commands.html#cmddefgroup">\defgroup</a>,<a class="el" href="commands.html#cmdingroup">\ingroup</a>, and<a class="el" href="commands.html#cmdweakgroup">\weakgroup</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='anchor'>
+	<name>
+	  anchor
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;word&gt;
+            </arg>
+	</args>
+	<short>
+	  This command places an invisible, named anchor into the documentation
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command places an invisible, named anchor into the documentation to which you can refer with the \ref command.
+	  </p>
+	  <dl class="note">
+	      <dt>
+	      <b>Note:</b>
+	      </dt>
+	      <dd>Anchors can currently only be put into a comment block that is marked as a page (using<a class="el" href="commands.html#cmdpage">\page</a>) or mainpage (<a class="el" href="commands.html#cmdmainpage">\mainpage</a>).</dd>
+	  </dl>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdref">\ref</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='arg'>
+	<name>
+	  arg
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { item-description }
+            </arg>
+	</args>
+	<short>
+	  This command has one argument that continues until the first blank line
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command has one argument that continues until the first blank line or until another \arg is encountered. The command can be used to generate a simple, not nested list of arguments. Each argument should start with a \arg command.
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>Typing:
+	      <div class="fragment">
+		<pre class="fragment">
+		    \arg \c AlignLeft left alignment.
+    \arg \c AlignCenter center alignment.
+    \arg \c AlignRight right alignment
+
+    No other types of alignment are supported.
+		</pre>
+	      </div>
+	      will result in the following text:
+	      <br />
+	      <br />
+	      <ul>
+		<li>
+		<code>
+		    AlignLeft
+		</code>
+		left alignment.</li>
+		<li>
+		<code>
+		    AlignCenter
+		</code>
+		center alignment.</li>
+		<li>
+		<code>
+		    AlignRight
+		</code>
+		right alignment</li>
+	      </ul>
+	      <br />
+	      No other types of alignment are supported.</dd>
+	  </dl>
+	  <dl class="user">
+	      <dt>
+	      <b>Note:</b>
+	      </dt>
+	      <dd>For nested lists, HTML commands should be used.</dd>
+	  </dl>
+	  <p>
+	      Equivalent to<a class="el" href="commands.html#cmdli">\li</a>
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='attention'>
+	<name>
+	  attention
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { attention text }
+            </arg>
+	</args>
+	<short>
+	  Starts a paragraph where a message that needs attention may be entered.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a paragraph where a message that needs attention may be entered. The paragraph will be indented. The text of the paragraph has no special internal structure. All visual enhancement commands may be used inside the paragraph. Multiple adjacent \attention commands will be joined into a single paragraph. The \attention command ends when a blank line or some other sectioning command is encountered.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='author'>
+	<name>
+	  author
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { list of authors }
+            </arg>
+	</args>
+	<short>
+	  Starts a paragraph where one or more author names may be entered.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a paragraph where one or more author names may be entered. The paragraph will be indented. The text of the paragraph has no special internal structure. All visual enhancement commands may be used inside the paragraph. Multiple adjacent \author commands will be joined into a single paragraph. Each author description will start a new line. Alternatively, one \author command may mention several authors. The \author command ends when a blank line or some other sectioning command is encountered.
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>
+	      <div class="fragment">
+		<pre class="fragment">
+		    /*! \class WindowsNT
+  *  \brief Windows Nice Try.
+  *  \author Bill Gates
+  *  \author Several species of small furry animals gathered together 
+  *          in a cave and grooving with a pict.
+  *  \version 4.0
+  *  \date    1996-1998
+  *  \bug It crashes a lot and requires huge amounts of memory.
+  *  \bug The class introduces the more bugs, the longer it is used.
+  *  \warning This class may explode in your face.
+  *  \warning If you inherit anything from this class, you're doomed.
+  */
+
+  class WindowsNT {};
+		</pre>
+	      </div>
+	      Click<a href="./examples/author/html/class_windows_n_t.html">here</a>for the corresponding HTML documentation that is generated by doxygen.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='authors'>
+	<name>
+	  authors
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { list of authors }
+            </arg>
+	</args>
+	<short>
+	  Equivalent to<a class="el" href="commands.html#cmdauthor">\author</a>.
+	</short>
+	<description><![CDATA[
+	  Equivalent to<a class="el" href="commands.html#cmdauthor">\author</a>.
+	]]></description>
+    </tag>
+    <tag id='b'>
+	<name>
+	  b
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;word&gt;
+            </arg>
+	</args>
+	<short>
+	  Displays the argument &lt;word&gt; using a bold font.
+	</short>
+	<description><![CDATA[
+	  Displays the argument &lt;word&gt; using a bold font. Equivalent to &lt;b&gt;word&lt;/b&gt;. To put multiple words in bold use &lt;b&gt;multiple words&lt;/b&gt;.
+	]]></description>
+    </tag>
+    <tag id='brief'>
+	<name>
+	  brief
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { brief description }
+            </arg>
+	</args>
+	<short>
+	  Starts a paragraph that serves as a brief description.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a paragraph that serves as a brief description. For classes and files the brief description will be used in lists and at the start of the documentation page. For class and file members, the brief description will be placed at the declaration of the member and prepended to the detailed description. A brief description may span several lines (although it is advised to keep it brief!). A brief description ends when a blank line or another sectioning command is encountered. If multiple \brief commands are present they will be joined. See section<a class="el" href="commands.html#cmdauthor">\author</a>for an example.
+	  </p>
+	  <p>
+	      Synonymous to \short.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='bug'>
+	<name>
+	  bug
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { bug description }
+            </arg>
+	</args>
+	<short>
+	  Starts a paragraph where one or more bugs may be reported.
+	</short>
+	<description><![CDATA[
+	  Starts a paragraph where one or more bugs may be reported. The paragraph will be indented. The text of the paragraph has no special internal structure. All visual enhancement commands may be used inside the paragraph. Multiple adjacent \bug commands will be joined into a single paragraph. Each bug description will start on a new line. Alternatively, one \bug command may mention several bugs. The \bug command ends when a blank line or some other sectioning command is encountered. See section<a class="el" href="commands.html#cmdauthor">\author</a>for an example.
+	]]></description>
+    </tag>
+    <tag id='c'>
+	<name>
+	  c
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;word&gt;
+            </arg>
+	</args>
+	<short>
+	  Displays the argument &lt;word&gt; using a typewriter font.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Displays the argument &lt;word&gt; using a typewriter font. Use this to refer to a word of code. Equivalent to &lt;tt&gt;word&lt;/tt&gt;.
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>Typing:
+	      <div class="fragment">
+		<pre class="fragment">
+		    ... This function returns \c void and not \c int ...
+		</pre>
+	      </div>
+	      will result in the following text:
+	      <br />
+	      <br />
+	      ... This function returns
+	      <code>
+		void
+	      </code>
+	      and not
+	      <code>
+		int
+	      </code>
+	      ...</dd>
+	  </dl>
+	  <p>
+	      Equivalent to<a class="el" href="commands.html#cmdp">\p</a>To have multiple words in typewriter font use &lt;tt&gt;multiple words&lt;/tt&gt;.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='callgraph'>
+	<name>
+	  callgraph
+	</name>
+	<args>
+	</args>
+	<short>
+	</short>
+	<description><![CDATA[
+	  <p>
+	      When this command is put in a comment block of a function or method and<a class="el" href="config.html#cfg_have_dot">HAVE_DOT</a>is set to YES, then doxygen will generate a call graph for that function (provided the implementation of the function or method calls other documented functions). The call graph will be generated regardless of the value of<a class="el" href="config.html#cfg_call_graph">CALL_GRAPH</a>.
+	  </p>
+	  <dl class="note">
+	      <dt>
+	      <b>Note:</b>
+	      </dt>
+	      <dd>The completeness (and correctness) of the call graph depends on the doxygen code parser which is not perfect.</dd>
+	  </dl>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdcallergraph">\callergraph</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='callergraph'>
+	<name>
+	  callergraph
+	</name>
+	<args>
+	</args>
+	<short>
+            When this command is put in a comment block of a function, doxygen will generate a caller graph for that function
+	</short>
+	<description><![CDATA[
+	  <p>
+	      When this command is put in a comment block of a function or method and<a class="el" href="config.html#cfg_have_dot">HAVE_DOT</a>is set to YES, then doxygen will generate a caller graph for that function (provided the implementation of the function or method calls other documented functions). The caller graph will be generated regardless of the value of<a class="el" href="config.html#cfg_caller_graph">CALLER_GRAPH</a>.
+	  </p>
+	  <dl class="note">
+	      <dt>
+	      <b>Note:</b>
+	      </dt>
+	      <dd>The completeness (and correctness) of the caller graph depends on the doxygen code parser which is not perfect.</dd>
+	  </dl>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdcallgraph">\callgraph</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='category'>
+	<name>
+	  category
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt; 
+            </arg>
+            <arg type="lkjhgfdsa">
+                [&lt;header-file&gt;]
+            </arg>
+            <arg type="lkjhgfdsa">
+                [&lt;header-name&gt;]
+            </arg>
+	</args>
+	<short>
+            (Obj-C only) Indicates that a comment block contains documentation for a class category
+	</short>
+	<description><![CDATA[
+	  <p>
+	      For Objective-C only: Indicates that a comment block contains documentation for a class category with name &lt;name&gt;. The arguments are equal to the \class command.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdclass">\class</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='class'>
+	<name>
+	  class
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+            <arg type="lkjhgfdsa">
+                [&lt;header-file&gt;]
+            </arg>
+            <arg type="lkjhgfdsa">
+                [&lt;header-name&gt;]
+            </arg>
+	</args>
+	<short>
+            Indicates that a comment block contains documentation for a class
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that a comment block contains documentation for a class with name &lt;name&gt;. Optionally a header file and a header name can be specified. If the header-file is specified, a link to a verbatim copy of the header will be included in the HTML documentation. The &lt;header-name&gt; argument can be used to overwrite the name of the link that is used in the class documentation to something other than &lt;header-file&gt;. This can be useful if the include name is not located on the default include path (like &lt;X11/X.h&gt;). With the &lt;header-name&gt; argument you can also specify how the include statement should look like, by adding either quotes or sharp brackets around the name. Sharp brackets are used if just the name is given. Note that the last two arguments can also be specified using the<a class="el" href="commands.html#cmdheaderfile">\headerfile</a>command.
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>
+	      <div class="fragment">
+		<pre class="fragment">
+		    /* A dummy class */
+
+  class Test
+  {
+  };
+
+  /*! \class Test class.h "inc/class.h"
+  *  \brief This is a test class.
+  *
+  * Some details about the Test class
+  */
+		</pre>
+	      </div>
+	      Click<a href="./examples/class/html/index.html">here</a>for the corresponding HTML documentation that is generated by doxygen.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='code'>
+	<name>
+	  code
+	</name>
+	<args>
+	</args>
+	<short>
+            Starts a block of code
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a block of code. A code block is treated differently from ordinary text. It is interpreted as C/C++ code. The names of the classes and members that are documented are automatically replaced by links to the documentation.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdendcode">\endcode</a>and section<a class="el" href="commands.html#cmdverbatim">\verbatim</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='cond'>
+	<name>
+	  cond
+	</name>
+	<args>
+            <arg type="lkjhgfdsa">
+                [&lt;section-label&gt;]
+            </arg>
+	</args>
+	<short>
+            Starts a conditional section
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a conditional section that ends with a corresponding<a class="el" href="commands.html#cmdendcond">\endcond</a>command, which is typically found in another comment block. The main purpose of this pair of commands is to (conditionally) exclude part of a file from processing (in older version of doxygen this could only be achieved using C preprocessor commands).
+	  </p>
+	  <p>
+	      The section between \cond and \endcond commands can be included by adding its section label to the<a class="el" href="config.html#cfg_enabled_sections">ENABLED_SECTIONS</a>configuration option. If the section label is omitted, the section will be excluded from processing unconditionally.
+	  </p>
+	  <p>
+	      For conditional sections within a comment block one should use a<a class="el" href="commands.html#cmdif">\if</a>...<a class="el" href="commands.html#cmdendif">\endif</a>block.
+	  </p>
+	  <p>
+	      Conditional sections can be nested. In this case a nested section will only be shown if it and its containing section are included.
+	  </p>
+	  <p>
+	      Here is an example showing the commands in action:
+	  </p>
+	  <div class="fragment">
+	      <pre class="fragment">
+		/** An interface */
+  class Intf
+  {
+    public:
+      /** A method */
+      virtual void func() = 0;
+
+      /// @cond TEST
+
+      /** A method used for testing */
+      virtual void test() = 0;
+
+      /// @endcond
+  };
+
+  /// @cond DEV
+  /*
+  *  The implementation of the interface
+  */
+  class Implementation : public Intf
+  {
+    public:
+      void func();
+
+      /// @cond TEST
+      void test();
+      /// @endcond
+
+      /// @cond
+      /** This method is obsolete and does
+      *  not show up in the documentation.
+      */
+      void obsolete();
+      /// @endcond
+  };
+
+  /// @endcond
+	      </pre>
+	  </div>
+	  <p>
+	      The output will be different depending on whether or not
+	      <code>
+		ENABLED_SECTIONS
+	      </code>
+	      contains
+	      <code>
+		TEST
+	      </code>
+	      , or
+	      <code>
+		DEV
+	      </code>
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdendcond">\endcond</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='copybrief'>
+	<name>
+	  copybrief
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;link-object&gt;
+            </arg>
+	</args>
+	<short>
+            Copy the brief description from the object specified
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Works in a similar way as<a class="el" href="commands.html#cmdcopydoc">\copydoc</a>but will only copy the brief description, not the detailed documentation.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='copydetails'>
+	<name>
+	  copydetails
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;link-object&gt;
+            </arg>
+	</args>
+	<short>
+            Copy the detailed documentation from the object specified
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Works in a similar way as<a class="el" href="commands.html#cmdcopydoc">\copydoc</a>but will only copy the detailed documentation, not the brief description.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='copydoc'>
+	<name>
+	  copydoc
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;link-object&gt;
+            </arg>
+	</args>
+	<short>
+            Copies a documentation block from the object specified
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Copies a documentation block from the object specified by &lt;link-object&gt; and pastes it at the location of the command. This command can be useful to avoid cases where a documentation block would otherwise have to be duplicated or it can be used to extend the documentation of an inherited member.
+	  </p>
+	  <p>
+	      The link object can point to a member (of a class, file or group), a class, a namespace, a group, a page, or a file (checked in that order). Note that if the object pointed to is a member (function, variable, typedef, etc), the compound (class, file, or group) containing it should also be documented for the copying to work.
+	  </p>
+	  <p>
+	      To copy the documentation for a member of a class for instance one can put the following in the documentation
+	  </p>
+	  <div class="fragment">
+	      <pre class="fragment">
+		/*! @copydoc MyClass::myfunction()
+    *  More documentation.
+    */
+	      </pre>
+	  </div>
+	  <p>
+	      if the member is overloaded, you should specify the argument types explicitly (without spaces!), like in the following:
+	  </p>
+	  <div class="fragment">
+	      <pre class="fragment">
+		/*! @copydoc MyClass::myfunction(type1,type2) */
+	      </pre>
+	  </div>
+	  <p>
+	      Qualified names are only needed if the context in which the documentation block is found requires them.
+	  </p>
+	  <p>
+	      The \copydoc command can be used recursively, but cycles in the \copydoc relation will be broken and flagged as an error.
+	  </p>
+	  <p>
+	      Note that both the brief description and the detailed documentation will be copied. See<a class="el" href="commands.html#cmdcopybrief">\copybrief</a>and<a class="el" href="commands.html#cmdcopydetails">\copydetails</a>for copying only the brief or detailed part of the comment block.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>sections<a class="el" href="commands.html#cmdcopybrief">\copybrief</a>and<a class="el" href="commands.html#cmdcopydetails">\copydetails</a></dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='date'>
+	<name>
+	  date
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { date description }
+            </arg>
+	</args>
+	<short>
+            Starts a paragraph where one or more dates may be entered
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a paragraph where one or more dates may be entered. The paragraph will be indented. The text of the paragraph has no special internal structure. All visual enhancement commands may be used inside the paragraph. Multiple adjacent \date commands will be joined into a single paragraph. Each date description will start on a new line. Alternatively, one \date command may mention several dates. The \date command ends when a blank line or some other sectioning command is encountered. See section<a class="el" href="commands.html#cmdauthor">\author</a>for an example.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='def'>
+	<name>
+	  def
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+	</args>
+	<short>
+            Indicates that a comment block contains documentation for a #define
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that a comment block contains documentation for a
+	      <code>
+		#define
+	      </code>
+	      macro.
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>
+	      <div class="fragment">
+		<pre class="fragment">
+		    /*! \file define.h
+      \brief testing defines
+      
+      This is to test the documentation of defines.
+  */
+
+  /*!
+    \def MAX(x,y)
+    Computes the maximum of \a x and \a y.
+  */
+
+  /*! 
+    Computes the absolute value of its argument \a x.
+  */
+  #define ABS(x) (((x)&gt;0)?(x):-(x))
+  #define MAX(x,y) ((x)&gt;(y)?(x):(y))
+  #define MIN(x,y) ((x)&gt;(y)?(y):(x)) 
+	  /*!&lt; Computes the minimum of \a x and \a y. */
+		</pre>
+	      </div>
+	      Click<a href="./examples/define/html/define_8h.html">here</a>for the corresponding HTML documentation that is generated by doxygen.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='defgroup'>
+	<name>
+	  defgroup
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+            <arg type="asdfghjkl">
+                (group title)
+            </arg>
+	</args>
+	<short>
+            Indicates that a comment block contains documentation for a group
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that a comment block contains documentation for a<a class="el" href="grouping.html#modules">group</a>of classes, files or namespaces. This can be used to categorize classes, files or namespaces, and document those categories. You can also use groups as members of other groups, thus building a hierarchy of groups.
+	  </p>
+	  <p>
+	      The &lt;name&gt; argument should be a single-word identifier.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>page<a class="el" href="grouping.html">Grouping</a>, sections<a class="el" href="commands.html#cmdingroup">\ingroup</a>,<a class="el" href="commands.html#cmdaddtogroup">\addtogroup</a>, and<a class="el" href="commands.html#cmdweakgroup">\weakgroup</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='deprecated'>
+	<name>
+	  deprecated
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { description }
+            </arg>
+	</args>
+	<short>
+            Starts a paragraph indicating that this documentation block belongs to a deprecated entity
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a paragraph indicating that this documentation block belongs to a deprecated entity. Can be used to describe alternatives, expected life span, etc.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='details'>
+	<name>
+	  details
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { detailed decription }
+            </arg>
+	</args>
+	<short>
+            Starts the detailed description
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Just like<a class="el" href="commands.html#cmdbrief">\brief</a>starts a brief description, \details starts the detailed description. You can also start a new paragraph (blank line) then the \details command is not needed.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='dir'>
+	<name>
+	  dir
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { detailed decription }
+            </arg>
+	</args>
+	<short>
+            
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Just like<a class="el" href="commands.html#cmdbrief">\brief</a>starts a brief description, \details starts the detailed description. You can also start a new paragraph (blank line) then the \details command is not needed.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='dontinclude'>
+	<name>
+	  dontinclude
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;file-name&gt;
+            </arg>
+	</args>
+	<short>
+            Parse a source file without actually verbatim including it in the document
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command can be used to parse a source file without actually verbatim including it in the documentation (as the \include command does). This is useful if you want to divide the source file into smaller pieces and add documentation between the pieces. Source files or directories can be specified using the<a class="el" href="config.html#cfg_example_path">EXAMPLE_PATH</a>tag of doxygen's configuration file.
+	  </p>
+	  <p>
+	      The class and member declarations and definitions inside the code fragment are `remembered' during the parsing of the comment block that contained the \dontinclude command.
+	  </p>
+	  <p>
+	      For line by line descriptions of source files, one or more lines of the example can be displayed using the \line, \skip, \skipline, and \until commands. An internal pointer is used for these commands. The \dontinclude command sets the pointer to the first line of the example.
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>
+	      <div class="fragment">
+		<pre class="fragment">
+		    /*! A test class. */
+
+  class Test
+  {
+    public:
+      /// a member function
+      void example();
+  };
+
+  /*! \page example
+  *  \dontinclude example_test.cpp
+  *  Our main function starts like this:
+  *  \skip main
+  *  \until {
+  *  First we create a object \c t of the Test class.
+  *  \skipline Test
+  *  Then we call the example member function 
+  *  \line example
+  *  After that our little test routine ends.
+  *  \line }
+  */
+		</pre>
+	      </div>
+	      Where the example file
+	      <code>
+		example_test.cpp
+	      </code>
+	      looks as follows:
+	      <div class="fragment">
+		<pre class="fragment">
+		    void main()
+  {
+    Test t;
+    t.example();
+  }
+		</pre>
+	      </div>
+	      Click<a href="./examples/include/html/example.html">here</a>for the corresponding HTML documentation that is generated by doxygen.</dd>
+	  </dl>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>sections<a class="el" href="commands.html#cmdline">\line</a>,<a class="el" href="commands.html#cmdskip">\skip</a>,<a class="el" href="commands.html#cmdskipline">\skipline</a>,<a class="el" href="commands.html#cmduntil">\until</a>, and<a class="el" href="commands.html#cmdinclude">\include</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='dot'>
+	<name>
+	  dot
+	</name>
+	<args>
+	</args>
+	<short>
+            Starts a text fragment which should contain a valid description of a dot graph
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a text fragment which should contain a valid description of a dot graph. The text fragment ends with<a class="el" href="commands.html#cmdenddot">\enddot</a>. Doxygen will pass the text on to dot and include the resulting image (and image map) into the output. The nodes of a graph can be made clickable by using the URL attribute. By using the command \ref inside the URL value you can conveniently link to an item inside doxygen. Here is an example:
+	  </p>
+	  <div class="fragment">
+	      <pre class="fragment">
+		<span class="comment">
+		    /*! class B */
+		</span>
+		<span class="keyword">
+		    class
+		</span>
+		B {};
+		<span class="comment">
+		</span>
+		<span class="comment">
+		    /*! class C */
+		</span>
+		<span class="keyword">
+		    class
+		</span>
+		C {};
+		<span class="comment">
+		</span>
+		<span class="comment">
+		    /*! \mainpage
+		</span>
+		<span class="comment">
+		</span>
+		<span class="comment">
+		    Class relations expressed via an inline dot graph:
+		</span>
+		<span class="comment">
+		    \dot
+		</span>
+		<span class="comment">
+		    digraph example {
+		</span>
+		<span class="comment">
+		    node [shape=record, fontname=Helvetica, fontsize=10];
+		</span>
+		<span class="comment">
+		    b [ label=&quot;class B&quot; URL=&quot;\ref B&quot;];
+		</span>
+		<span class="comment">
+		    c [ label=&quot;class C&quot; URL=&quot;\ref C&quot;];
+		</span>
+		<span class="comment">
+		    b -&gt; c [ arrowhead=&quot;open&quot;, style=&quot;dashed&quot; ];
+		</span>
+		<span class="comment">
+		    }
+		</span>
+		<span class="comment">
+		    \enddot
+		</span>
+		<span class="comment">
+		    Note that the classes in the above graph are clickable
+		</span>
+		<span class="comment">
+		    (in the HTML output).
+		</span>
+		<span class="comment">
+		    */
+		</span>
+	      </pre>
+	  </div>
+	]]></description>
+    </tag>
+    <tag id='dotfile'>
+	<name>
+	  dotfile
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;file&gt;
+            </arg>
+            <arg type="mnbvcxz">
+                ["caption"]
+            </arg>
+	</args>
+	<short>
+            Inserts an image generated by dot
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Inserts an image generated by dot from &lt;file&gt; into the documentation.
+	  </p>
+	  <p>
+	      The first argument specifies the file name of the image. doxygen will look for files in the paths (or files) that you specified after the<a class="el" href="config.html#cfg_dotfile_dirs">DOTFILE_DIRS</a>tag. If the dot file is found it will be used as an input file to the dot tool. The resulting image will be put into the correct output directory. If the dot file name contains spaces you'll have to put quotes ("...") around it.
+	  </p>
+	  <p>
+	      The second argument is optional and can be used to specify the caption that is displayed below the image. This argument has to be specified between quotes even if it does not contain any spaces. The quotes are stripped before the caption is displayed.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='e'>
+	<name>
+	  e
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;word&gt;
+            </arg>
+	</args>
+	<short>
+            Displays the argument in italics
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Displays the argument &lt;word&gt; in italics. Use this command to emphasize words.
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>Typing:
+	      <div class="fragment">
+		<pre class="fragment">
+		    ... this is a \e really good example ...
+		</pre>
+	      </div>
+	      will result in the following text:
+	      <br />
+	      <br />
+	      ... this is a
+	      <em>
+		really
+	      </em>
+	      good example ...</dd>
+	  </dl>
+	  <p>
+	      Equivalent to<a class="el" href="commands.html#cmda">\a</a>and<a class="el" href="commands.html#cmdem">\em</a>. To emphasize multiple words use &lt;em&gt;multiple words&lt;/em&gt;.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='else'>
+	<name>
+	  else
+	</name>
+	<args>
+	</args>
+	<short>
+            Starts a conditional section if the previous conditional section was not enabled
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a conditional section if the previous conditional section was not enabled. The previous section should have been started with a
+	      <code>
+		\if
+	      </code>
+	      ,
+	      <code>
+		\ifnot
+	      </code>
+	      , or
+	      <code>
+		\elseif
+	      </code>
+	      command.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd><a class="el" href="commands.html#cmdif">\if</a>,<a class="el" href="commands.html#cmdifnot">\ifnot</a>,<a class="el" href="commands.html#cmdelseif">\elseif</a>,<a class="el" href="commands.html#cmdendif">\endif.</a></dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='elseif'>
+	<name>
+	  elseif
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;section-label&gt;
+            </arg>
+	</args>
+	<short>
+            Starts a conditional documentation section if the previous section was not enabled
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a conditional documentation section if the previous section was not enabled. A conditional section is disabled by default. To enable it you must put the section-label after the<a class="el" href="config.html#cfg_enabled_sections">ENABLED_SECTIONS</a>tag in the configuration file. Conditional blocks can be nested. A nested section is only enabled if all enclosing sections are enabled as well.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>sections<a class="el" href="commands.html#cmdendif">\endif</a>,<a class="el" href="commands.html#cmdifnot">\ifnot</a>,<a class="el" href="commands.html#cmdelse">\else</a>, and<a class="el" href="commands.html#cmdelseif">\elseif</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='em'>
+	<name>
+	  em
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;word&gt;
+            </arg>
+	</args>
+	<short>
+            Displays the argument in italics
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Displays the argument &lt;word&gt; in italics. Use this command to emphasize words.
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>Typing:
+	      <div class="fragment">
+		<pre class="fragment">
+		    ... this is a \em really good example ...
+		</pre>
+	      </div>
+	      will result in the following text:
+	      <br />
+	      <br />
+	      ... this is a
+	      <em>
+		really
+	      </em>
+	      good example ...</dd>
+	  </dl>
+	  <p>
+	      Equivalent to<a class="el" href="commands.html#cmda">\a</a>and<a class="el" href="commands.html#cmde">\e</a>. To emphasize multiple words use &lt;em&gt;multiple words&lt;/em&gt;.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='endcode'>
+	<name>
+	  endcode
+	</name>
+	<args>
+	</args>
+	<short>
+            Ends a block of code.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Ends a block of code.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdcode">\code</a></dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='endcond'>
+	<name>
+	  endcond
+	</name>
+	<args>
+	</args>
+	<short>
+            Ends a conditional section
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Ends a conditional section that was started by<a class="el" href="commands.html#cmdcond">\cond</a>.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdcond">\cond</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='enddot'>
+	<name>
+	  enddot
+	</name>
+	<args>
+	</args>
+	<short>
+            Ends a blocks that was started with \dot
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Ends a blocks that was started with<a class="el" href="commands.html#cmddot">\dot</a>.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='endhtmlonly'>
+	<name>
+	  endhtmlonly
+	</name>
+	<args>
+	</args>
+	<short>
+            Ends a block of text that was started with a \htmlonly
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Ends a block of text that was started with a \htmlonly command.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdhtmlonly">\htmlonly</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='endif'>
+	<name>
+	  endif
+	</name>
+	<args>
+	</args>
+	<short>
+            Ends a conditional section that was started by \if
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Ends a conditional section that was started by
+	      <code>
+		\if
+	      </code>
+	      or
+	      <code>
+		\ifnot
+	      </code>
+	      For each
+	      <code>
+		\if
+	      </code>
+	      or
+	      <code>
+		\ifnot
+	      </code>
+	      one and only one matching
+	      <code>
+		\endif
+	      </code>
+	      must follow.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>sections<a class="el" href="commands.html#cmdif">\if</a>and<a class="el" href="commands.html#cmdifnot">\ifnot</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='endinternal'>
+	<name>
+	  endinternal
+	</name>
+	<args>
+	</args>
+	<short>
+            This command ends a documentation fragment that was started with \internal
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command ends a documentation fragment that was started with a<a class="el" href="commands.html#cmdinternal">\internal</a>command. The text between
+	      <code>
+		\internal
+	      </code>
+	      and
+	      <code>
+		\endinternal
+	      </code>
+	      will only be visible if<a class="el" href="config.html#cfg_internal_docs">INTERNAL_DOCS</a>is set to YES.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='endlatexonly'>
+	<name>
+	  endlatexonly
+	</name>
+	<args>
+	</args>
+	<short>
+            Ends a block of text that was started with \latexonly
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Ends a block of text that was started with a \latexonly command.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdlatexonly">\latexonly</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='endlink'>
+	<name>
+	  endlink
+	</name>
+	<args>
+	</args>
+	<short>
+            This command ends a link that is started with the \link
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command ends a link that is started with the \link command.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdlink">\link</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='endmanonly'>
+	<name>
+	  endmanonly
+	</name>
+	<args>
+	</args>
+	<short>
+            Ends a block of text that was started with \manonly
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Ends a block of text that was started with a \manonly command.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdmanonly">\manonly</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='endmsc'>
+	<name>
+	  endmsc
+	</name>
+	<args>
+	</args>
+	<short>
+            Ends a blocks that was started with \msc
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Ends a blocks that was started with<a class="el" href="commands.html#cmdmsc">\msc</a>.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='endrtfonly'>
+	<name>
+	  endrtfonly
+	</name>
+	<args>
+	</args>
+	<short>
+            Ends a block of text that was started with \rtfonly
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Ends a block of text that was started with a \rtfonly command.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdrtfonly">\rtfonly</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='endverbatim'>
+	<name>
+	  endverbatim
+	</name>
+	<args>
+	</args>
+	<short>
+            Ends a block of text that was started with \verbatim
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Ends a block of text that was started with a \verbatim command.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdverbatim">\verbatim</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='endxmlonly'>
+	<name>
+	  endxmlonly
+	</name>
+	<args>
+	</args>
+	<short>
+            Ends a block of text that was started with \xmlonly
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Ends a block of text that was started with a \xmlonly command.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdxmlonly">\xmlonly</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='enum'>
+	<name>
+	  enum
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+	</args>
+	<short>
+            Indicates that a comment block contains documentation for an enumeration
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that a comment block contains documentation for an enumeration, with name &lt;name&gt;. If the enum is a member of a class and the documentation block is located outside the class definition, the scope of the class should be specified as well. If a comment block is located directly in front of an enum declaration, the \enum comment may be omitted.
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Note:</b>
+	      </dt>
+	      <dd>The type of an anonymous enum cannot be documented, but the values of an anonymous enum can.</dd>
+	  </dl>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>
+	      <div class="fragment">
+		<pre class="fragment">
+		    class Test
+  {
+    public:
+      enum TEnum { Val1, Val2 };
+
+      /*! Another enum, with inline docs */
+      enum AnotherEnum 
+      { 
+	V1, /*!&lt; value 1 */
+	V2  /*!&lt; value 2 */
+      };
+  };
+
+  /*! \class Test
+  * The class description.
+  */
+
+  /*! \enum Test::TEnum
+  * A description of the enum type.
+  */
+
+  /*! \var Test::TEnum Test::Val1
+  * The description of the first enum value.
+  */
+		</pre>
+	      </div>
+	      Click<a href="./examples/enum/html/class_test.html">here</a>for the corresponding HTML documentation that is generated by doxygen.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='example'>
+	<name>
+	  example
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;file-name&gt;
+            </arg>
+	</args>
+	<short>
+            Indicates that a comment block contains documentation for a source code example
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that a comment block contains documentation for a source code example. The name of the source file is &lt;file-name&gt;. The text of this file will be included in the documentation, just after the documentation contained in the comment block. All examples are placed in a list. The source code is scanned for documented members and classes. If any are found, the names are cross-referenced with the documentation. Source files or directories can be specified using the<a class="el" href="config.html#cfg_example_path">EXAMPLE_PATH</a>tag of doxygen's configuration file.
+	  </p>
+	  <p>
+	      If &lt;file-name&gt; itself is not unique for the set of example files specified by the<a class="el" href="config.html#cfg_example_path">EXAMPLE_PATH</a>tag, you can include part of the absolute path to disambiguate it.
+	  </p>
+	  <p>
+	      If more that one source file is needed for the example, the \include command can be used.
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>
+	      <div class="fragment">
+		<pre class="fragment">
+		    /** A Test class.
+  *  More details about this class.
+  */
+
+  class Test
+  {
+    public:
+      /** An example member function.
+      *  More details about this function.
+      */
+      void example();
+  };
+
+  void Test::example() {}
+
+  /** \example example_test.cpp
+  * This is an example of how to use the Test class.
+  * More details about this example.
+  */
+		</pre>
+	      </div>
+	      Where the example file
+	      <code>
+		example_test.cpp
+	      </code>
+	      looks as follows:
+	      <div class="fragment">
+		<pre class="fragment">
+		    void main()
+  {
+    Test t;
+    t.example();
+  }
+		</pre>
+	      </div>
+	      Click<a href="./examples/example/html/examples.html">here</a>for the corresponding HTML documentation that is generated by doxygen.</dd>
+	  </dl>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdinclude">\include</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='exception'>
+	<name>
+	  exception
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;exception-object&gt;
+            </arg>
+            <arg type="poiuytrewq">
+                { exception description }
+            </arg>
+	</args>
+	<short>
+            Starts an exception description
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts an exception description for an exception object with name &lt;exception-object&gt;. Followed by a description of the exception. The existence of the exception object is not checked. The text of the paragraph has no special internal structure. All visual enhancement commands may be used inside the paragraph. Multiple adjacent \exception commands will be joined into a single paragraph. Each exception description will start on a new line. The \exception description ends when a blank line or some other sectioning command is encountered. See section<a class="el" href="commands.html#cmdfn">\fn</a>for an example.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='extends'>
+	<name>
+	  extends
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+	</args>
+	<short>
+            This command can be used to manually indicate an inheritance relation
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command can be used to manually indicate an inheritance relation, when the programming language does not support this concept natively (e.g. C).
+	  </p>
+	  <p>
+	      The file
+	      <code>
+		manual.c
+	      </code>
+	      in the example directory shows how to use this command.
+	  </p>
+	  Click<a href="./examples/manual/html/index.html">here</a>for the corresponding HTML documentation that is generated by doxygen.
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdimplements">\implements</a>and section<a class="el" href="commands.html#cmdmemberof">\memberof</a></dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='fdollar'>
+	<name>
+	  f$
+	</name>
+	<args>
+	</args>
+	<short>
+            Marks the start and end of an in-text formula.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Marks the start and end of an in-text formula.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="formulas.html">formulas</a>for an example.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='fbropen'>
+	<name>
+	  f[
+	</name>
+	<args>
+	</args>
+	<short>
+            Marks the start of a long formula that is displayed centered
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Marks the start of a long formula that is displayed centered on a separate line.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdfbrclose">\f]</a>and section<a class="el" href="formulas.html">formulas</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='fbrclose'>
+	<name>
+	  fb]
+	</name>
+	<args>
+	</args>
+	<short>
+            Marks the end of a long formula that is displayed centered
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Marks the end of a long formula that is displayed centered on a separate line.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdfbropen">\f[</a>and section<a class="el" href="formulas.html">formulas</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='fcurlyopen'>
+	<name>
+	  f{environment}{
+	</name>
+	<args>
+	</args>
+	<short>
+            Marks the start of a formula that is in a specific environment.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Marks the start of a formula that is in a specific environment.
+	  </p>
+	  <dl class="note">
+	      <dt>
+	      <b>Note:</b>
+	      </dt>
+	      <dd>The second { is optional and is only to help editors (such as Vim) to do proper syntax highlighting by making the number of opening and closing braces the same.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='fcurlyclose'>
+	<name>
+	  f}
+	</name>
+	<args>
+	</args>
+	<short>
+            Marks the end of a formula that is in a specific environment.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Marks the end of a formula that is in a specific environment.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='file'>
+	<name>
+	  file
+	</name>
+	<args>
+            <arg type="lkjhgfdsa">
+                [&lt;name&gt;]
+            </arg>
+	</args>
+	<short>
+            Indicates that a comment block contains documentation for a source or header file
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that a comment block contains documentation for a source or header file with name &lt;name&gt;. The file name may include (part of) the path if the file-name alone is not unique. If the file name is omitted (i.e. the line after \file is left blank) then the documentation block that contains the \file command will belong to the file it is located in.
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Important:</b>
+	      </dt>
+	      <dd>The documentation of global functions, variables, typedefs, and enums will only be included in the output if the file they are in is documented as well.</dd>
+	  </dl>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>
+	      <div class="fragment">
+		<pre class="fragment">
+		    /** \file file.h
+  * A brief file description.
+  * A more elaborated file description.
+  */
+
+  /**
+  * A global integer value.
+  * More details about this value.
+  */
+  extern int globalValue;
+		</pre>
+	      </div>
+	      Click<a href="./examples/file/html/file_8h.html">here</a>for the corresponding HTML documentation that is generated by doxygen.</dd>
+	  </dl>
+	  <dl class="note">
+	      <dt>
+	      <b>Note:</b>
+	      </dt>
+	      <dd>In the above example<a class="el" href="config.html#cfg_javadoc_autobrief">JAVADOC_AUTOBRIEF</a>has been set to YES in the configuration file.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='fn'>
+	<name>
+	  fn
+	</name>
+	<args>
+            <arg type="asdfghjkl">
+                (function declaration)
+            </arg>
+	</args>
+	<short>
+            Indicates that a comment block contains documentation for a function
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that a comment block contains documentation for a function (either global or as a member of a class). This command is
+	      <em>
+		only
+	      </em>
+	      needed if a comment block is
+	      <em>
+		not
+	      </em>
+	      placed in front (or behind) the function declaration or definition.
+	  </p>
+	  <p>
+	      If your comment block
+	      <em>
+		is
+	      </em>
+	      in front of the function declaration or definition this command can (and to avoid redundancy should) be omitted.
+	  </p>
+	  <p>
+	      A full function declaration including arguments should be specified after the \fn command on a
+	      <em>
+		single
+	      </em>
+	      line, since the argument ends at the end of the line!
+	  </p>
+	  <p>
+	      This command is equivalent to \var, \typedef, and \property.
+	  </p>
+	  <dl class="warning">
+	      <dt>
+	      <b>Warning:</b>
+	      </dt>
+	      <dd>Do not use this command if it is not absolutely needed, since it will lead to duplication of information and thus to errors.</dd>
+	  </dl>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>
+	      <div class="fragment">
+		<pre class="fragment">
+		    class Test
+  {
+    public:
+      const char *member(char,int) throw(std::out_of_range);
+  };
+
+  const char *Test::member(char c,int n) throw(std::out_of_range) {}
+
+  /*! \class Test
+  * \brief Test class.
+  *
+  * Details about Test.
+  */
+
+  /*! \fn const char *Test::member(char c,int n) 
+  *  \brief A member function.
+  *  \param c a character.
+  *  \param n an integer.
+  *  \exception std::out_of_range parameter is out of range.
+  *  \return a character pointer.
+  */
+		</pre>
+	      </div>
+	      Click<a href="./examples/func/html/class_test.html">here</a>for the corresponding HTML documentation that is generated by doxygen.</dd>
+	  </dl>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>sections<a class="el" href="commands.html#cmdvar">\var</a>,<a class="el" href="commands.html#cmdproperty">\property</a>, and<a class="el" href="commands.html#cmdtypedef">\typedef</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='headerfile'>
+	<name>
+	  headerfile
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;header-file&gt;
+            </arg>
+            <arg type="lkjhgfdsa">
+                [&lt;header-name&gt;]
+            </arg>
+	</args>
+	<short>
+            Intended to be used for class, struct, or union documentation, where the documentation is in front of the definition.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Intended to be used for class, struct, or union documentation, where the documentation is in front of the definition. The arguments of this command are the same as the second and third argument of<a class="el" href="commands.html#cmdclass">\class</a>. The &lt;header-file&gt; name refers to the file that should by included by the application to obtain the definition of the class, struct, or union. The &lt;header-name&gt; argument can be used to overwrite the name of the link that is used in the class documentation to something other than &lt;header-file&gt;. This can be useful if the include name is not located on the default include path (like &lt;X11/X.h&gt;).
+	  </p>
+	  <p>
+	      With the &lt;header-name&gt; argument you can also specify how the include statement should look like, by adding either double quotes or sharp brackets around the name. By default sharp brackets are used if just the name is given.
+	  </p>
+	  <p>
+	      If a pair of double quotes is given for either the &lt;header-file&gt; or &lt;header-name&gt; argument, the current file (in which the command was found) will be used but with quotes. So for a comment block with a \headerfile command inside a file test.h, the following three commands are equivalent:
+	  </p>
+	  <div class="fragment">
+	      <pre class="fragment">
+		\headerfile test.h "test.h"
+    \headerfile test.h ""
+    \headerfile ""
+	      </pre>
+	  </div>
+	  <p>
+	      To get sharp brackets you do not need to specify anything, but if you want to be explicit you could use any of the following:
+	  </p>
+	  <div class="fragment">
+	      <pre class="fragment">
+		\headerfile test.h &lt;test.h&gt;
+    \headerfile test.h &lt;&gt;
+    \headerfile &lt;&gt;
+	      </pre>
+	  </div>
+	  <p>
+	      To globally reverse the default include representation to local includes you can set<a class="el" href="config.html#cfg_force_local_includes">FORCE_LOCAL_INCLUDES</a>to
+	      <code>
+		YES
+	      </code>
+	      .
+	  </p>
+	  <p>
+	      To disable the include information altogether set<a class="el" href="config.html#cfg_show_include_files">SHOW_INCLUDE_FILES</a>to
+	      <code>
+		NO
+	      </code>
+	      .
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='hideinitializer'>
+	<name>
+	  hideinitializer
+	</name>
+	<args>
+	</args>
+	<short>
+            Always hide the initializer
+	</short>
+	<description><![CDATA[
+	  <p>
+	      By default the value of a define and the initializer of a variable are displayed unless they are longer than 30 lines. By putting this command in a comment block of a define or variable, the initializer is always hidden. The maximum number of initalization linens can be changed by means of the configuration parameter<a class="el" href="config.html#cfg_max_initializer_lines">MAX_INITIALIZER_LINES</a>, the default value is 30.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdshowinitializer">\showinitializer</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='htmlinclude'>
+	<name>
+	  htmlinclude
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;file-name&gt;
+            </arg>
+	</args>
+	<short>
+            Equivalent to pasting the file in the documentation and placing \htmlonly and \endhtmlonly
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command includes the file &lt;file-name&gt; as is in the HTML documentation. The command is equivalent to pasting the file in the documentation and placing \htmlonly and \endhtmlonly commands around it.
+	  </p>
+	  <p>
+	      Files or directories that doxygen should look for can be specified using the<a class="el" href="config.html#cfg_example_path">EXAMPLE_PATH</a>tag of doxygen's configuration file.
+	  </p>
+	  <center>
+	      <h2>---  Commands for visual enhancements  ---</h2>
+	  </center>
+	]]></description>
+    </tag>
+    <tag id='htmlonly'>
+	<name>
+	  htmlonly
+	</name>
+	<args>
+	</args>
+	<short>
+            Starts a block of text that will be verbatim included in the generated HTML documentation only
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a block of text that will be verbatim included in the generated HTML documentation only. The block ends with a<a class="el" href="commands.html#cmdhtmlonly">\endhtmlonly</a>command.
+	  </p>
+	  <p>
+	      This command can be used to include HTML code that is too complex for doxygen (i.e. applets, java-scripts, and HTML tags that require attributes). You can use the \latexonly and \endlatexonly pair to provide a proper
+	      <img class="formulaInl" alt="$\mbox{\LaTeX}$" src="form_0.png"/>
+	      alternative.
+	  </p>
+	  <dl class="note">
+	      <dt>
+	      <b>Note:</b>
+	      </dt>
+	      <dd>environment variables (like $(HOME) ) are resolved inside a HTML-only block.</dd>
+	  </dl>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdmanonly">\manonly</a>, section<a class="el" href="commands.html#cmdlatexonly">\latexonly</a>, and section<a class="el" href="commands.html#cmdrtfonly">\rtfonly</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='if'>
+	<name>
+	  if
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;section-label&gt;
+            </arg>
+	</args>
+	<short>
+            Starts a conditional documentation section
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a conditional documentation section. The section ends with a matching
+	      <code>
+		\endif
+	      </code>
+	      command. A conditional section is disabled by default. To enable it you must put the section-label after the<a class="el" href="config.html#cfg_enabled_sections">ENABLED_SECTIONS</a>tag in the configuration file. Conditional blocks can be nested. A nested section is only enabled if all enclosing sections are enabled as well.
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>
+	      <div class="fragment">
+		<pre class="fragment">
+		    /*! Unconditionally shown documentation.
+    *  \if Cond1
+    *    Only included if Cond1 is set.
+    *  \endif
+    *  \if Cond2
+    *    Only included if Cond2 is set.
+    *    \if Cond3
+    *      Only included if Cond2 and Cond3 are set.
+    *    \endif
+    *    More text.
+    *  \endif
+    *  Unconditional text.
+    */
+		</pre>
+	      </div>
+	      </dd>
+	  </dl>
+	  <p>
+	      You can also use conditional commands inside aliases. To document a class in two languages you could for instance use:
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Example 2:</b>
+	      </dt>
+	      <dd>
+	      <div class="fragment">
+		<pre class="fragment">
+		    /*! \english
+  *  This is English.
+  *  \endenglish
+  *  \dutch
+  *  Dit is Nederlands.
+  *  \enddutch
+  */
+  class Example
+  {
+  };
+		</pre>
+	      </div>
+	      </dd>
+	  </dl>
+	  <p>
+	      Where the following aliases are defined in the configuration<a href="file:">file:</a>
+	  </p>
+	  <div class="fragment">
+	      <pre class="fragment">
+		ALIASES  = "english=\if english" \
+	    "endenglish=\endif" \
+	    "dutch=\if dutch" \
+	    "enddutch=\endif"
+	      </pre>
+	  </div>
+	  <p>
+	      and
+	      <code>
+		ENABLED_SECTIONS
+	      </code>
+	      can be used to enable either
+	      <code>
+		english
+	      </code>
+	      or
+	      <code>
+		dutch
+	      </code>
+	      .
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>sections<a class="el" href="commands.html#cmdendif">\endif</a>,<a class="el" href="commands.html#cmdifnot">\ifnot</a>,<a class="el" href="commands.html#cmdelse">\else</a>, and<a class="el" href="commands.html#cmdelseif">\elseif</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='ifnot'>
+	<name>
+	  ifnot
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;section-label&gt;
+            </arg>
+	</args>
+	<short>
+            Starts a conditional documentation section
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a conditional documentation section. The section ends with a matching
+	      <code>
+		\endif
+	      </code>
+	      command. This conditional section is enabled by default. To disable it you must put the section-label after the<a class="el" href="config.html#cfg_enabled_sections">ENABLED_SECTIONS</a>tag in the configuration file.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>sections<a class="el" href="commands.html#cmdendif">\endif</a>,<a class="el" href="commands.html#cmdif">\if</a>,<a class="el" href="commands.html#cmdelse">\else</a>, and<a class="el" href="commands.html#cmdelseif">\elseif</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='image'>
+	<name>
+	  image
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;format&gt;
+            </arg>
+            <arg type="qwertyuiop">
+                &lt;file&gt;
+            </arg>
+            <arg type="mnbvcxz">
+                ["caption"]
+            </arg>
+            <arg type="iusdfdsfg">
+                [&lt;sizeindication&gt;=&lt;size&gt;]
+            </arg>
+	</args>
+	<short>
+            Inserts an image into the documentation
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Inserts an image into the documentation. This command is format specific, so if you want to insert an image for more than one format you'll have to repeat this command for each format.
+	  </p>
+	  <p>
+	      The first argument specifies the output format. Currently, the following values are supported:
+	      <code>
+		html
+	      </code>
+	      ,
+	      <code>
+		latex
+	      </code>
+	      and
+	      <code>
+		rtf
+	      </code>
+	      .
+	  </p>
+	  <p>
+	      The second argument specifies the file name of the image. doxygen will look for files in the paths (or files) that you specified after the<a class="el" href="config.html#cfg_image_path">IMAGE_PATH</a>tag. If the image is found it will be copied to the correct output directory. If the image name contains spaces you'll have to put quotes ("...") around it. You can also specify an absolute URL instead of a file name, but then doxygen does not copy the image nor check its existence.
+	  </p>
+	  <p>
+	      The third argument is optional and can be used to specify the caption that is displayed below the image. This argument has to be specified on a single line and between quotes even if it does not contain any spaces. The quotes are stripped before the caption is displayed.
+	  </p>
+	  <p>
+	      The fourth argument is also optional and can be used to specify the width or height of the image. This is only useful for
+	      <img class="formulaInl" alt="$\mbox{\LaTeX}$" src="form_0.png"/>
+	      output (i.e. format=
+	      <code>
+		latex
+	      </code>
+	      ). The
+	      <code>
+		sizeindication
+	      </code>
+	      can be either
+	      <code>
+		width
+	      </code>
+	      or
+	      <code>
+		height
+	      </code>
+	      . The size should be a valid size specifier in
+	      <img class="formulaInl" alt="$\mbox{\LaTeX}$" src="form_0.png"/>
+	      (for example
+	      <code>
+		10cm
+	      </code>
+	      or
+	      <code>
+		6in
+	      </code>
+	      or a symbolic width like
+	      <code>
+		\textwidth
+	      </code>
+	      ).
+	  </p>
+	  <p>
+	      Here is example of a comment block:
+	  </p>
+	  <div class="fragment">
+	      <pre class="fragment">
+		/*! Here is a snapshot of my new application:
+    *  \image html application.jpg
+    *  \image latex application.eps "My application" width=10cm
+    */
+	      </pre>
+	  </div>
+	  <p>
+	      And this is an example of how the relevant part of the configuration file may look:
+	  </p>
+	  <div class="fragment">
+	      <pre class="fragment">
+		IMAGE_PATH     = my_image_dir
+	      </pre>
+	  </div>
+	  <dl class="warning">
+	      <dt>
+	      <b>Warning:</b>
+	      </dt>
+	      <dd>The image format for HTML is limited to what your browser supports. For
+	      <img class="formulaInl" alt="$\mbox{\LaTeX}$" src="form_0.png"/>
+	      , the image format must be Encapsulated PostScript (eps).
+	      <br />
+	      <br />
+	      Doxygen does not check if the image is in the correct format. So
+	      <em>
+		you
+	      </em>
+	      have to make sure this is the case!</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='implements'>
+	<name>
+	  implements
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+	</args>
+	<short>
+            This command can be used to manually indicate an inheritance relation
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command can be used to manually indicate an inheritance relation, when the programming language does not support this concept natively (e.g. C).
+	  </p>
+	  <p>
+	      The file
+	      <code>
+		manual.c
+	      </code>
+	      in the example directory shows how to use this command.
+	  </p>
+	  Click<a href="./examples/manual/html/index.html">here</a>for the corresponding HTML documentation that is generated by doxygen.
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdextends">\extends</a>and section<a class="el" href="commands.html#cmdmemberof">\memberof</a></dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='include'>
+	<name>
+	  include
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;file-name&gt;
+            </arg>
+	</args>
+	<short>
+            This command can be used to include a source file as a block of code.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command can be used to include a source file as a block of code. The command takes the name of an include file as an argument. Source files or directories can be specified using the<a class="el" href="config.html#cfg_example_path">EXAMPLE_PATH</a>tag of doxygen's configuration file.
+	  </p>
+	  <p>
+	      If &lt;file-name&gt; itself is not unique for the set of example files specified by the<a class="el" href="config.html#cfg_example_path">EXAMPLE_PATH</a>tag, you can include part of the absolute path to disambiguate it.
+	  </p>
+	  <p>
+	      Using the \include command is equivalent to inserting the file into the documentation block and surrounding it with<a class="el" href="commands.html#cmdcode">\code</a>and<a class="el" href="commands.html#cmdendcode">\endcode</a>commands.
+	  </p>
+	  <p>
+	      The main purpose of the \include command is to avoid code duplication in case of example blocks that consist of multiple source and header files.
+	  </p>
+	  <p>
+	      For a line by line description of a source files use the<a class="el" href="commands.html#cmddontinclude">\dontinclude</a>command in combination with the<a class="el" href="commands.html#cmdline">\line</a>,<a class="el" href="commands.html#cmdskip">\skip</a>,<a class="el" href="commands.html#cmdskipline">\skipline</a>, and \until commands.
+	  </p>
+	  <dl class="note">
+	      <dt>
+	      <b>Note:</b>
+	      </dt>
+	      <dd>Doxygen's special commands do not work inside blocks of code. It is allowed to nest C-style comments inside a code block though.</dd>
+	  </dl>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>sections<a class="el" href="commands.html#cmdexample">\example</a>,<a class="el" href="commands.html#cmddontinclude">\dontinclude</a>, and<a class="el" href="commands.html#cmdverbatim">\verbatim</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='includelineno'>
+	<name>
+	  includelineno
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;file-name&gt;
+            </arg>
+	</args>
+	<short>
+            This command works the same way as \include, but with line number
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command works the same way as \include, but will add line numbers to the included file.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdinclude">\include</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='ingroup'>
+	<name>
+	  ingroup
+	</name>
+	<args>
+            <arg type="qgdbxgdjevt">
+                (&lt;groupname&gt; [&lt;groupname&gt; &lt;groupname&gt;])
+            </arg>
+	</args>
+	<short>
+            When used in a block, will be added to the group or groups
+	</short>
+	<description><![CDATA[
+	  <p>
+	      If the \ingroup command is placed in a comment block of a class, file or namespace, then it will be added to the group or groups identified by &lt;groupname&gt;.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>page<a class="el" href="grouping.html">Grouping</a>, sections<a class="el" href="commands.html#cmddefgroup">\defgroup</a>,<a class="el" href="commands.html#cmdaddtogroup">\addtogroup</a>, and<a class="el" href="commands.html#cmdweakgroup">\weakgroup</a></dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='internal'>
+	<name>
+	  internal
+	</name>
+	<args>
+	</args>
+	<short>
+            Starts a documentation fragment that is meant for internal use only
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command starts a documentation fragment that is meant for internal use only. The fragment naturally ends at the end of the comment block. You can also force the internal section to end earlier by using the<a class="el" href="commands.html#cmdendinternal">\endinternal</a>command.
+	  </p>
+	  <p>
+	      If the \internal command is put inside a section (see for example<a class="el" href="commands.html#cmdsection">\section</a>) all subsections after the command are considered to be internal as well. Only a new section at the same level will end the fragment that is considered internal.
+	  </p>
+	  <p>
+	      You can use<a class="el" href="config.html#cfg_internal_docs">INTERNAL_DOCS</a>in the config file to show (
+	      <code>
+		YES
+	      </code>
+	      ) or hide (
+	      <code>
+		NO
+	      </code>
+	      ) the internal documentation.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdendinternal">\endinternal</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='invariant'>
+	<name>
+	  invariant
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { description of invariant }
+            </arg>
+	</args>
+	<short>
+            Starts a paragraph where the invariant of an entity can be described.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a paragraph where the invariant of an entity can be described. The paragraph will be indented. The text of the paragraph has no special internal structure. All visual enhancement commands may be used inside the paragraph. Multiple adjacent \invariant commands will be joined into a single paragraph. Each invariant description will start on a new line. Alternatively, one \invariant command may mention several invariants. The \invariant command ends when a blank line or some other sectioning command is encountered.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='interface'>
+	<name>
+	  interface
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+            <arg type="lkjhgfdsa">
+                [&lt;header-file&gt;]
+            </arg>
+            <arg type="lkjhgfdsa">
+                [&lt;header-name&gt;]
+            </arg>
+	</args>
+	<short>
+            Indicates that a comment block contains documentation for an interface
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that a comment block contains documentation for an interface with name &lt;name&gt;. The arguments are equal to the arguments of the \class command.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdclass">\class</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='latexonly'>
+	<name>
+	  latexonly
+	</name>
+	<args>
+	</args>
+	<short>
+            Starts a block of text that will be verbatim included in the generated LaTex documentation only.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a block of text that will be verbatim included in the generated
+	      <img class="formulaInl" alt="$\mbox{\LaTeX}$" src="form_0.png"/>
+	      documentation only. The block ends with a<a class="el" href="commands.html#cmdendlatexonly">\endlatexonly</a>command.
+	  </p>
+	  <p>
+	      This command can be used to include
+	      <img class="formulaInl" alt="$\mbox{\LaTeX}$" src="form_0.png"/>
+	      code that is too complex for doxygen (i.e. images, formulas, special characters). You can use the \htmlonly and \endhtmlonly pair to provide a proper HTML alternative.
+	  </p>
+	  <p>
+	      <b>Note:</b>environment variables (like $(HOME) ) are resolved inside a
+	      <img class="formulaInl" alt="$\mbox{\LaTeX}$" src="form_0.png"/>
+	      -only block.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdrtfonly">\rtfonly</a>, section<a class="el" href="commands.html#cmdxmlonly">\xmlonly</a>, section<a class="el" href="commands.html#cmdmanonly">\manonly</a>, and section<a class="el" href="commands.html#cmdhtmlonly">\htmlonly</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='li'>
+	<name>
+	  li
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { item-description }
+            </arg>
+	</args>
+	<short>
+            The command can be used to generate a simple, not nested list of arguments
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command has one argument that continues until the first blank line or until another \li is encountered. The command can be used to generate a simple, not nested list of arguments. Each argument should start with a \li command.
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>Typing:
+	      <div class="fragment">
+		<pre class="fragment">
+		    \li \c AlignLeft left alignment.
+    \li \c AlignCenter center alignment.
+    \li \c AlignRight right alignment
+
+    No other types of alignment are supported.
+		</pre>
+	      </div>
+	      will result in the following text:
+	      <br />
+	      <br />
+	      <ul>
+		<li>
+		<code>
+		    AlignLeft
+		</code>
+		left alignment.</li>
+		<li>
+		<code>
+		    AlignCenter
+		</code>
+		center alignment.</li>
+		<li>
+		<code>
+		    AlignRight
+		</code>
+		right alignment</li>
+	      </ul>
+	      <br />
+	      No other types of alignment are supported.</dd>
+	  </dl>
+	  <dl class="user">
+	      <dt>
+	      <b>Note:</b>
+	      </dt>
+	      <dd>For nested lists, HTML commands should be used.</dd>
+	  </dl>
+	  <p>
+	      Equivalent to<a class="el" href="commands.html#cmdarg">\arg</a>
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='line'>
+	<name>
+	  line
+	</name>
+	<args>
+            <arg type="asdfghjkl">
+                ( pattern )
+            </arg>
+	</args>
+	<short>
+            This command searches line by line through the example that was last included using \include or \dontinclude
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command searches line by line through the example that was last included using \include or \dontinclude until it finds a non-blank line. If that line contains the specified pattern, it is written to the output.
+	  </p>
+	  <p>
+	      The internal pointer that is used to keep track of the current line in the example, is set to the start of the line following the non-blank line that was found (or to the end of the example if no such line could be found).
+	  </p>
+	  <p>
+	      See section<a class="el" href="commands.html#cmddontinclude">\dontinclude</a>for an example.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='link'>
+	<name>
+	  link
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;link-object&gt;
+            </arg>
+	</args>
+	<short>
+            Used to create a link to an object (a file, class, or member) with a user specified link-text.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      The links that are automatically generated by doxygen always have the name of the object they point to as link-text.
+	  </p>
+	  <p>
+	      The \link command can be used to create a link to an object (a file, class, or member) with a user specified link-text. The link command should end with an \endlink command. All text between the \link and \endlink commands serves as text for a link to the &lt;link-object&gt; specified as the first argument of \link.
+	  </p>
+	  <p>
+	      See section<a class="el" href="autolink.html">autolink</a>for more information on automatically generated links and valid link-objects.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='mainpage'>
+	<name>
+	  mainpage
+	</name>
+	<args>
+            <arg type="zxcvbnm">
+                [(title)]
+            </arg>
+	</args>
+	<short>
+            Used to customize the index page (in HTML) or the first chapter (in LaTex)
+	</short>
+	<description><![CDATA[
+	  <p>
+	      If the \mainpage command is placed in a comment block the block is used to customize the index page (in HTML) or the first chapter (in
+	      <img class="formulaInl" alt="$\mbox{\LaTeX}$" src="form_0.png"/>
+	      ).
+	  </p>
+	  <p>
+	      The title argument is optional and replaces the default title that doxygen normally generates. If you do not want any title you can specify
+	      <code>
+		notitle
+	      </code>
+	      as the argument of \mainpage.
+	  </p>
+	  <p>
+	      Here is an example:
+	  </p>
+	  <div class="fragment">
+	      <pre class="fragment">
+		/*! \mainpage My Personal Index Page
+  *
+  * \section intro_sec Introduction
+  *
+  * This is the introduction.
+  *
+  * \section install_sec Installation
+  *
+  * \subsection step1 Step 1: Opening the box
+  *
+  * etc...
+  */
+	      </pre>
+	  </div>
+	  <p>
+	      You can refer to the main page using \ref index (if the treeview is disabled, otherwise you should use \ref main).
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdsection">\section</a>, section<a class="el" href="commands.html#cmdsubsection">\subsection</a>, and section<a class="el" href="commands.html#cmdpage">\page</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='manonly'>
+	<name>
+	  manonly
+	</name>
+	<args>
+	</args>
+	<short>
+            Starts a block of text that will be verbatim included in the generated MAN documentation only
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a block of text that will be verbatim included in the generated MAN documentation only. The block ends with a<a class="el" href="commands.html#cmdendmanonly">\endmanonly</a>command.
+	  </p>
+	  <p>
+	      This command can be used to include groff code directly into MAN pages. You can use the \htmlonly and \latexonly and \endhtmlonly and \endlatexonly pairs to provide proper HTML and
+	      <img class="formulaInl" alt="$\mbox{\LaTeX}$" src="form_0.png"/>
+	      alternatives.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdhtmlonly">\htmlonly</a>, section<a class="el" href="commands.html#cmdxmlonly">\xmlonly</a>, section<a class="el" href="commands.html#cmdrtfonly">\rtfonly</a>, and section<a class="el" href="commands.html#cmdlatexonly">\latexonly</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='memberof'>
+	<name>
+	  memberof
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+	</args>
+	<short>
+            Similar to \relates, only with this command the function is represented as a real member of the class
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command makes a function a member of a class in a similar way as<a class="el" href="commands.html#cmdrelates">\relates</a>does, only with this command the function is represented as a real member of the class. This can be useful when the programming language does not support the concept of member functions natively (e.g. C).
+	  </p>
+	  <p>
+	      It is also possible to use this command together with<a class="el" href="commands.html#cmdpublic">\public</a>,<a class="el" href="commands.html#cmdprotected">\protected</a>or<a class="el" href="commands.html#cmdprivate">\private</a>.
+	  </p>
+	  <p>
+	      The file
+	      <code>
+		manual.c
+	      </code>
+	      in the example directory shows how to use this command.
+	  </p>
+	  Click<a href="./examples/manual/html/index.html">here</a>for the corresponding HTML documentation that is generated by doxygen.
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>sections<a class="el" href="commands.html#cmdextends">\extends</a>,<a class="el" href="commands.html#cmdimplements">\implements</a>,<a class="el" href="commands.html#cmdpublic">\public</a>,<a class="el" href="commands.html#cmdprotected">\protected</a>and<a class="el" href="commands.html#cmdprivate">\private</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='msc'>
+	<name>
+	  msc
+	</name>
+	<args>
+	</args>
+	<short>
+            Starts a text fragment which should contain a valid description of a message sequence chart.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a text fragment which should contain a valid description of a message sequence chart. See<a href="http://www.mcternan.me.uk/mscgen/">http://www.mcternan.me.uk/mscgen/</a>for examples. The text fragment ends with<a class="el" href="commands.html#cmdendmsc">\endmsc</a>.
+	  </p>
+	  <dl class="note">
+	      <dt>
+	      <b>Note:</b>
+	      </dt>
+	      <dd>The text fragment should only include the part of the message sequence chart that is within the
+	      <code>
+		msc {...}
+	      </code>
+	      block.</dd><dd>You need to install the
+	      <code>
+		mscgen
+	      </code>
+	      tool, if you want to use this command.</dd>
+	  </dl>
+	  <p>
+	      Here is an example of the use of the \msc command.
+	  </p>
+	  <div class="fragment">
+	      <pre class="fragment">
+		<span class="comment">
+		    /** Sender class. Can be used to send a command to the server.
+		</span>
+		<span class="comment">
+		    The receiver will acknowledge the command by calling Ack().
+		</span>
+		<span class="comment">
+		    \msc
+		</span>
+		<span class="comment">
+		    Sender,Receiver;
+		</span>
+		<span class="comment">
+		    Sender-&gt;Receiver [label=&quot;Command()&quot;, URL=&quot;\ref Receiver::Command()&quot;];
+		</span>
+		<span class="comment">
+		    Sender&lt;-Receiver [label=&quot;Ack()&quot;, URL=&quot;\ref Ack()&quot;, ID=&quot;1&quot;];
+		</span>
+		<span class="comment">
+		    \endmsc
+		</span>
+		<span class="comment">
+		    */
+		</span>
+		<span class="keyword">
+		    class
+		</span>
+		Sender
+  {
+		<span class="keyword">
+		    public
+		</span>
+		:
+		<span class="comment">
+		</span>
+		<span class="comment">
+		    /** Acknowledgement from server */
+		</span>
+		<span class="keywordtype">
+		    void
+		</span>
+		Ack(
+		<span class="keywordtype">
+		    bool
+		</span>
+		ok);
+  };
+		<span class="comment">
+		</span>
+		<span class="comment">
+		    /** Receiver class. Can be used to receive and execute commands.
+		</span>
+		<span class="comment">
+		    After execution of a command, the receiver will send an acknowledgement
+		</span>
+		<span class="comment">
+		    \msc
+		</span>
+		<span class="comment">
+		    Receiver,Sender;
+		</span>
+		<span class="comment">
+		    Receiver&lt;-Sender [label=&quot;Command()&quot;, URL=&quot;\ref Command()&quot;];
+		</span>
+		<span class="comment">
+		    Receiver-&gt;Sender [label=&quot;Ack()&quot;, URL=&quot;\ref Sender::Ack()&quot;, ID=&quot;1&quot;];
+		</span>
+		<span class="comment">
+		    \endmsc
+		</span>
+		<span class="comment">
+		    */
+		</span>
+		<span class="keyword">
+		    class
+		</span>
+		Receiver
+  {
+		<span class="keyword">
+		    public
+		</span>
+		:
+		<span class="comment">
+		</span>
+		<span class="comment">
+		    /** Executable a command on the server */
+		</span>
+		<span class="keywordtype">
+		    void
+		</span>
+		Command(
+		<span class="keywordtype">
+		    int
+		</span>
+		commandId);
+  };
+	      </pre>
+	  </div>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdmscfile">\mscfile</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='mscfile'>
+	<name>
+	  mscfile
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;file&gt;
+            </arg>
+            <arg type="mnbvcxz">
+                ["caption"]
+            </arg>
+	</args>
+	<short>
+            Inserts an image generated by mscgen
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Inserts an image generated by mscgen from &lt;file&gt; into the documentation. See<a href="http://www.mcternan.me.uk/mscgen/">http://www.mcternan.me.uk/mscgen/</a>for examples.
+	  </p>
+	  <p>
+	      The first argument specifies the file name of the image. doxygen will look for files in the paths (or files) that you specified after the<a class="el" href="config.html#cfg_mscfile_dirs">MSCFILE_DIRS</a>tag. If the msc file is found it will be used as an input file to the mscgen tool. The resulting image will be put into the correct output directory. If the msc file name contains spaces you'll have to put quotes ("...") around it.
+	  </p>
+	  <p>
+	      The second argument is optional and can be used to specify the caption that is displayed below the image. This argument has to be specified between quotes even if it does not contain any spaces. The quotes are stripped before the caption is displayed.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdmsc">\msc</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='n'>
+	<name>
+	  n
+	</name>
+	<args>
+	</args>
+	<short>
+            Forces a new line.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Forces a new line. Equivalent to &lt;br&gt; and inspired by the printf function.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='name'>
+	<name>
+	  name
+	</name>
+	<args>
+            <arg type="zxcvbnm">
+                [(header)]
+            </arg>
+	</args>
+	<short>
+            Turns a comment block into a header definition of a member group.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command turns a comment block into a header definition of a member group. The comment block should be followed by a
+	      <code>
+		//@{ ... //@}
+	      </code>
+	      block containing the members of the group.
+	  </p>
+	  <p>
+	      See section<a class="el" href="grouping.html#memgroup">Member Groups</a>for an example.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='namespace'>
+	<name>
+	  namespace
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+	</args>
+	<short>
+            Indicates that a comment block contains documentation for a namespace
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that a comment block contains documentation for a namespace with name &lt;name&gt;.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='nosubgrouping'>
+	<name>
+	  nosubgrouping
+	</name>
+	<args>
+	</args>
+	<short>
+            Can be used in combination with member grouping to avoid that doxygen puts a member group as a subgroup
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command can be put in the documentation of a class. It can be used in combination with member grouping to avoid that doxygen puts a member group as a subgroup of a Public/Protected/Private/... section.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>sections<a class="el" href="commands.html#cmdpublicsection">\publicsection</a>,<a class="el" href="commands.html#cmdprotectedsection">\protectedsection</a>and<a class="el" href="commands.html#cmdprivatesection">\privatesection</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='note'>
+	<name>
+	  note
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { text }
+            </arg>
+	</args>
+	<short>
+            Starts a paragraph where a note can be entered.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a paragraph where a note can be entered. The paragraph will be indented. The text of the paragraph has no special internal structure. All visual enhancement commands may be used inside the paragraph. Multiple adjacent \note commands will be joined into a single paragraph. Each note description will start on a new line. Alternatively, one \note command may mention several notes. The \note command ends when a blank line or some other sectioning command is encountered. See section<a class="el" href="commands.html#cmdpar">\par</a>for an example.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='overload'>
+	<name>
+	  overload
+	</name>
+	<args>
+            <arg type="zxcvbnm">
+                [(function declaration)]
+            </arg>
+	</args>
+	<short>
+            Automatically add `This is an overloaded member function...`
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command can be used to generate the following standard text for an overloaded member function:
+	  </p>
+	  <p>
+	      `This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.'
+	  </p>
+	  <p>
+	      If the documentation for the overloaded member function is not located in front of the function declaration or definition, the optional argument should be used to specify the correct function.
+	  </p>
+	  <p>
+	      Any other documentation that is inside the documentation block will by appended after the generated message.
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Note 1:</b>
+	      </dt>
+	      <dd>You are responsible that there is indeed an earlier documented member that is overloaded by this one. To prevent that document reorders the documentation you should set<a class="el" href="config.html#cfg_sort_member_docs">SORT_MEMBER_DOCS</a>to NO in this case.</dd>
+	  </dl>
+	  <dl class="user">
+	      <dt>
+	      <b>Note 2:</b>
+	      </dt>
+	      <dd>The \overload command does not work inside a one-line comment.</dd>
+	  </dl>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>
+	      <div class="fragment">
+		<pre class="fragment">
+		    class Test 
+  {
+    public:
+      void drawRect(int,int,int,int);
+      void drawRect(const Rect &amp;r);
+  };
+
+  void Test::drawRect(int x,int y,int w,int h) {}
+  void Test::drawRect(const Rect &amp;r) {}
+
+  /*! \class Test
+  *  \brief A short description.
+  *   
+  *  More text.
+  */
+
+  /*! \fn void Test::drawRect(int x,int y,int w,int h)
+  * This command draws a rectangle with a left upper corner at ( \a x , \a y ),
+  * width \a w and height \a h. 
+  */
+
+  /*!
+  * \overload void Test::drawRect(const Rect &amp;r)
+  */
+		</pre>
+	      </div>
+	      Click<a href="./examples/overload/html/class_test.html">here</a>for the corresponding HTML documentation that is generated by doxygen.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='p'>
+	<name>
+	  p
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;word&gt;
+            </arg>
+	</args>
+	<short>
+            Displays the parameter using a typewriter font.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Displays the parameter &lt;word&gt; using a typewriter font. You can use this command to refer to member function parameters in the running text.
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>
+	      <div class="fragment">
+		<pre class="fragment">
+		    ... the \p x and \p y coordinates are used to ...
+		</pre>
+	      </div>
+	      This will result in the following text:
+	      <br />
+	      <br />
+	      ... the
+	      <code>
+		x
+	      </code>
+	      and
+	      <code>
+		y
+	      </code>
+	      coordinates are used to ...</dd>
+	  </dl>
+	  <p>
+	      Equivalent to<a class="el" href="commands.html#cmdc">\c</a>To have multiple words in typewriter font use &lt;tt&gt;multiple words&lt;/tt&gt;.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='package'>
+	<name>
+	  package
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+	</args>
+	<short>
+            Indicates that a comment block contains documentation for a Java package with name
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that a comment block contains documentation for a Java package with name &lt;name&gt;.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='page'>
+	<name>
+	  page
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+            <arg type="asdfghjkl">
+                (title)
+            </arg>
+	</args>
+	<short>
+            Indicates that a comment block contains a piece of documentation that is not directly related to one specific class
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that a comment block contains a piece of documentation that is not directly related to one specific class, file or member. The HTML generator creates a page containing the documentation. The
+	      <img class="formulaInl" alt="$\mbox{\LaTeX}$" src="form_0.png"/>
+	      generator starts a new section in the chapter `Page documentation'.
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>
+	      <div class="fragment">
+		<pre class="fragment">
+		    /*! \page page1 A documentation page
+    Leading text.
+    \section sec An example section
+    This page contains the subsections \ref subsection1 and \ref subsection2.
+    For more info see page \ref page2.
+    \subsection subsection1 The first subsection
+    Text.
+    \subsection subsection2 The second subsection
+    More text.
+  */
+
+  /*! \page page2 Another page
+    Even more info.
+  */
+		</pre>
+	      </div>
+	      Click<a href="./examples/page/html/pages.html">here</a>for the corresponding HTML documentation that is generated by doxygen.</dd>
+	  </dl>
+	  <dl class="user">
+	      <dt>
+	      <b>Note:</b>
+	      </dt>
+	      <dd>The &lt;name&gt; argument consists of a combination of letters and number digits. If you wish to use upper case letters (e.g.
+	      <code>
+		MYPAGE1
+	      </code>
+	      ), or mixed case letters (e.g.
+	      <code>
+		MyPage1
+	      </code>
+	      ) in the &lt;name&gt; argument, you should set
+	      <code>
+		CASE_SENSE_NAMES
+	      </code>
+	      to
+	      <code>
+		YES
+	      </code>
+	      . However, this is advisable only if your file system is case sensitive. Otherwise (and for better portability) you should use all lower case letters (e.g.
+	      <code>
+		mypage1
+	      </code>
+	      ) for &lt;name&gt; in all references to the page.</dd>
+	  </dl>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdsection">\section</a>, section<a class="el" href="commands.html#cmdsubsection">\subsection</a>, and section<a class="el" href="commands.html#cmdref">\ref</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='par'>
+	<name>
+	  par
+	</name>
+	<args>
+            <arg type="zxcvbnm">
+                [(paragraph title)]
+            </arg>
+            <arg type="poiuytrewq">
+                { paragraph }
+            </arg>
+	</args>
+	<short>
+            Starts a paragraph with a user defined heading.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      If a paragraph title is given this command starts a paragraph with a user defined heading. The heading extends until the end of the line. The paragraph following the command will be indented.
+	  </p>
+	  <p>
+	      If no paragraph title is given this command will start a new paragraph. This will also work inside other paragraph commands (like \param or \warning) without ending that command.
+	  </p>
+	  <p>
+	      The text of the paragraph has no special internal structure. All visual enhancement commands may be used inside the paragraph. The \par command ends when a blank line or some other sectioning command is encountered.
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>
+	      <div class="fragment">
+		<pre class="fragment">
+		    /*! \class Test
+  * Normal text.
+  *
+  * \par User defined paragraph:
+  * Contents of the paragraph.
+  *
+  * \par
+  * New paragraph under the same heading.
+  *
+  * \note
+  * This note consists of two paragraphs.
+  * This is the first paragraph.
+  *
+  * \par
+  * And this is the second paragraph.
+  *
+  * More normal text. 
+  */
+    
+  class Test {};
+		</pre>
+	      </div>
+	      Click<a href="./examples/par/html/class_test.html">here</a>for the corresponding HTML documentation that is generated by doxygen.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='paragraph'>
+	<name>
+	  paragraph
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;paragraph-name&gt;
+            </arg>
+            <arg type="asdfghjkl">
+                (paragraph title)
+            </arg>
+	</args>
+	<short>
+            Creates a named paragraph
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Creates a named paragraph with name &lt;paragraph-name&gt;. The title of the paragraph should be specified as the second argument of the \paragraph command.
+	  </p>
+	  <dl class="warning">
+	      <dt>
+	      <b>Warning:</b>
+	      </dt>
+	      <dd>This command only works inside a subsubsection of a related page documentation block and
+	      <em>
+		not
+	      </em>
+	      in other documentation blocks!</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='param'>
+	<name>
+	  param
+	</name>
+	<args>
+            <arg type="zxcvbnm">
+                [(dir)]
+            </arg>
+            <arg type="qwertyuiop">
+                &lt;parameter-name&gt;
+            </arg>
+            <arg type="poiuytrewq">
+                { parameter description }
+            </arg>
+	</args>
+	<short>
+            Starts a parameter description for a function parameter
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a parameter description for a function parameter with name &lt;parameter-name&gt;, followed by a description of the parameter. The existence of the parameter is checked and a warning is given if the documentation of this (or any other) parameter is missing or not present in the function declaration or definition.
+	  </p>
+	  <p>
+	      The \param command has an optional attribute, (dir), specifying the direction of the parameter. Possible values are "[in]", "[in,out]", and "[out]", note the [square] brackets in this description. When a parameter is both input and output, [in,out] is used as attribute. Here is an example for the function memcpy:
+	  </p>
+	  <div class="fragment">
+	      <pre class="fragment">
+		<span class="comment">
+		    /*!
+		</span>
+		<span class="comment">
+		    Copies bytes from a source memory area to a destination memory area,
+		</span>
+		<span class="comment">
+		    where both areas may not overlap.
+		</span>
+		<span class="comment">
+		    @param[out] dest The memory area to copy to.
+		</span>
+		<span class="comment">
+		    @param[in]  src  The memory area to copy from.
+		</span>
+		<span class="comment">
+		    @param[in]  n    The number of bytes to copy
+		</span>
+		<span class="comment">
+		    */
+		</span>
+		<span class="keywordtype">
+		    void
+		</span>
+		memcpy(
+		<span class="keywordtype">
+		    void
+		</span>
+		*dest,
+		<span class="keyword">
+		    const
+		</span>
+		<span class="keywordtype">
+		    void
+		</span>
+		*src,
+		<span class="keywordtype">
+		    size_t
+		</span>
+		n);
+	      </pre>
+	  </div>
+	  <p>
+	      The parameter description is a paragraph with no special internal structure. All visual enhancement commands may be used inside the paragraph.
+	  </p>
+	  <p>
+	      Multiple adjacent \param commands will be joined into a single paragraph. Each parameter description will start on a new line. The \param description ends when a blank line or some other sectioning command is encountered. See section<a class="el" href="commands.html#cmdfn">\fn</a>for an example.
+	  </p>
+	  <p>
+	      Note that for PHP one can also specify the type (or types if you separate them with a pipe symbol) which are allowed for a parameter (as this is not part of the definition). The syntax is the same as for phpDocumentor, i.e.
+	  </p>
+	  <div class="fragment">
+	      <pre class="fragment">
+		@param  datatype1|datatype2 $paramname description
+	      </pre>
+	  </div>
+	]]></description>
+    </tag>
+    <tag id='post'>
+	<name>
+	  post
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { description of the postcondition }
+            </arg>
+	</args>
+	<short>
+            Starts a paragraph where the postcondition of an entity can be described
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a paragraph where the postcondition of an entity can be described. The paragraph will be indented. The text of the paragraph has no special internal structure. All visual enhancement commands may be used inside the paragraph. Multiple adjacent \post commands will be joined into a single paragraph. Each postcondition will start on a new line. Alternatively, one \post command may mention several postconditions. The \post command ends when a blank line or some other sectioning command is encountered.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='pre'>
+	<name>
+	  pre
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { description of the precondition }
+            </arg>
+	</args>
+	<short>
+            Starts a paragraph where the precondition of an entity can be described
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a paragraph where the precondition of an entity can be described. The paragraph will be indented. The text of the paragraph has no special internal structure. All visual enhancement commands may be used inside the paragraph. Multiple adjacent \pre commands will be joined into a single paragraph. Each precondition will start on a new line. Alternatively, one \pre command may mention several preconditions. The \pre command ends when a blank line or some other sectioning command is encountered.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='private'>
+	<name>
+	  private
+	</name>
+	<args>
+	</args>
+	<short>
+            Indicates that the member documented in the comment block is private
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that the member documented in the comment block is private, i.e., should only be accessed by other members in the same class.
+	  </p>
+	  <p>
+	      Note that Doxygen automatically detects the protection level of members in object-oriented languages. This command is intended for use only when the language does not support the concept of protection level natively (e.g. C, PHP 4).
+	  </p>
+	  <p>
+	      For starting a section of private members, in a way similar to the "private:" class marker in C++, use \privatesection.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>sections<a class="el" href="commands.html#cmdmemberof">\memberof</a>,<a class="el" href="commands.html#cmdpublic">\public</a>,<a class="el" href="commands.html#cmdprotected">\protected</a>and<a class="el" href="commands.html#cmdprivatesection">\privatesection</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='privatesection'>
+	<name>
+	  private
+	</name>
+	<args>
+	</args>
+	<short>
+            Starting a section of private members
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starting a section of private members, in a way similar to the "private:" class marker in C++. Indicates that the member documented in the comment block is private, i.e., should only be accessed by other members in the same class.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>sections<a class="el" href="commands.html#cmdmemberof">\memberof</a>,<a class="el" href="commands.html#cmdpublic">\public</a>,<a class="el" href="commands.html#cmdprotected">\protected</a>and<a class="el" href="commands.html#cmdprivate">\private</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='property'>
+	<name>
+	  property
+	</name>
+	<args>
+            <arg type="asdfghjkl">
+                (qualified property name)
+            </arg>
+	</args>
+	<short>
+            Indicates that a comment block contains documentation for a property
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that a comment block contains documentation for a property (either global or as a member of a class). This command is equivalent to \var, \typedef, and \fn.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>sections<a class="el" href="commands.html#cmdfn">\fn</a>,<a class="el" href="commands.html#cmdtypedef">\typedef</a>, and<a class="el" href="commands.html#cmdvar">\var</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='protected'>
+	<name>
+	  protected
+	</name>
+	<args>
+	</args>
+	<short>
+            Indicates that the member documented in the comment block is protected
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that the member documented in the comment block is protected, i.e., should only be accessed by other members in the same or derived classes.
+	  </p>
+	  <p>
+	      Note that Doxygen automatically detects the protection level of members in object-oriented languages. This command is intended for use only when the language does not support the concept of protection level natively (e.g. C, PHP 4).
+	  </p>
+	  <p>
+	      For starting a section of protected members, in a way similar to the "protected:" class marker in C++, use \protectedsection.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>sections<a class="el" href="commands.html#cmdmemberof">\memberof</a>,<a class="el" href="commands.html#cmdpublic">\public</a>,<a class="el" href="commands.html#cmdprivate">\private</a>and<a class="el" href="commands.html#cmdprotectedsection">\protectedsection</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='protectedsection'>
+	<name>
+	  protected
+	</name>
+	<args>
+	</args>
+	<short>
+            Starting a section of protected members
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starting a section of protected members, in a way similar to the "protected:" class marker in C++. Indicates that the member documented in the comment block is protected, i.e., should only be accessed by other members in the same or derived classes.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>sections<a class="el" href="commands.html#cmdmemberof">\memberof</a>,<a class="el" href="commands.html#cmdpublic">\public</a>,<a class="el" href="commands.html#cmdprivate">\private</a>and<a class="el" href="commands.html#cmdprotected">\protected</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='protocol'>
+	<name>
+	  protocol
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+            <arg type="lkjhgfdsa">
+                [&lt;header-file&gt;]
+            </arg>
+            <arg type="lkjhgfdsa">
+                [&lt;header-name&gt;]
+            </arg>
+	</args>
+	<short>
+            Indicates that a comment block contains documentation for a protocol in Objective-C
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that a comment block contains documentation for a protocol in Objective-C with name &lt;name&gt;. The arguments are equal to the \class command.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdclass">\class</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='public'>
+	<name>
+	  public
+	</name>
+	<args>
+	</args>
+	<short>
+            Indicates that the member documented in the comment block is public
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that the member documented in the comment block is public, i.e., can be accessed by any other class or function.
+	  </p>
+	  <p>
+	      Note that Doxygen automatically detects the protection level of members in object-oriented languages. This command is intended for use only when the language does not support the concept of protection level natively (e.g. C, PHP 4).
+	  </p>
+	  <p>
+	      For starting a section of public members, in a way similar to the "public:" class marker in C++, use \publicsection.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>sections<a class="el" href="commands.html#cmdmemberof">\memberof</a>,<a class="el" href="commands.html#cmdprotected">\protected</a>,<a class="el" href="commands.html#cmdprivate">\private</a>and<a class="el" href="commands.html#cmdpublicsection">\publicsection</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='publicsection'>
+	<name>
+	  public
+	</name>
+	<args>
+	</args>
+	<short>
+            Starting a section of public members
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starting a section of public members, in a way similar to the "public:" class marker in C++. Indicates that the member documented in the comment block is public, i.e., can be accessed by any other class or function.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>sections<a class="el" href="commands.html#cmdmemberof">\memberof</a>,<a class="el" href="commands.html#cmdprotected">\protected</a>,<a class="el" href="commands.html#cmdprivate">\private</a>and<a class="el" href="commands.html#cmdpublic">\public</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='ref'>
+	<name>
+	  ref
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+            <arg type="ynnumjfe">
+                ["(text)"]
+            </arg>
+	</args>
+	<short>
+            Creates a reference to a named section, subsection, page or anchor
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Creates a reference to a named section, subsection, page or anchor. For HTML documentation the reference command will generate a link to the section. For a section or subsection the title of the section will be used as the text of the link. For an anchor the optional text between quotes will be used or &lt;name&gt; if no text is specified. For
+	      <img class="formulaInl" alt="$\mbox{\LaTeX}$" src="form_0.png"/>
+	      documentation the reference command will generate a section number for sections or the text followed by a page number if &lt;name&gt; refers to an anchor.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>Section<a class="el" href="commands.html#cmdpage">\page</a>for an example of the \ref command.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='related'>
+	<name>
+	  related
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+	</args>
+	<short>
+            Equivalent to \relates
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Equivalent to<a class="el" href="commands.html#cmdrelates">\relates</a>
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='relates'>
+	<name>
+	  relates
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+	</args>
+	<short>
+            This command can be used in the documentation of a non-member function
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command can be used in the documentation of a non-member function &lt;name&gt;. It puts the function inside the `related function' section of the class documentation. This command is useful for documenting non-friend functions that are nevertheless strongly coupled to a certain class. It prevents the need of having to document a file, but only works for functions.
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Example:</b>
+	      </dt>
+	      <dd>
+	      <div class="fragment">
+		<pre class="fragment">
+		    /*! 
+  * A String class.
+  */ 
+    
+  class String
+  {
+    friend int strcmp(const String &amp;,const String &amp;);
+  };
+
+  /*! 
+  * Compares two strings.
+  */
+
+  int strcmp(const String &amp;s1,const String &amp;s2)
+  {
+  }
+
+  /*! \relates String
+  * A string debug function.
+  */
+  void stringDebug()
+  {
+  }
+		</pre>
+	      </div>
+	      Click<a href="./examples/relates/html/class_string.html">here</a>for the corresponding HTML documentation that is generated by doxygen.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='relatedalso'>
+	<name>
+	  relatedalso
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+	</args>
+	<short>
+            Equivalent to \relatesalso
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Equivalent to<a class="el" href="commands.html#cmdrelatesalso">\relatesalso</a>
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='relatesalso'>
+	<name>
+	  relatesalso
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+	</args>
+	<short>
+            This command can be used in the documentation of a non-member function
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command can be used in the documentation of a non-member function &lt;name&gt;. It puts the function both inside the `related function' section of the class documentation as well as leaving it at its normal file documentation location. This command is useful for documenting non-friend functions that are nevertheless strongly coupled to a certain class. It only works for functions.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='remark'>
+	<name>
+	  remark
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { remark text }
+            </arg>
+	</args>
+	<short>
+            Starts a paragraph where one or more remarks may be entered.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a paragraph where one or more remarks may be entered. The paragraph will be indented. The text of the paragraph has no special internal structure. All visual enhancement commands may be used inside the paragraph. Multiple adjacent \remark commands will be joined into a single paragraph. Each remark will start on a new line. Alternatively, one \remark command may mention several remarks. The \remark command ends when a blank line or some other sectioning command is encountered.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='remarks'>
+	<name>
+	  remarks
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { remark text }
+            </arg>
+	</args>
+	<short>
+            Equivalent to \remark
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Equivalent to<a class="el" href="commands.html#cmdremark">\remark</a>.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='result'>
+	<name>
+	  result
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { description of the result value }
+            </arg>
+	</args>
+	<short>
+            Equivalent to \return
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Equivalent to<a class="el" href="commands.html#cmdreturn">\return</a>.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='return'>
+	<name>
+	  return
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { description of the return value }
+            </arg>
+	</args>
+	<short>
+            Starts a return value description for a function
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a return value description for a function. The text of the paragraph has no special internal structure. All visual enhancement commands may be used inside the paragraph. Multiple adjacent \return commands will be joined into a single paragraph. The \return description ends when a blank line or some other sectioning command is encountered. See section<a class="el" href="commands.html#cmdfn">\fn</a>for an example.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='returns'>
+	<name>
+	  returns
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { description of the return value }
+            </arg>
+	</args>
+	<short>
+            Equivalent to \return
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Equivalent to<a class="el" href="commands.html#cmdreturn">\return</a>.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='retval'>
+	<name>
+	  retval
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;return value&gt;
+            </arg>
+            <arg type="poiuytrewq">
+                { description }
+            </arg>
+	</args>
+	<short>
+            Starts a description for a function's return value
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a description for a function's return value with name &lt;return value&gt;, followed by a description of the return value. The text of the paragraph that forms the description has no special internal structure. All visual enhancement commands may be used inside the paragraph. Multiple adjacent \retval commands will be joined into a single paragraph. Each return value description will start on a new line. The \retval description ends when a blank line or some other sectioning command is encountered.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='rtfonly'>
+	<name>
+	  rtfonly
+	</name>
+	<args>
+	</args>
+	<short>
+            Starts a block of text that will be verbatim included in the generated RTF documentation only
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a block of text that will be verbatim included in the generated RTF documentation only. The block ends with a<a class="el" href="commands.html#cmdendrtfonly">\endrtfonly</a>command.
+	  </p>
+	  <p>
+	      This command can be used to include RTF code that is too complex for doxygen.
+	  </p>
+	  <p>
+	      <b>Note:</b>environment variables (like $(HOME) ) are resolved inside a RTF-only block.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdmanonly">\manonly</a>, section<a class="el" href="commands.html#cmdxmlonly">\xmlonly</a>, section<a class="el" href="commands.html#cmdlatexonly">\latexonly</a>, and section<a class="el" href="commands.html#cmdhtmlonly">\htmlonly</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='sa'>
+	<name>
+	  sa
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { references }
+            </arg>
+	</args>
+	<short>
+            Starts a paragraph where one or more cross-references to classes, functions, methods, variables, files or URL may be specified
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a paragraph where one or more cross-references to classes, functions, methods, variables, files or URL may be specified. Two names joined by either
+	      <code>
+		::
+	      </code>
+	      or
+	      <code>
+		#
+	      </code>
+	      are understood as referring to a class and one of its members. One of several overloaded methods or constructors may be selected by including a parenthesized list of argument types after the method name.
+	  </p>
+	  <p>
+	      Synonymous to \see.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="autolink.html">autolink</a>for information on how to create links to objects.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='section'>
+	<name>
+	  section
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;section-name&gt;
+            </arg>
+            <arg type="asdfghjkl">
+                (section title)
+            </arg>
+	</args>
+	<short>
+            Creates a section
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Creates a section with name &lt;section-name&gt;. The title of the section should be specified as the second argument of the \section command.
+	  </p>
+	  <dl class="warning">
+	      <dt>
+	      <b>Warning:</b>
+	      </dt>
+	      <dd>This command only works inside related page documentation and
+	      <em>
+		not
+	      </em>
+	      in other documentation blocks!</dd>
+	  </dl>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>Section<a class="el" href="commands.html#cmdpage">\page</a>for an example of the<a class="el" href="commands.html#cmdsection">\section</a>command.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='see'>
+	<name>
+	  see
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { references }
+            </arg>
+	</args>
+	<short>
+            Equivalent to \sa
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Equivalent to<a class="el" href="commands.html#cmdsa">\sa</a>. Introduced for compatibility with Javadoc.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='short'>
+	<name>
+	  short
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { short description }
+            </arg>
+	</args>
+	<short>
+            Equivalent to \brief
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Equivalent to<a class="el" href="commands.html#cmdbrief">\brief</a>.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='showinitializer'>
+	<name>
+	  showinitializer
+	</name>
+	<args>
+	</args>
+	<short>
+            Show the initializer
+	</short>
+	<description><![CDATA[
+	  <p>
+	      By default the value of a define and the initializer of a variable are only displayed if they are less than 30 lines long. By putting this command in a comment block of a define or variable, the initializer is shown unconditionally. The maximum number of initalization linens can be changed by means of the configuration parameter<a class="el" href="config.html#cfg_max_initializer_lines">MAX_INITIALIZER_LINES</a>, the default value is 30.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdhideinitializer">\hideinitializer</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='since'>
+	<name>
+	  since
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { text }
+            </arg>
+	</args>
+	<short>
+            Specify since when (version or time) an entity is available
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This tag can be used to specify since when (version or time) an entity is available. The paragraph that follows \since does not have any special internal structure. All visual enhancement commands may be used inside the paragraph. The \since description ends when a blank line or some other sectioning command is encountered.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='skip'>
+	<name>
+	  skip
+	</name>
+	<args>
+            <arg type="">
+                ( pattern )
+            </arg>
+	</args>
+	<short>
+            Searches the example until it finds a line that contains the specified pattern.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command searches line by line through the example that was last included using \include or \dontinclude until it finds a line that contains the specified pattern.
+	  </p>
+	  <p>
+	      The internal pointer that is used to keep track of the current line in the example, is set to the start of the line that contains the specified pattern (or to the end of the example if the pattern could not be found).
+	  </p>
+	  <p>
+	      See section<a class="el" href="commands.html#cmddontinclude">\dontinclude</a>for an example.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='skipline'>
+	<name>
+	  skipline
+	</name>
+	<args>
+            <arg type="asdfghjkl">
+                ( pattern )
+            </arg>
+	</args>
+	<short>
+            Searches the example until it finds a line that contains the specified pattern.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command searches line by line through the example that was last included using \include or \dontinclude until it finds a line that contains the specified pattern. It then writes the line to the output.
+	  </p>
+	  <p>
+	      The internal pointer that is used to keep track of the current line in the example, is set to the start of the line following the line that is written (or to the end of the example if the pattern could not be found).
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Note:</b>
+	      </dt>
+	      <dd>The command:
+	      <div class="fragment">
+		<pre class="fragment">
+		    \skipline pattern
+		</pre>
+	      </div>
+	      is equivalent to:
+	      <div class="fragment">
+		<pre class="fragment">
+		    \skip pattern
+  \line pattern
+		</pre>
+	      </div>
+	      </dd>
+	  </dl>
+	  <p>
+	      See section<a class="el" href="commands.html#cmddontinclude">\dontinclude</a>for an example.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='struct'>
+	<name>
+	  struct
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+            <arg type="lkjhgfdsa">
+                [&lt;header-file&gt;]
+            </arg>
+            <arg type="lkjhgfdsa">
+                [&lt;header-name&gt;]
+            </arg>
+	</args>
+	<short>
+            Indicates that a comment block contains documentation for a struct
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that a comment block contains documentation for a struct with name &lt;name&gt;. The arguments are equal to the arguments of the \class command.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdclass">\class</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='subpage'>
+	<name>
+	  subpage
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+            <arg type="ynnumjfe">
+                ["(text)"]
+            </arg>
+	</args>
+	<short>
+            This command can be used to create a hierarchy of pages
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command can be used to create a hierarchy of pages. The same structure can be made using the<a class="el" href="commands.html#cmddefgroup">\defgroup</a>and<a class="el" href="commands.html#cmdingroup">\ingroup</a>commands, but for pages the \subpage command is often more convenient. The main page (see<a class="el" href="commands.html#cmdmainpage">\mainpage</a>) is typically the root of hierarchy.
+	  </p>
+	  <p>
+	      This command behaves similar as<a class="el" href="commands.html#cmdref">\ref</a>in the sense that it creates a reference to a page labeled &lt;name&gt; with the optional link text as specified in the second argument.
+	  </p>
+	  <p>
+	      It differs from the \ref command in that it only works for pages, and creates a parent-child relation between pages, where the child page (or sub page) is identified by label &lt;name&gt;.
+	  </p>
+	  <p>
+	      See the<a class="el" href="commands.html#cmdsection">\section</a>and<a class="el" href="commands.html#cmdsubsection">\subsection</a>commands if you want to add structure without creating multiple pages.
+	  </p>
+	  <dl class="note">
+	      <dt>
+	      <b>Note:</b>
+	      </dt>
+	      <dd>Each page can be the sub page of only one other page and no cyclic relations are allowed, i.e. the page hierarchy must have a tree structure.</dd>
+	  </dl>
+	  <p>
+	      Here is an example:
+	  </p>
+	  <div class="fragment">
+	      <pre class="fragment">
+		/*! \mainpage A simple manual
+
+  Some general info.
+
+  This manual is divided in the following sections:
+  - \subpage intro
+  - \subpage advanced "Advanced usage"
+  */
+
+  //-----------------------------------------------------------
+
+  /*! \page intro Introduction
+  This page introduces the user to the topic.
+  Now you can proceed to the \ref advanced "advanced section".
+  */
+
+  //-----------------------------------------------------------
+
+  /*! \page advanced Advanced Usage
+  This page is for advanced users.
+  Make sure you have first read \ref intro "the introduction".
+  */
+	      </pre>
+	  </div>
+	]]></description>
+    </tag>
+    <tag id='subsection'>
+	<name>
+	  subsection
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;subsection-name&gt;
+            </arg>
+            <arg type="asdfghjkl">
+                (subsection title)
+            </arg>
+	</args>
+	<short>
+            Creates a subsection
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Creates a subsection with name &lt;subsection-name&gt;. The title of the subsection should be specified as the second argument of the \subsection command.
+	  </p>
+	  <dl class="warning">
+	      <dt>
+	      <b>Warning:</b>
+	      </dt>
+	      <dd>This command only works inside a section of a related page documentation block and
+	      <em>
+		not
+	      </em>
+	      in other documentation blocks!</dd>
+	  </dl>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>Section<a class="el" href="commands.html#cmdpage">\page</a>for an example of the<a class="el" href="commands.html#cmdsubsection">\subsection</a>command.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='subsubsection'>
+	<name>
+	  subsubsection
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;subsubsection-name&gt;
+            </arg>
+            <arg type="asdfghjkl">
+                (subsubsection title)
+            </arg>
+	</args>
+	<short>
+            Creates a subsubsection with name
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Creates a subsubsection with name &lt;subsubsection-name&gt;. The title of the subsubsection should be specified as the second argument of the \subsubsection command.
+	  </p>
+	  <dl class="warning">
+	      <dt>
+	      <b>Warning:</b>
+	      </dt>
+	      <dd>This command only works inside a subsection of a related page documentation block and
+	      <em>
+		not
+	      </em>
+	      in other documentation blocks!</dd>
+	  </dl>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>Section<a class="el" href="commands.html#cmdpage">\page</a>for an example of the<a class="el" href="commands.html#cmdsection">\section</a>command and<a class="el" href="commands.html#cmdsubsection">\subsection</a>command.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='test'>
+	<name>
+	  test
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { paragraph describing a test case }
+            </arg>
+	</args>
+	<short>
+            Starts a paragraph where a test case can be described
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a paragraph where a test case can be described. The description will also add the test case to a separate test list. The two instances of the description will be cross-referenced. Each test case in the test list will be preceded by a header that indicates the origin of the test case.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='throw'>
+	<name>
+	  throw
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;exception-object&gt;
+            </arg>
+            <arg type="poiuytrewq">
+                { exception description }
+            </arg>
+	</args>
+	<short>
+            Synonymous to \exception
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Synonymous to \exception (see section<a class="el" href="commands.html#cmdexception">\exception</a>).
+	  </p>
+	  <dl class="user">
+	      <dt>
+	      <b>Note:</b>
+	      </dt>
+	      <dd>the tag \throws is a synonym for this tag.</dd>
+	  </dl>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdexception">\exception</a></dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='throws'>
+	<name>
+	  throws
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;exception-object&gt;
+            </arg>
+            <arg type="poiuytrewq">
+                { exception description }
+            </arg>
+	</args>
+	<short>
+            Equivalent to \throw
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Equivalent to<a class="el" href="commands.html#cmdthrow">\throw</a>.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='todo'>
+	<name>
+	  todo
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { paragraph describing what is to be done }
+            </arg>
+	</args>
+	<short>
+            Starts a paragraph where a TODO item is described
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a paragraph where a TODO item is described. The description will also add an item to a separate TODO list. The two instances of the description will be cross-referenced. Each item in the TODO list will be preceded by a header that indicates the origin of the item.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='tparam'>
+	<name>
+	  tparam
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;template-parameter-name&gt;
+            </arg>
+            <arg type="poiuytrewq">
+                { description }
+            </arg>
+	</args>
+	<short>
+            Starts a template parameter for a class or function template parameter
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a template parameter for a class or function template parameter with name &lt;template-parameter-name&gt;, followed by a description of the template parameter.
+	  </p>
+	  <p>
+	      Otherwise similar to<a class="el" href="commands.html#cmdparam">\param</a>.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='typedef'>
+	<name>
+	  typedef
+	</name>
+	<args>
+            <arg type="asdfghjkl">
+                (typedef declaration)
+            </arg>
+	</args>
+	<short>
+            Indicates that a comment block contains documentation for a typedef
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that a comment block contains documentation for a typedef (either global or as a member of a class). This command is equivalent to \var, \propery, and \fn.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdfn">\fn</a>,<a class="el" href="commands.html#cmdproperty">\property</a>, and<a class="el" href="commands.html#cmdvar">\var</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='union'>
+	<name>
+	  union
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+            <arg type="lkjhgfdsa">
+                [&lt;header-file&gt;]
+            </arg>
+            <arg type="lkjhgfdsa">
+                [&lt;header-name&gt;]
+            </arg>
+	</args>
+	<short>
+            Indicates that a comment block contains documentation for a union
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that a comment block contains documentation for a union with name &lt;name&gt;. The arguments are equal to the arguments of the \class command.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdclass">\class</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='until'>
+	<name>
+	  until
+	</name>
+	<args>
+            <arg type="asdfghjkl">
+                ( pattern )
+            </arg>
+	</args>
+	<short>
+            writes all lines of an exampleuntil it finds a line containing the specified pattern
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command writes all lines of the example that was last included using \include or \dontinclude to the output, until it finds a line containing the specified pattern. The line containing the pattern will be written as well.
+	  </p>
+	  <p>
+	      The internal pointer that is used to keep track of the current line in the example, is set to the start of the line following last written line (or to the end of the example if the pattern could not be found).
+	  </p>
+	  <p>
+	      See section<a class="el" href="commands.html#cmddontinclude">\dontinclude</a>for an example.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='var'>
+	<name>
+	  var
+	</name>
+	<args>
+            <arg type="asdfghjkl">
+                (variable declaration)
+            </arg>
+	</args>
+	<short>
+            Indicates that a comment block contains documentation for a variable or enum value
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Indicates that a comment block contains documentation for a variable or enum value (either global or as a member of a class). This command is equivalent to \typedef, \propery, and \fn.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdfn">\fn</a>,<a class="el" href="commands.html#cmdproperty">\property</a>, and<a class="el" href="commands.html#cmdtypedef">\typedef</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='verbatim'>
+	<name>
+	  verbatim
+	</name>
+	<args>
+	</args>
+	<short>
+            Starts a block of text that will be verbatim included in the documentation
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a block of text that will be verbatim included in the documentation. The block should end with a<a class="el" href="commands.html#cmdendverbatim">\endverbatim</a>block. All commands are disabled in a verbatim block.
+	  </p>
+	  <dl class="warning">
+	      <dt>
+	      <b>Warning:</b>
+	      </dt>
+	      <dd>Make sure you include a \endverbatim command for each \verbatim command or the parser will get confused!</dd>
+	  </dl>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdcode">\code</a>, and section<a class="el" href="commands.html#cmdverbinclude">\verbinclude</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='verbinclude'>
+	<name>
+	  verbinclude
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;file-name&gt;
+            </arg>
+	</args>
+	<short>
+            Include a file verbatim in the documentation
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command includes the file &lt;file-name&gt; verbatim in the documentation. The command is equivalent to pasting the file in the documentation and placing \verbatim and \endverbatim commands around it.
+	  </p>
+	  <p>
+	      Files or directories that doxygen should look for can be specified using the<a class="el" href="config.html#cfg_example_path">EXAMPLE_PATH</a>tag of doxygen's configuration file.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='version'>
+	<name>
+	  version
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { version number }
+            </arg>
+	</args>
+	<short>
+            Starts a paragraph where one or more version strings may be entered
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a paragraph where one or more version strings may be entered. The paragraph will be indented. The text of the paragraph has no special internal structure. All visual enhancement commands may be used inside the paragraph. Multiple adjacent \version commands will be joined into a single paragraph. Each version description will start on a new line. Alternatively, one \version command may mention several version strings. The \version command ends when a blank line or some other sectioning command is encountered. See section<a class="el" href="commands.html#cmdauthor">\author</a>for an example.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='warning'>
+	<name>
+	  warning
+	</name>
+	<args>
+            <arg type="poiuytrewq">
+                { warning message }
+            </arg>
+	</args>
+	<short>
+            Starts a paragraph where one or more warning messages may be entered
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a paragraph where one or more warning messages may be entered. The paragraph will be indented. The text of the paragraph has no special internal structure. All visual enhancement commands may be used inside the paragraph. Multiple adjacent \warning commands will be joined into a single paragraph. Each warning description will start on a new line. Alternatively, one \warning command may mention several warnings. The \warning command ends when a blank line or some other sectioning command is encountered. See section<a class="el" href="commands.html#cmdauthor">\author</a>for an example.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='weakgroup'>
+	<name>
+	  weakgroup
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;name&gt;
+            </arg>
+            <arg type="zxcvbnm">
+                [(title)]
+            </arg>
+	</args>
+	<short>
+            Can be used exactly like \addtogroup, but has a lower priority
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Can be used exactly like<a class="el" href="commands.html#cmdaddtogroup">\addtogroup</a>, but has a lower priority when it comes to resolving conflicting grouping definitions.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>page<a class="el" href="grouping.html">Grouping</a>and section<a class="el" href="commands.html#cmdaddtogroup">\addtogroup</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='xmlonly'>
+	<name>
+	  xmlonly
+	</name>
+	<args>
+	</args>
+	<short>
+            Starts a block of text that will be verbatim included in the generated XML output only
+	</short>
+	<description><![CDATA[
+	  <p>
+	      Starts a block of text that will be verbatim included in the generated XML output only. The block ends with a endxmlonly command.
+	  </p>
+	  <p>
+	      This command can be used to include custom XML tags.
+	  </p>
+	  <dl class="see">
+	      <dt>
+	      <b>See also:</b>
+	      </dt>
+	      <dd>section<a class="el" href="commands.html#cmdmanonly">\manonly</a>, section<a class="el" href="commands.html#cmdrtfonly">\rtfonly</a>, section<a class="el" href="commands.html#cmdlatexonly">\latexonly</a>, and section<a class="el" href="commands.html#cmdhtmlonly">\htmlonly</a>.</dd>
+	  </dl>
+	]]></description>
+    </tag>
+    <tag id='xrefitem'>
+	<name>
+	  xrefitem
+	</name>
+	<args>
+            <arg type="qwertyuiop">
+                &lt;key&gt;
+            </arg>
+            <arg type="fghghjkrds">
+                "(heading)"
+            </arg>
+            <arg type="fghghjkrds">
+                "(list title)"
+            </arg>
+            <arg type="poiuytrewq">
+                { text }
+            </arg>
+	</args>
+	<short>
+            This command is a generalization of commands such as /todo or /bug
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command is a generalization of commands such as<a class="el" href="commands.html#cmdtodo">\todo</a>and<a class="el" href="commands.html#cmdbug">\bug</a>. It can be used to create user-defined text sections which are automatically cross-referenced between the place of occurrence and a related page, which will be generated. On the related page all sections of the same type will be collected.
+	  </p>
+	  <p>
+	      The first argument &lt;key&gt; is an identifier uniquely representing the type of the section. The second argument is a quoted string representing the heading of the section under which text passed as the fourth argument is put. The third argument (list title) is used as the title for the related page containing all items with the same key. The keys "todo", "test", "bug" and "deprecated" are predefined.
+	  </p>
+	  <p>
+	      To get an idea on how to use the \xrefitem command and what its effect is, consider the todo list, which (for English output) can be seen an alias for the command
+	  </p>
+	  <div class="fragment">
+	      <pre class="fragment">
+		\xrefitem todo "Todo" "Todo List"
+	      </pre>
+	  </div>
+	  <p>
+	      Since it is very tedious and error-prone to repeat the first three parameters of the command for each section, the command is meant to be used in combination with the<a class="el" href="config.html#cfg_aliases">ALIASES</a>option in the configuration file. To define a new command \reminder, for instance, one should add the following line to the configuration<a href="file:">file:</a>
+	  </p>
+	  <div class="fragment">
+	      <pre class="fragment">
+		ALIASES += "reminder=\xrefitem reminders \"Reminder\" \"Reminders\""
+	      </pre>
+	  </div>
+	  <p>
+	      Note the use of escaped quotes for the second and third argument of the \xrefitem command.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='dollar'>
+	<name>
+	  $
+	</name>
+	<args>
+	</args>
+	<short>
+            This command writes the $ character to the output
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command writes the $ character to the output. This character has to be escaped in some cases, because it is used to expand environment variables.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='at'>
+	<name>
+	  @
+	</name>
+	<args>
+	</args>
+	<short>
+            This command writes an at-sign (@) to the output
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command writes an at-sign (@) to the output. The at-sign has to be escaped in some cases because doxygen uses it to detect JavaDoc commands.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='backslash'>
+	<name>
+	  \
+	</name>
+	<args>
+	</args>
+	<short>
+            This command writes a backslash character (\) to the output
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command writes a backslash character (\) to the output. The backslash has to be escaped in some cases because doxygen uses it to detect commands.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='amp'>
+	<name>
+	  &amp;
+	</name>
+	<args>
+	</args>
+	<short>
+            This command writes the &amp; character to output.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command writes the &amp; character to output. This character has to be escaped because it has a special meaning in HTML.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='tilde'>
+	<name>
+	  tilde
+	</name>
+	<args>
+	</args>
+	~[LanguageId]
+	<short>
+            This command enables/disables a language specific filter
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command enables/disables a language specific filter. This can be used to put documentation for different language into one comment block and use the
+	      <code>
+		OUTPUT_LANGUAGE
+	      </code>
+	      tag to filter out only a specific language. Use \~language_id to enable output for a specific language only and \~ to enable output for all languages (this is also the default mode).
+	  </p>
+	  <p>
+	      Example:
+	  </p>
+	  <div class="fragment">
+	      <pre class="fragment">
+		/*! \~english This is english \~dutch Dit is Nederlands \~german Dieses ist
+      deutsch. \~ output for all languages.
+  */
+	      </pre>
+	  </div>
+	]]></description>
+    </tag>
+    <tag id='lt'>
+	<name>
+	  &lt;
+	</name>
+	<args>
+	</args>
+	<short>
+            This command writes the &lt; character to the output.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command writes the &lt; character to the output. This character has to be escaped because it has a special meaning in HTML.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='gt'>
+	<name>
+	  &gt;
+	</name>
+	<args>
+	</args>
+	<short>
+            This command writes the &gt; character to the output.
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command writes the &gt; character to the output. This character has to be escaped because it has a special meaning in HTML.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='hash'>
+	<name>
+	  #
+	</name>
+	<args>
+	</args>
+	<short>
+            This command writes the # character to the output
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command writes the # character to the output. This character has to be escaped in some cases, because it is used to refer to documented entities.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='perc'>
+	<name>
+	  %
+	</name>
+	<args>
+	</args>
+	<short>
+            This command writes the % character to the output
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command writes the % character to the output. This character has to be escaped in some cases, because it is used to prevent auto-linking to word that is also a documented class or struct.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='quot'>
+	<name>
+	  "
+	</name>
+	<args>
+	</args>
+	<short>
+            This command writes the " character to the output
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command writes the " character to the output. This character has to be escaped in some cases, because it is used in pairs to indicate an unformatted text fragment.
+	  </p>
+	]]></description>
+    </tag>
+    <tag id='dcolon'>
+	<name>
+	  ::
+	</name>
+	<args>
+	</args>
+	<short>
+            This command write a double colon (::) to the output
+	</short>
+	<description><![CDATA[
+	  <p>
+	      This command write a double colon (::) to the output. This character sequence has to be escaped in some cases, because it is used to ref to documented entities.
+	  </p>
+	]]></description>
+    </tag>
+  </tags>
+</xml>
