@@ -5,6 +5,7 @@
 
 #include "pagebase.h"
 class QWidget;
+class DocTextEditor;
 
 class ClassGeneral : public PageBase
 {
@@ -19,6 +20,7 @@ class ClassGeneral : public PageBase
     private:
         Ui_ClassGeneral* ui;
         UMLObject* m_object;
+        DocTextEditor* m_pDoc;
 
     private slots:
         void slotNameChanged(QString name);

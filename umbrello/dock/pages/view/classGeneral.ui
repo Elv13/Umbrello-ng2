@@ -25,6 +25,7 @@
      <property name="title">
       <string>Documentation</string>
      </property>
+     <layout class="QVBoxLayout" name="verticalLayout"/>
     </widget>
    </item>
    <item row="0" column="0">
