@@ -13,7 +13,7 @@ ClassGroup::~ClassGroup()
 
 void ClassGroup::setCurrentObject(UMLObject* o)
 {
-//     ui->m_pGeneralPage->setCurrentObject(0);
+    ui->m_pGeneralPage->setCurrentObject(o);
     ui->m_pAttributesPage->setCurrentObject(o);
     ui->m_pOperationsPage->setCurrentObject(o);
     ui->m_pTemplatesPage->setCurrentObject(o);

@@ -18,6 +18,14 @@ class ClassGeneral : public PageBase
 
     private:
         Ui_ClassGeneral* ui;
+        UMLObject* m_object;
+
+    private slots:
+        void slotNameChanged(QString name);
+        void slotStereotypeChanged(QString stereotype);
+        void slotAbstractChanged(bool abstract);
+        void slotPackageChanged(QString package);
+        void slotVisibilityChanged(int index);
 
 };
 
